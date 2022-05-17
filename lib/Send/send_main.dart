@@ -30,8 +30,7 @@ class sendMain extends StatelessWidget {
                         width: 30,
                         height: 30,
                       ),
-                    )
-                ),
+                    )),
                 Padding(
                   padding: EdgeInsets.only(left: 15, top: 10),
                   child: Text(
@@ -43,7 +42,6 @@ class sendMain extends StatelessWidget {
                   ),
                 ),
               ]),
-
             ]));
     return mainContext;
   }

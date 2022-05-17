@@ -1,6 +1,10 @@
+import 'package:acy_ipay/Homepage/show_balance.dart';
+import 'package:acy_ipay/Homepage/widget/ColumnIconButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class midContent extends StatefulWidget {
@@ -11,53 +15,67 @@ class midContent extends StatefulWidget {
 }
 
 class _midContentState extends State<midContent> {
+  String qrCode = '';
+  bool showBalance = false;
   @override
   Widget build(BuildContext context) {
-    Column _threeButtonColumn(Color color, IconData icon, String label) {
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          IconButton(
-            icon: CircleAvatar(
-              child: Icon(icon, color: color),
-              radius: 60,
-              backgroundColor: Color(0xF2F26A3C),
-            ),
-            iconSize: 40,
-            onPressed: () {},
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 8),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-                color: color,
-              ),
-            ),
-          ),
-        ],
-      );
+    double resWidth = MediaQuery.of(context).size.width;
+
+    //TO-DO: Handle situation for deposit/withdrawal
+    Future<void> scanQrCode() async {
+      try {
+        final qrCode = await FlutterBarcodeScanner.scanBarcode(
+          '#ffffff',
+          "Cancel",
+          true,
+          ScanMode.QR,
+        );
+        if (!mounted) return;
+        setState(() {
+          this.qrCode = qrCode.isEmpty
+              ? ''
+              : qrCode == '-1'
+                  ? ''
+                  : qrCode;
+        });
+      } on PlatformException {
+        qrCode = 'Failed to get platform version';
+      }
     }
 
-    Widget threeButtonSection = Row(
+    Widget fourButtonSection = Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _threeButtonColumn(
-            Colors.white, FontAwesomeIcons.arrowDownLong, 'Receive'),
-        _threeButtonColumn(Colors.white, FontAwesomeIcons.qrcode, 'Scan QR'),
-        _threeButtonColumn(Colors.white,
-            FontAwesomeIcons.upRightAndDownLeftFromCenter, 'Trade'),
+        ColumnIconButton(
+          buttonText: "Buy",
+          assetPath: "assets/icon/icon_buy.svg",
+          onClicked: () {},
+          color: Color(0xFFBDBDBD),
+        ),
+        ColumnIconButton(
+          buttonText: 'Receive',
+          assetPath: "assets/icon/icon_down.svg",
+          onClicked: () {},
+          color: Color(0xFFBDBDBD),
+        ),
+        ColumnIconButton(
+          buttonText: 'Send',
+          assetPath: "assets/icon/icon_up.svg",
+          onClicked: () {},
+          color: Color(0xFFBDBDBD),
+        ),
+        ColumnIconButton(
+          buttonText: 'Scan QR',
+          assetPath: "assets/icon/icon_scan.svg",
+          onClicked: () => scanQrCode(),
+          color: Color(0xFFBDBDBD),
+        ),
       ],
     );
 
-    double resWidth = MediaQuery.of(context).size.width;
-
     Widget tapToBuy = Container(
         width: resWidth * 0.75,
-        margin: EdgeInsets.only(top: 45.0),
+        margin: EdgeInsets.only(top: 15.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5.5)),
           color: Colors.white,
@@ -69,7 +87,7 @@ class _midContentState extends State<midContent> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  backgroundColor: Color(0xF2F26A3C),
+                  backgroundColor: Color(0xF2FFC000),
                   radius: 28,
                   child: FaIcon(FontAwesomeIcons.creditCard,
                       color: Colors.white, size: 22),
@@ -122,11 +140,16 @@ class _midContentState extends State<midContent> {
               ],
             )));
 
-    return Container(
-        margin: EdgeInsets.only(top: 150.0),
+    Widget tapToShowBalance = GestureDetector(
+      onTap: () {
+        showBalance = !showBalance;
+      },
+      child: Container(
+        width: resWidth * 0.4,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
             Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -143,29 +166,41 @@ class _midContentState extends State<midContent> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                   width: 28.0,
-                  child: IconButton(
-                      icon: const FaIcon(FontAwesomeIcons.eyeSlash,
-                          size: 10, color: Color(0xE62A292E)),
-                      tooltip: 'Tap to show balance',
-                      onPressed: () {}),
+                  child: SvgPicture.asset(
+                      showBalance
+                          ? "assets/icon/icon_visibility_on.svg"
+                          : "assets/icon/icon_visibility_off.svg",
+                      height: 10,
+                      width: 10,
+                      color: Color(0xE6BDBDBD)),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 1.8),
                   child: Text(
-                    'Show Balance',
+                    showBalance ? "Hide Balance" : 'Show Balance',
                     style: TextStyle(
                         fontFamily: 'Lato',
                         fontSize: 10,
-                        color: Color(0xE62A292E),
+                        color: Color(0xE6BDBDBD),
                         decoration: TextDecoration.none),
                   ),
                 )
               ],
-            ),
-            threeButtonSection,
-            tapToBuy,
+            )
+          ],
+        ),
+      ),
+    );
+
+    return Container(
+        margin: EdgeInsets.only(top: 5.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ShowBalance(),
+            fourButtonSection,
           ],
         ));
   }

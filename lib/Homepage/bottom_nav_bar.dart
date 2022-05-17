@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '/Activity/activity_main.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '/Swap/swap_main.dart';
 import '/Invest/invest_main.dart';
 import '/Send/send_main.dart';
 import '/Homepage/main_page.dart';
@@ -33,7 +33,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
           ),
         ],
   */
-  List pages = [HomePage(), activityMain(), investMain(), sendMain()];
+  List pages = [HomePage(), SwapMain(), investMain(), sendMain()];
 
   int currentIndex = 0;
   void onTap(int index) {
@@ -50,8 +50,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
         type: BottomNavigationBarType.fixed,
         onTap: onTap,
         currentIndex: currentIndex,
-        backgroundColor: currentIndex == 0 ? Color(0xF2FF875C) : Colors.white,
-        selectedItemColor: currentIndex == 0 ? Colors.white : Color(0xF2FF875C),
+        backgroundColor: Color(0xFF18191C),
+        selectedItemColor: Color(0xF2FFC000),
         unselectedItemColor: currentIndex == 0 ? Colors.white54 : Colors.grey,
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -60,13 +60,53 @@ class _bottomNavBarState extends State<bottomNavBar> {
         elevation: 0,
         items: [
           BottomNavigationBarItem(
-              label: 'Assets', icon: FaIcon(FontAwesomeIcons.wallet)),
+              label: 'Home',
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.5),
+                child: SvgPicture.asset(
+                  "assets/icon/icon_home.svg",
+                  height: 23,
+                  width: 23,
+                  color:
+                      currentIndex == 0 ? Color(0xF2FFC000) : Color(0xFFBDBDBD),
+                ),
+              )),
           BottomNavigationBarItem(
-              label: 'Activity', icon: FaIcon(FontAwesomeIcons.rightLeft)),
+              label: 'Swap',
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.5),
+                child: SvgPicture.asset(
+                  "assets/icon/icon_swap.svg",
+                  height: 23,
+                  width: 23,
+                  color:
+                      currentIndex == 1 ? Color(0xF2FFC000) : Color(0xFFBDBDBD),
+                ),
+              )),
           BottomNavigationBarItem(
-              label: 'Invest', icon: FaIcon(FontAwesomeIcons.arrowTrendUp)),
+              label: 'Earn',
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.5),
+                child: SvgPicture.asset(
+                  "assets/icon/icon_earn.svg",
+                  height: 23,
+                  width: 23,
+                  color:
+                      currentIndex == 2 ? Color(0xF2FFC000) : Color(0xFFBDBDBD),
+                ),
+              )),
           BottomNavigationBarItem(
-              label: 'Send', icon: FaIcon(FontAwesomeIcons.solidPaperPlane))
+              label: 'Me',
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 3.5),
+                child: SvgPicture.asset(
+                  "assets/icon/icon_me.svg",
+                  height: 23,
+                  width: 23,
+                  color:
+                      currentIndex == 3 ? Color(0xF2FFC000) : Color(0xFFBDBDBD),
+                ),
+              ))
         ],
       ),
     );

@@ -1,10 +1,5 @@
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'Activity/activity_main.dart';
-import 'Invest/invest_main.dart';
-import 'Send/send_main.dart';
-import 'Homepage/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'iPay',
+      title: 'Base',
       theme: ThemeData(
         // This is the theme of your application.
         //

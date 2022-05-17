@@ -36,6 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.1.0
   flutter_svg: ^1.0.3
+  getwidget: ^2.0.5
+  cached_network_image: ^3.2.0
+  qr_flutter: ^4.0.0
+  flutter_barcode_scanner: ^2.0.0
+  dotted_line: ^3.1.0
+  page_transition: ^2.0.5
+  animations: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -62,11 +69,41 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icon/tradeCrypto.svg
+    - assets/icon/icon_base.svg
+    - assets/icon/icon_buy.svg
+    - assets/icon/icon_up.svg
+    - assets/icon/icon_scan.svg
+    - assets/icon/icon_down.svg
     - assets/icon/icon_card1.svg
     - assets/icon/icon_card2.svg
     - assets/icon/icon_trade.svg
     - assets/icon/icon_btceth.svg
     - assets/icon/icon_zksync.svg
+    - assets/icon/icon_btc.svg
+    - assets/icon/icon_eth.svg
+    - assets/icon/icon_acy.svg
+    - assets/icon/icon_usdt.svg
+    - assets/icon/icon_usdc.svg
+    - assets/icon/icon_usda.svg
+    - assets/icon/icon_usdh.svg
+    - assets/icon/icon_invite_friends.svg
+    - assets/icon/icon_wallet.svg
+    - assets/icon/icon_trade1.svg
+    - assets/icon/icon_uptrend.svg
+    - assets/icon/icon_account.svg
+    - assets/icon/icon_visibility_on.svg
+    - assets/icon/icon_visibility_off.svg
+    - assets/icon/icon_home.svg
+    - assets/icon/icon_swap.svg
+    - assets/icon/icon_earn.svg
+    - assets/icon/icon_settings.svg
+    - assets/icon/icon_send.svg
+    - assets/icon/icon_deposit.svg
+    - assets/icon/icon_me.svg
+    - assets/icon/icon_more_vert.svg
+    - assets/icon/icon_assets.svg
+    - assets/icon/icon_nft.svg
+    - assets/icon/icon_market.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -86,6 +123,9 @@ fonts:
  - family: Lato
    fonts:
      - asset: build/flutter_assets/fonts/Lato-Light.ttf
+ - family: Karla
+   fonts:
+       - asset: build/flutter_assets/fonts/Karla-Light.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
