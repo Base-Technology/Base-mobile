@@ -1,4 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:acy_ipay/Invest/earn_tab_view.dart';
+import 'package:acy_ipay/widget/button_history.dart';
+import 'package:acy_ipay/widget/button_switch_chain.dart';
+import 'package:acy_ipay/widget/button_switch_wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -68,73 +71,52 @@ class investMain extends StatelessWidget {
 
     Widget topBar = Container(
         padding: EdgeInsets.only(top: 25),
-        color: Color(0xFFFBFBFB),
+        color: Color(0xFF030203),
         child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                      margin: EdgeInsets.only(left: 10, top: 10),
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border:
-                              Border.all(width: 1, color: Color(0xFFF36A3B))),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 10,
-                        child: SvgPicture.asset(
-                          'assets/icon/icon_zksync.svg',
-                          width: 30,
-                          height: 30,
-                        ),
-                      )),
                   Padding(
                     padding: EdgeInsets.only(left: 15, top: 10),
                     child: Text(
-                      'Invest',
+                      'Earn',
                       style: TextStyle(
                           fontSize: 18,
-                          fontFamily: 'Nunito',
-                          fontWeight: FontWeight.w800),
+                          fontFamily: 'Karla',
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white
+                      ),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SwitchChain(),
+                      SizedBox(width: 12,),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 9),
+                        child: SwitchWallet(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 9),
+                        child: GoToHistory(),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buyContainer('Buy', 'Crypto', 'assets/icon/icon_card2.svg'),
-                    buyContainer(
-                        'Trade', 'Crypto', 'assets/icon/icon_btceth.svg'),
-                  ]),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-                child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Top Returns',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w800,
-                            color: Colors.grey.shade700),
-                      ),
-                      Text(
-                        'APY',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.grey.shade400),
-                      )
-                    ]),
-              )
             ]));
 
-    return topBar;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        topBar,
+        EarnTabView(),
+      ],
+    );
   }
 }

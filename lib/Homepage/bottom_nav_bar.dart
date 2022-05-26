@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '/Swap/swap_main.dart';
 import '/Invest/invest_main.dart';
-import '/Send/send_main.dart';
+import '/Settings/settings_main.dart';
 import '/Homepage/main_page.dart';
 
 class bottomNavBar extends StatefulWidget {
@@ -33,9 +33,9 @@ class _bottomNavBarState extends State<bottomNavBar> {
           ),
         ],
   */
-  List pages = [HomePage(), SwapMain(), investMain(), sendMain()];
+  List pages = [HomePage(), SwapMain(), investMain(), SettingsMain()];
 
-  int currentIndex = 0;
+  int currentIndex = 3;
   void onTap(int index) {
     setState(() {
       currentIndex = index;
@@ -72,7 +72,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
                 ),
               )),
           BottomNavigationBarItem(
-              label: 'Swap',
+              label: 'Trade',
               icon: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 3.5),
                 child: SvgPicture.asset(

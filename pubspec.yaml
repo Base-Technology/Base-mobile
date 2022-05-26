@@ -43,6 +43,7 @@ dependencies:
   dotted_line: ^3.1.0
   page_transition: ^2.0.5
   animations: ^2.0.2
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,12 @@ flutter:
     - assets/icon/icon_usdc.svg
     - assets/icon/icon_usda.svg
     - assets/icon/icon_usdh.svg
+    - assets/icon/icon_bnb.svg
+    - assets/icon/icon_xrp.svg
+    - assets/icon/icon_shiba.svg
+    - assets/icon/icon_cro.svg
+    - assets/icon/icon_near.svg
+    - assets/icon/icon_axs.svg
     - assets/icon/icon_invite_friends.svg
     - assets/icon/icon_wallet.svg
     - assets/icon/icon_trade1.svg
@@ -104,6 +111,27 @@ flutter:
     - assets/icon/icon_assets.svg
     - assets/icon/icon_nft.svg
     - assets/icon/icon_market.svg
+    - assets/icon/icon_filter.svg
+    - assets/icon/icon_data.svg
+    - assets/icon/icon_help.svg
+    - assets/icon/icon_email.svg
+    - assets/icon/icon_switch.svg
+    - assets/icon/icon_stake.svg
+    - assets/icon/icon_history.svg
+    - assets/icon/icon_contact.svg
+    - assets/icon/icon_password.svg
+    - assets/icon/icon_search.svg
+    - assets/icon/icon_notification.svg
+    - assets/icon/icon_contract.svg
+    - assets/icon/icon_contract1.svg
+    - assets/icon/icon_contract2.svg
+    - assets/icon/icon_contract3.svg
+    - assets/icon/icon_fingerprint.svg
+    - assets/icon/icon_arrow_back.svg
+    - assets/icon/icon_eth_chain.svg
+    - assets/icon/icon_bsc_chain.svg
+    - assets/icon/icon_custom_token.svg
+    - assets/icon/icon_token_stack.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -103,104 +103,95 @@ class _TokensDataState extends State<TokensData>
     }
 
     return Expanded(
-      child: Container(
-        margin: EdgeInsets.only(top: 12),
-        padding: EdgeInsets.fromLTRB(2, 10, 2, 0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-          color: Color(0xFF030203),
-        ),
-        child: widget.changeIndex == 1
-            ? ShowActivity()
-            : Column(children: <Widget>[
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                  child: Container(
-                    height: 38,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xE61B1D1C),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(
-                              width: 22,
+      child: widget.changeIndex == 1
+          ? ShowActivity()
+          : Column(children: <Widget>[
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                child: Container(
+                  height: 38,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xE61B1D1C),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            width: 22,
+                          ),
+                          Text(
+                            "Assets",
+                            style: TextStyle(
+                                fontFamily: 'Karla',
+                                fontSize: 16,
+                                color: Color(0xFFBDBDBD),
+                                fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Text(
+                            "\$0",
+                            style: TextStyle(
+                                fontFamily: 'Karla',
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      SeeMoreIconButton(
+                          titleText: "Token Details",
+                          widgetList: [
+                            _buildListTile("assets/icon/icon_assets.svg",
+                                "Show Assets", 0),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 2.5),
+                              child: Divider(
+                                  indent: 2,
+                                  endIndent: 2,
+                                  thickness: 1,
+                                  height: 0.1,
+                                  color: Color(0x1ABDBDBD)),
                             ),
-                            Text(
-                              "Assets",
-                              style: TextStyle(
-                                  fontFamily: 'Karla',
-                                  fontSize: 16,
-                                  color: Color(0xFFBDBDBD),
-                                  fontWeight: FontWeight.w400),
+                            _buildListTile(
+                                "assets/icon/icon_nft.svg", "Show NFT", 1),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: 2.5),
+                              child: Divider(
+                                  indent: 2,
+                                  endIndent: 2,
+                                  thickness: 1.5,
+                                  height: 0.1,
+                                  color: Color(0x1ABDBDBD)),
                             ),
-                            SizedBox(
-                              width: 25,
-                            ),
-                            Text(
-                              "\$0",
-                              style: TextStyle(
-                                  fontFamily: 'Karla',
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                        SeeMoreIconButton(
-                            titleText: "Token Details",
-                            widgetList: [
-                              _buildListTile("assets/icon/icon_assets.svg",
-                                  "Show Assets", 0),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 2.5),
-                                child: Divider(
-                                    indent: 2,
-                                    endIndent: 2,
-                                    thickness: 1,
-                                    height: 0.1,
-                                    color: Color(0x1ABDBDBD)),
-                              ),
-                              _buildListTile(
-                                  "assets/icon/icon_nft.svg", "Show NFT", 1),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 2.5),
-                                child: Divider(
-                                    indent: 2,
-                                    endIndent: 2,
-                                    thickness: 1.5,
-                                    height: 0.1,
-                                    color: Color(0x1ABDBDBD)),
-                              ),
-                              _buildListTile("assets/icon/icon_market.svg",
-                                  "Show Market", 2)
-                            ])
-                      ],
-                    ),
+                            _buildListTile("assets/icon/icon_market.svg",
+                                "Show Market", 2)
+                          ])
+                    ],
                   ),
                 ),
-                Expanded(
-                  child: PageView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      controller: controller,
-                      onPageChanged: onPageChanged,
-                      children: [
-                        ShowAssets(),
-                        ShowNFT(),
-                        ShowMarket(),
-                      ]),
-                )
-              ]),
-      ),
+              ),
+              Expanded(
+                child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: controller,
+                    onPageChanged: onPageChanged,
+                    children: [
+                      ShowAssets(),
+                      ShowNFT(),
+                      ShowMarket(),
+                    ]),
+              )
+            ]),
     );
   }
 }

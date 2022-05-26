@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Homepage/zero_record.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,10 +8,8 @@ class ShowActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Center(
-            child: Text(
-      "Test",
-      style: TextStyle(color: Colors.white),
-    )));
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+      ZeroRecord(),
+    ]));
   }
 }

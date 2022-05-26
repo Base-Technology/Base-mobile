@@ -66,13 +66,15 @@ class ShowAssets extends StatelessWidget {
                       style: TextStyle(
                           fontFamily: 'Karla',
                           fontWeight: FontWeight.w500,
+                          fontSize: 16,
                           color: Color(0xFFBDBDBD)),
                     ),
                     Text(
                       "\$732.5",
                       style: TextStyle(
                           fontFamily: 'Karla',
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
                           color: Colors.grey.shade700),
                     )
                   ],

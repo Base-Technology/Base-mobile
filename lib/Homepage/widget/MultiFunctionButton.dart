@@ -20,16 +20,17 @@ class MultiFunctionButton extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(65)),
+                  borderRadius: BorderRadius.circular(100)),
               child: TextButton(
                 onPressed: () => {},
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.all(10.0),
                   primary: Colors.white,
-                  backgroundColor: const Color(0xFF1E1C1D),
+                  backgroundColor: Color(0xE6292D2C),
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   // Replace with a Row for horizontal icon + text
                   children: <Widget>[
                     SvgPicture.asset(
@@ -46,7 +47,7 @@ class MultiFunctionButton extends StatelessWidget {
                       style: TextStyle(
                           fontFamily: 'Karla',
                           fontSize: 12,
-                          fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),
