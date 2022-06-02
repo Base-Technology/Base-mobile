@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -56,7 +55,7 @@ class SeeMoreIconButton extends StatelessWidget {
         },
         icon: SvgPicture.asset(
           "assets/icon/icon_more_vert.svg",
-          color: Color(0xFFBDBDBD),
+          color: Colors.black,
           height: 25,
           width: 25,
         ));

@@ -7,12 +7,12 @@ class GoToHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: (){},
+      onPressed: () {},
       icon: SvgPicture.asset(
         'assets/icon/icon_history.svg',
         width: 30,
         height: 30,
-        color: Colors.white,
+        color: Colors.black,
       ),
     );
   }

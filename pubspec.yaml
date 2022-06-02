@@ -44,6 +44,8 @@ dependencies:
   page_transition: ^2.0.5
   animations: ^2.0.2
   url_launcher: ^6.1.2
+  enum_to_string: ^2.0.1
+  persistent_bottom_nav_bar: ^4.0.2
 
 dev_dependencies:
   flutter_test:
@@ -93,16 +95,31 @@ flutter:
     - assets/icon/icon_cro.svg
     - assets/icon/icon_near.svg
     - assets/icon/icon_axs.svg
+    - assets/icon/icon_luna.svg
+    - assets/icon/icon_sol.svg
+    - assets/icon/icon_doge.svg
+    - assets/icon/icon_uni.svg
+    - assets/icon/icon_mana.svg
+    - assets/icon/icon_sand.svg
+    - assets/icon/icon_fil.svg
+    - assets/icon/icon_cake.svg
     - assets/icon/icon_invite_friends.svg
+    - assets/icon/icon_swap_settings.svg
     - assets/icon/icon_wallet.svg
+    - assets/icon/icon_add.svg
     - assets/icon/icon_trade1.svg
+    - assets/icon/icon_switch2.svg
+    - assets/icon/icon_switch3.svg
     - assets/icon/icon_uptrend.svg
     - assets/icon/icon_account.svg
     - assets/icon/icon_visibility_on.svg
     - assets/icon/icon_visibility_off.svg
     - assets/icon/icon_home.svg
     - assets/icon/icon_swap.svg
+    - assets/icon/icon_swap_vert.svg
     - assets/icon/icon_earn.svg
+    - assets/icon/icon_more.svg
+    - assets/icon/icon_expand.svg
     - assets/icon/icon_settings.svg
     - assets/icon/icon_send.svg
     - assets/icon/icon_deposit.svg
@@ -121,6 +138,7 @@ flutter:
     - assets/icon/icon_contact.svg
     - assets/icon/icon_password.svg
     - assets/icon/icon_search.svg
+    - assets/icon/icon_chat.svg
     - assets/icon/icon_notification.svg
     - assets/icon/icon_contract.svg
     - assets/icon/icon_contract1.svg
@@ -132,6 +150,9 @@ flutter:
     - assets/icon/icon_bsc_chain.svg
     - assets/icon/icon_custom_token.svg
     - assets/icon/icon_token_stack.svg
+    - assets/icon/icon_chat_fill.svg
+    - assets/icon/icon_assets_fill.svg
+    - assets/icon/icon_me_fill.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -16,7 +16,7 @@ class investMain extends StatelessWidget {
       return Container(
         margin: EdgeInsets.only(top: 10),
         child: Row(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
@@ -70,53 +70,53 @@ class investMain extends StatelessWidget {
     }
 
     Widget topBar = Container(
-        padding: EdgeInsets.only(top: 25),
-        color: Color(0xFF030203),
-        child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 15, top: 10),
-                    child: Text(
-                      'Earn',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SwitchChain(),
-                      SizedBox(width: 12,),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 9),
-                        child: SwitchWallet(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 9),
-                        child: GoToHistory(),
-                      ),
-                    ],
-                  ),
-                ],
+        padding: EdgeInsets.only(top: 25, bottom: 15),
+        color: Colors.white,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 15, top: 10),
+              child: Text(
+                'Earn',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Karla',
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.none,
+                    color: Colors.black),
               ),
-            ]));
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SwitchChain(),
+                SizedBox(
+                  width: 12,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 9),
+                  child: SwitchWallet(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 9),
+                  child: GoToHistory(),
+                ),
+              ],
+            ),
+          ],
+        ));
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        topBar,
-        EarnTabView(),
-      ],
+    return Flexible(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          topBar,
+          EarnTabView(),
+        ],
+      ),
     );
   }
 }
