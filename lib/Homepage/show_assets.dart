@@ -19,16 +19,18 @@ class ShowAssets extends StatelessWidget {
 
     return Expanded(
       child: ListView.separated(
+          primary: false,
           padding: EdgeInsets.only(bottom: 1),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           itemCount: supportedToken.length,
           separatorBuilder: (context, index) => Divider(
-              indent: 0,
-              endIndent: 0,
-              thickness: 0.5,
-              height: 0.1,
-              color: Color(0x1ABDBDBD)),
+                indent: 0,
+                endIndent: 0,
+                thickness: 0.25,
+                height: 0.1,
+                color: Colors.grey.shade300,
+              ),
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               leading: Padding(
@@ -52,8 +54,9 @@ class ShowAssets extends StatelessWidget {
                 supportedToken.keys.elementAt(index),
                 style: TextStyle(
                     fontFamily: 'Karla',
+                    fontWeight: FontWeight.w400,
                     fontSize: 16,
-                    color: Color(0xFFBDBDBD)),
+                    color: Colors.black),
               ),
               trailing: SizedBox(
                 height: 40,
@@ -67,7 +70,7 @@ class ShowAssets extends StatelessWidget {
                           fontFamily: 'Karla',
                           fontWeight: FontWeight.w500,
                           fontSize: 16,
-                          color: Color(0xFFBDBDBD)),
+                          color: Colors.black), //
                     ),
                     Text(
                       "\$732.5",
@@ -75,7 +78,7 @@ class ShowAssets extends StatelessWidget {
                           fontFamily: 'Karla',
                           fontWeight: FontWeight.w400,
                           fontSize: 12,
-                          color: Colors.grey.shade700),
+                          color: Colors.black),
                     )
                   ],
                 ),

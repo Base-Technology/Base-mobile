@@ -34,7 +34,7 @@ class _ShowBalanceState extends State<ShowBalance> {
                       "\$0.00",
                       style: TextStyle(
                           fontSize: 30,
-                          color: Colors.white,
+                          color: Colors.black,
                           fontFamily: 'Karla'),
                     ),
                   )
@@ -43,11 +43,11 @@ class _ShowBalanceState extends State<ShowBalance> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                         FaIcon(FontAwesomeIcons.ellipsis,
-                            color: Colors.white, size: 55),
+                            color: Colors.black, size: 55),
                         Padding(
                             padding: EdgeInsets.only(left: 2),
                             child: FaIcon(FontAwesomeIcons.ellipsis,
-                                color: Colors.white, size: 55))
+                                color: Colors.black, size: 55))
                       ]),
             Row(
               mainAxisSize: MainAxisSize.max,

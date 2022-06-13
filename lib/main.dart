@@ -1,5 +1,9 @@
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
+import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
+import 'package:acy_ipay/Invest/invest_main.dart';
+
+import 'package:acy_ipay/Chat/chat_main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,9 +28,18 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        fontFamily: 'Karla',
         primarySwatch: Colors.blue,
       ),
       home: bottomNavBar(),
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/earn': (context) => investMain(),
+        // When navigating to the "/second" route, build the SecondScreen widget.
+        '/swap': (context) => SwapMain(),
+        '/chat': (context) => ChatMain(),
+      },
     );
   }
 }

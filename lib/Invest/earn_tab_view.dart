@@ -10,7 +10,8 @@ class EarnTabView extends StatefulWidget {
   State<EarnTabView> createState() => _EarnTabViewState();
 }
 
-class _EarnTabViewState extends State<EarnTabView> with SingleTickerProviderStateMixin{
+class _EarnTabViewState extends State<EarnTabView>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -24,48 +25,49 @@ class _EarnTabViewState extends State<EarnTabView> with SingleTickerProviderStat
     _tabController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Color(0xFF030203),
+        color: Colors.white,
         child: DefaultTabController(
-            length: 2,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: TabBar(
-                      unselectedLabelColor: Colors.white,
-                      labelColor: Color(0xFFFFC000),
+          length: 2,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TabBar(
+                      unselectedLabelColor: Colors.black,
+                      labelColor: Colors.black,
                       controller: _tabController,
-                        indicator: UnderlineTabIndicator(
-                          borderSide: BorderSide(width: 1.5, color: Color(0xFFFFC000)),
-                          insets: EdgeInsets.symmetric(horizontal: 45)
-                          ),
-                        tabs: [
-                          Tab(
-                            text: "Deposit",
-                          ),
-                          Tab(
-                            text: "Strategy",
-                          )
-                        ]
-                    ),
-                  ),
-                  Expanded(
-                      child: TabBarView(
-                        controller: _tabController,
-                        children: [
-                            ShowDeposit(),
-                            EarnStrategyBox(),
-                        ],
-                  ))
-                ],
-              ),
+                      indicator: UnderlineTabIndicator(
+                          borderSide:
+                              BorderSide(width: 1.5, color: Color(0xFFFFC000)),
+                          insets: EdgeInsets.symmetric(horizontal: 45)),
+                      tabs: [
+                        Tab(
+                          text: "Deposit",
+                        ),
+                        Tab(
+                          text: "Strategy",
+                        )
+                      ]),
+                ),
+                Expanded(
+                    child: TabBarView(
+                  physics: NeverScrollableScrollPhysics(),
+                  controller: _tabController,
+                  children: [
+                    ShowDeposit(),
+                    EarnStrategyBox(),
+                  ],
+                ))
+              ],
             ),
+          ),
         ),
       ),
     );

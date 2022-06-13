@@ -1,10 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:acy_ipay/Swap/button_token_select.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:acy_ipay/Swap/button_max_token.dart';
 import 'dart:math' as math;
 
 class ExchangeBox extends StatefulWidget {
-  const ExchangeBox({Key? key}) : super(key: key);
+  final bool needMax;
+  const ExchangeBox({Key? key, required this.needMax}) : super(key: key);
 
   @override
   State<ExchangeBox> createState() => _ExchangeBoxState();
@@ -55,38 +57,50 @@ class _ExchangeBoxState extends State<ExchangeBox> {
   TextEditingController tokenAmount = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Color(0xFF18191C),
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                ElevatedButton(onPressed: () {}, child: Text("USDT")),
-                TextField(
-                  controller: tokenAmount,
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
-                  inputFormatters: [
-                    NumberRemoveExtraDotFormatter()
-                    //BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]')),
-                    //WhitelistingTextInputFormatter(new RegExp('^\d+[\.\,]\d+\$')),
-                  ],
-                  decoration: InputDecoration(
-                    hintText: "0.0",
-                  ),
-                  style: TextStyle(
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w300,
-                    fontSize: 14,
-                  ),
-                ),
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      width: double.infinity,
+      height: 45,
+      decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(10)),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ConstrainedBox(
+            constraints: const BoxConstraints.tightFor(width: 220, height: 45),
+            child: TextField(
+              controller: tokenAmount,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              inputFormatters: [
+                NumberRemoveExtraDotFormatter()
+                //BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]')),
+                //WhitelistingTextInputFormatter(new RegExp('^\d+[\.\,]\d+\$')),
               ],
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
+                  hintText: "0",
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400),
+                  border: InputBorder.none
+                  //border: OutlineInputBorder(),
+                  ),
+              style: TextStyle(
+                fontFamily: 'Karla',
+                fontWeight: FontWeight.w300,
+                fontSize: 18,
+              ),
             ),
           ),
-        ),
+          widget.needMax
+              ? MaxToken()
+              : SizedBox(
+                  height: 25,
+                  width: 40,
+                ),
+          TokenSelect(),
+        ],
       ),
     );
   }
