@@ -1,4 +1,5 @@
 import 'package:acy_ipay/Homepage/widget/SeeMoreIconButton.dart';
+import 'package:acy_ipay/Homepage/widget/button_send_receive.dart';
 import 'package:acy_ipay/widget/button_switch_chain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -141,7 +142,14 @@ class _HomePageState extends State<HomePage> {
                         widgetList: [Text('1'), Text("2"), Text("3")])
                   ],
                 ),
-                Center(child: ShowBalance()),
+                ShowBalance(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SendReceiveButton(title: "Send"),
+                    SendReceiveButton(title: "Receive"),
+                  ],
+                ),
               ],
             ),
           ),
@@ -149,22 +157,72 @@ class _HomePageState extends State<HomePage> {
       ),
     );
 
-    return MaterialApp(
-        home: Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+    Widget mainButton = Container(
+      margin: const EdgeInsets.only(top: 5),
+      height: 180,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white, //(0xE6292D2C),
+        ),
+        child: Wrap(
+          spacing: 10,
+          runSpacing: 15,
+          direction: Axis.horizontal,
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.center,
           children: [
-            topBar,
-            swapPage,
-            TokensData(
-              changeIndex: curIndex,
+            MultiFunctionButton(
+              text: "Buy",
+              iconPath: "assets/icon/icon_buy.svg",
+            ),
+            MultiFunctionButton(
+              text: "Swap",
+              iconPath: "assets/icon/icon_swap.svg",
+            ),
+            MultiFunctionButton(
+              text: "Earn",
+              iconPath: "assets/icon/icon_deposit.svg",
+            ),
+            MultiFunctionButton(
+              text: "Scan",
+              iconPath: "assets/icon/icon_scan.svg",
+            ),
+            MultiFunctionButton(
+              text: "Receive",
+              iconPath: "assets/icon/icon_down.svg",
+            ),
+            MultiFunctionButton(
+              text: "Send",
+              iconPath: "assets/icon/icon_up.svg",
+            ),
+            MultiFunctionButton(
+              text: "Referral",
+              iconPath: "assets/icon/icon_invite_friends.svg",
+            ),
+            MultiFunctionButton(
+              text: "More",
+              iconPath: "assets/icon/icon_more.svg",
             ),
           ],
         ),
+      ),
+    );
+
+    return MaterialApp(
+        home: Scaffold(
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          topBar,
+          Center(child: mainButton),
+          TokensData(
+            changeIndex: curIndex,
+          ),
+        ],
       ),
     ));
   }

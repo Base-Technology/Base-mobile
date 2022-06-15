@@ -1,9 +1,12 @@
+import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 
 import 'package:acy_ipay/Chat/chat_main.dart';
+
+import 'Homepage/Send/send_main.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +42,8 @@ class MyApp extends StatelessWidget {
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/swap': (context) => SwapMain(),
         '/chat': (context) => ChatMain(),
+        '/send': (context) => SendMain(),
+        '/receive': (context) => ReceiveMain(),
       },
     );
   }

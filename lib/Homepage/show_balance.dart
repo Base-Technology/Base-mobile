@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,7 +28,7 @@ class _ShowBalanceState extends State<ShowBalance> {
           children: [
             showBalance
                 ? Padding(
-                    padding: const EdgeInsets.only(top: 15.0, bottom: 5.0),
+                    padding: const EdgeInsets.only(bottom: 5.0),
                     child: Text(
                       "\$0.00",
                       style: TextStyle(

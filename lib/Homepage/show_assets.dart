@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:acy_ipay/Constant/token_data.dart';
 
-class ShowAssets extends StatelessWidget {
+class ShowAssets extends StatefulWidget {
   const ShowAssets({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    //Supported token assets list
-    Map supportedToken = {
-      "BTC": "assets/icon/icon_btc.svg",
-      "ETH": "assets/icon/icon_eth.svg",
-      "USDT": "assets/icon/icon_usdt.svg",
-      "ACY": "assets/icon/icon_acy.svg",
-      "USDC": "assets/icon/icon_usdc.svg",
-      "USDA": "assets/icon/icon_usda.svg",
-      "USDH": "assets/icon/icon_usdh.svg",
-    };
+  State<ShowAssets> createState() => _ShowAssetsState();
+}
 
+class _ShowAssetsState extends State<ShowAssets> {
+  @override
+  Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
           primary: false,
           padding: EdgeInsets.only(bottom: 1),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          itemCount: supportedToken.length,
+          itemCount: tokenList.length,
           separatorBuilder: (context, index) => Divider(
                 indent: 0,
                 endIndent: 0,
@@ -43,7 +38,7 @@ class ShowAssets extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         SvgPicture.asset(
-                          supportedToken.values.elementAt(index),
+                          tokenList[index].assetPath,
                           height: 30,
                           width: 30,
                         ),
@@ -51,7 +46,7 @@ class ShowAssets extends StatelessWidget {
                 ),
               ),
               title: Text(
-                supportedToken.keys.elementAt(index),
+                tokenList[index].symbol,
                 style: TextStyle(
                     fontFamily: 'Karla',
                     fontWeight: FontWeight.w400,

@@ -113,69 +113,76 @@ class _TokensDataState extends State<TokensData>
     );
 
     return Expanded(
-      child: widget.changeIndex == 1
-          ? ShowActivity()
-          : Column(children: <Widget>[
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                child: Container(
-                  height: 38,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    border: Border.all(color: Colors.black, width: 1),
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.transparent,
+        child: Column(
+      children: [
+        Expanded(
+          child: widget.changeIndex == 1
+              ? ShowActivity()
+              : Column(children: <Widget>[
+                  Container(
+                    height: 38,
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 16),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      border: Border.all(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.transparent,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              width: 22,
+                            ),
+                            Text(
+                              dataIndex == 0
+                                  ? "Assets"
+                                  : dataIndex == 1
+                                      ? "NFT"
+                                      : "Market",
+                              style: TextStyle(
+                                  fontFamily: 'Karla',
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                        SeeMoreIconButton(
+                            titleText: "Token Details",
+                            widgetList: [
+                              _buildListTile("assets/icon/icon_assets.svg",
+                                  "Show Assets", 0),
+                              customDivider,
+                              _buildListTile(
+                                  "assets/icon/icon_nft.svg", "Show NFT", 1),
+                              customDivider,
+                              _buildListTile("assets/icon/icon_market.svg",
+                                  "Show Market", 2)
+                            ])
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            width: 22,
-                          ),
-                          Text(
-                            "Assets",
-                            style: TextStyle(
-                                fontFamily: 'Karla',
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
-                      SeeMoreIconButton(
-                          titleText: "Token Details",
-                          widgetList: [
-                            _buildListTile("assets/icon/icon_assets.svg",
-                                "Show Assets", 0),
-                            customDivider,
-                            _buildListTile(
-                                "assets/icon/icon_nft.svg", "Show NFT", 1),
-                            customDivider,
-                            _buildListTile(
-                                "assets/icon/icon_market.svg", "Show Market", 2)
-                          ])
-                    ],
-                  ),
-                ),
-              ),
-              Expanded(
-                child: PageView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: controller,
-                    onPageChanged: onPageChanged,
-                    children: [
-                      ShowAssets(),
-                      ShowNFT(),
-                      ShowMarket(),
-                    ]),
-              )
-            ]),
-    );
+                  Expanded(
+                    child: PageView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        controller: controller,
+                        onPageChanged: onPageChanged,
+                        children: [
+                          ShowAssets(),
+                          ShowNFT(),
+                          ShowMarket(),
+                        ]),
+                  )
+                ]),
+        ),
+      ],
+    ));
   }
 }

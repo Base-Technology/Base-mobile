@@ -15,14 +15,13 @@ class _SlippageSelectionState extends State<SlippageSelection> {
   @override
   Widget build(BuildContext context) {
     Widget slippageText = Text(
-      "Your transaction will revert if the price changes unfavorably by more than this percentage.",
+        "Your transaction will revert if the price changes unfavorably by more than this percentage.",
         style: TextStyle(
             fontSize: 12,
             fontFamily: 'Karla',
             fontWeight: FontWeight.w500,
             decoration: TextDecoration.none,
-            color: Colors.grey.shade300)
-    );
+            color: Colors.grey.shade300));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +35,9 @@ class _SlippageSelectionState extends State<SlippageSelection> {
                 decoration: TextDecoration.none,
                 color: Colors.black)),
         Padding(
-          padding: _value == 1 ? const EdgeInsets.only(top: 10) : EdgeInsets.symmetric(vertical: 10),
+          padding: _value == 1
+              ? const EdgeInsets.only(top: 10)
+              : EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -71,21 +72,24 @@ class _SlippageSelectionState extends State<SlippageSelection> {
             ],
           ),
         ),
-        _value == 1 ? Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Text("Your transaction may fail",style: TextStyle(
-                  fontSize: 12,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.none,
-                  color: Color(0xD9FFC000))),
-            ),
-            slippageText
-          ],
-        ) : slippageText,
+        _value == 1
+            ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Text("Your transaction may fail",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'Karla',
+                            fontWeight: FontWeight.w400,
+                            decoration: TextDecoration.none,
+                            color: Color(0xD9FFC000))),
+                  ),
+                  slippageText
+                ],
+              )
+            : slippageText,
       ],
     );
   }

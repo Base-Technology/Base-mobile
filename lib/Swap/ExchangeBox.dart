@@ -6,7 +6,9 @@ import 'dart:math' as math;
 
 class ExchangeBox extends StatefulWidget {
   final bool needMax;
-  const ExchangeBox({Key? key, required this.needMax}) : super(key: key);
+  final bool isSend;
+  const ExchangeBox({Key? key, required this.needMax, required this.isSend})
+      : super(key: key);
 
   @override
   State<ExchangeBox> createState() => _ExchangeBoxState();
@@ -73,7 +75,8 @@ class _ExchangeBoxState extends State<ExchangeBox> {
             constraints: const BoxConstraints.tightFor(width: 220, height: 45),
             child: TextField(
               controller: tokenAmount,
-              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              keyboardType:
+                  const TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
                 NumberRemoveExtraDotFormatter()
                 //BlacklistingTextInputFormatter(new RegExp('[\\-|\\ ]')),
@@ -81,7 +84,7 @@ class _ExchangeBoxState extends State<ExchangeBox> {
               ],
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
-                  hintText: "0",
+                  hintText: widget.isSend ? "Recipient Address/ENS" : "0",
                   hintStyle: TextStyle(fontWeight: FontWeight.w400),
                   border: InputBorder.none
                   //border: OutlineInputBorder(),
@@ -99,7 +102,16 @@ class _ExchangeBoxState extends State<ExchangeBox> {
                   height: 25,
                   width: 40,
                 ),
-          TokenSelect(),
+          widget.isSend
+              ? IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.qr_code_scanner_outlined,
+                    size: 25,
+                    color: Colors.black,
+                  ),
+                )
+              : TokenSelect(),
         ],
       ),
     );

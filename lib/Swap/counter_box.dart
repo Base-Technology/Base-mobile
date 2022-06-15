@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 typedef void CounterChangeCallback(num value);
 
 class Counter extends StatelessWidget {
-
   final CounterChangeCallback onChanged;
 
   Counter({
@@ -67,13 +66,15 @@ class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    const IconData remove_circle_outline = IconData(0xe518, fontFamily: 'MaterialIcons');
-    const IconData add_circle_outline = IconData(0xe050, fontFamily: 'MaterialIcons');
+    const IconData remove_circle_outline =
+        IconData(0xe518, fontFamily: 'MaterialIcons');
+    const IconData add_circle_outline =
+        IconData(0xe050, fontFamily: 'MaterialIcons');
     color = color;
     textStyle = textStyle;
 
     return Container(
-      margin: const EdgeInsets.only(top: 10,bottom: 20),
+      margin: const EdgeInsets.only(top: 10, bottom: 20),
       width: double.infinity,
       height: 50,
       color: Color(0xE61B1D1C),
@@ -89,7 +90,8 @@ class Counter extends StatelessWidget {
               onPressed: _decrementCounter,
               elevation: 2,
               tooltip: 'Decrement',
-              child: Icon(remove_circle_outline,color: Colors.grey.shade400, size: buttonSize),
+              child: Icon(remove_circle_outline,
+                  color: Colors.grey.shade400, size: buttonSize),
               backgroundColor: color,
             ),
           ),
@@ -97,8 +99,7 @@ class Counter extends StatelessWidget {
             margin: const EdgeInsets.symmetric(horizontal: 60),
             child: Text(
                 '${num.parse((selectedValue).toStringAsFixed(decimalPlaces))}',
-                style: textStyle
-            ),
+                style: textStyle),
           ),
           SizedBox(
             width: buttonSize,
@@ -107,7 +108,8 @@ class Counter extends StatelessWidget {
               onPressed: _incrementCounter,
               elevation: 2,
               tooltip: 'Increment',
-              child: Icon(add_circle_outline,color: Colors.grey.shade400, size: buttonSize),
+              child: Icon(add_circle_outline,
+                  color: Colors.grey.shade400, size: buttonSize),
               backgroundColor: color,
             ),
           ),

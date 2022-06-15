@@ -7,27 +7,31 @@ class SaveResetTransaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //TO-DO: Functions to reset and save states
-    void resetSettings () => {};
-    void saveSettings () => {};
+    void resetSettings() => {};
+    void saveSettings() => {};
 
     return Container(
       height: 45,
       width: 150,
       margin: EdgeInsets.only(top: 25),
       child: TextButton(
-          onPressed: title == "reset" ? resetSettings : saveSettings,
-          style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.transparent)),
-              ),
-              backgroundColor: title == "reset" ? MaterialStateProperty.all<Color>(Colors.grey.shade800) : MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
+        onPressed: title == "reset" ? resetSettings : saveSettings,
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.transparent)),
           ),
-          child: Text(title,style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w400,
-            fontSize: 18,)),
+          backgroundColor: title == "reset"
+              ? MaterialStateProperty.all<Color>(Colors.grey.shade800)
+              : MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
+        ),
+        child: Text(title,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+            )),
       ),
     );
   }

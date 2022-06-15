@@ -1,4 +1,6 @@
 import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
+import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +46,18 @@ class MultiFunctionButton extends StatelessWidget {
                       context,
                       settings: RouteSettings(name: '/swap'),
                       screen: SwapMain(),
+                    );
+                  } else if (text == 'Send') {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/send'),
+                      screen: SendMain(),
+                    );
+                  } else if (text == 'Receive') {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/receive'),
+                      screen: ReceiveMain(),
                     );
                   } else {
                     pushNewScreenWithRouteSettings(

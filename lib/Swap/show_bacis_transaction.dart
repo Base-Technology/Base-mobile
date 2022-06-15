@@ -36,19 +36,19 @@ class _BasicTransactionPageState extends State<BasicTransactionPage> {
     OptionList(name: "Slow", gas: 5, index: 4, price: 0.0025),
   ];
 
-  Widget gasText = Column(
-      children: [Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Text(
-    "Select higher gas price to accelerate your transaction processing time.",
-    style: TextStyle(color: Colors.grey.shade600),
-    ),
+  Widget gasText = Column(children: [
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        "Select higher gas price to accelerate your transaction processing time.",
+        style: TextStyle(color: Colors.grey.shade600),
       ),
+    ),
     Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Divider(thickness: 0.8, color: Colors.grey.shade800),
-    )]
-  );
+    )
+  ]);
 
   @override
   Widget build(BuildContext context) {
@@ -78,40 +78,53 @@ class _BasicTransactionPageState extends State<BasicTransactionPage> {
                         direction: Axis.horizontal,
                         alignment: WrapAlignment.spaceBetween,
                         runAlignment: WrapAlignment.start,
-                        children:optList
+                        children: optList
                             .map((data) => SizedBox(
-                          width: 136,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Transform.scale(
-                                scale: 1.25,
-                                child: Radio(
-                                  activeColor: Color(0xFFFFC000),
-                                    value: data.index,
-                                    groupValue: id,
-                                    onChanged: (val) {
-                                      setState(() {
-                                        id = data.index;
-                                      });
-                                    }),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                                  width: 136,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Text("${data.gas}",style: TextStyle(color: Colors.black),),
-                                      SizedBox(width: 5,),
-                                      Text("${data.name}",style: TextStyle(color: Colors.grey.shade800),),
+                                      Transform.scale(
+                                        scale: 1.25,
+                                        child: Radio(
+                                            activeColor: Color(0xFFFFC000),
+                                            value: data.index,
+                                            groupValue: id,
+                                            onChanged: (val) {
+                                              setState(() {
+                                                id = data.index;
+                                              });
+                                            }),
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                "${data.gas}",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                              SizedBox(
+                                                width: 5,
+                                              ),
+                                              Text(
+                                                "${data.name}",
+                                                style: TextStyle(
+                                                    color:
+                                                        Colors.grey.shade800),
+                                              ),
+                                            ],
+                                          ),
+                                          Text(
+                                              '~' ' ' "${data.price}" ' ' "BNB")
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                  Text('~'' '"${data.price}" ' '"BNB")
-                                ],
-                              ),
-                            ],
-                          ),
-                        ))
+                                ))
                             .toList(),
                       ),
                     ),

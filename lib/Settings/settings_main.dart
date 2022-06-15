@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Settings/wallet_guardian.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'security_box.dart';
@@ -14,6 +15,10 @@ class SettingsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isSwitched = false;
+
+    void _navigateToWalletGuardian(BuildContext context) {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletGuardian()));
+    }
 
     Widget accountBox = Container(
       padding: EdgeInsets.all(10),
@@ -61,6 +66,27 @@ class SettingsMain extends StatelessWidget {
               ),
             ),
             onTap: () {},
+          ),
+          ListTile(
+            visualDensity: VisualDensity(vertical: -3),
+            leading: SvgPicture.asset(
+              "assets/icon/icon_recover.svg",
+              color: Colors.black,
+              height: 20,
+              width: 20,
+            ),
+            title: Text(
+              "Guardians",
+              style: TextStyle(
+                color: Colors.black,
+                fontFamily: 'Karla',
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
+            ),
+            onTap: () {
+              _navigateToWalletGuardian(context);
+            },
           ),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),

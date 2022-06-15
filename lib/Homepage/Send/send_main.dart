@@ -1,22 +1,22 @@
-import 'package:acy_ipay/Swap/button_swap_token.dart';
-import 'package:acy_ipay/Swap/show_advanced_transaction.dart';
-import 'package:acy_ipay/Swap/show_bacis_transaction.dart';
+import 'package:acy_ipay/Homepage/Send/button_send.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widget/button_history.dart';
-import '../widget/button_switch_chain.dart';
-import '../widget/button_switch_wallet.dart';
-import 'ExchangeBox.dart';
+import 'package:acy_ipay/Swap/ExchangeBox.dart';
+import 'package:acy_ipay/Swap/show_advanced_transaction.dart';
+import 'package:acy_ipay/Swap/show_bacis_transaction.dart';
+import 'package:acy_ipay/widget/button_history.dart';
+import 'package:acy_ipay/widget/button_switch_chain.dart';
+import 'package:acy_ipay/widget/button_switch_wallet.dart';
 
-class SwapMain extends StatefulWidget {
-  const SwapMain({Key? key}) : super(key: key);
+class SendMain extends StatefulWidget {
+  const SendMain({Key? key}) : super(key: key);
 
   @override
-  State<SwapMain> createState() => _SwapMainState();
+  State<SendMain> createState() => _SendMainState();
 }
 
-class _SwapMainState extends State<SwapMain>
+class _SendMainState extends State<SendMain>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
@@ -30,6 +30,8 @@ class _SwapMainState extends State<SwapMain>
   Widget build(BuildContext context) {
     double resWidth = MediaQuery.of(context).size.width;
     double resHeight = MediaQuery.of(context).size.height;
+    const IconData arrow_back =
+        IconData(0xe092, fontFamily: 'MaterialIcons', matchTextDirection: true);
 
     Widget topBar = Container(
         padding: const EdgeInsets.only(top: 25, bottom: 15),
@@ -39,14 +41,27 @@ class _SwapMainState extends State<SwapMain>
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 15, top: 10),
-              child: Text(
-                'Swap',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w800,
-                    color: Colors.black),
+              padding: const EdgeInsets.only(top: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icon(
+                        arrow_back,
+                        size: 20,
+                      )),
+                  Text(
+                    'Transfer',
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Karla',
+                        fontWeight: FontWeight.w800,
+                        color: Colors.black),
+                  ),
+                ],
               ),
             ),
             Row(
@@ -75,7 +90,6 @@ class _SwapMainState extends State<SwapMain>
         topBar,
         Container(
           width: resWidth * 0.9,
-          height: resHeight * 0.425,
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -87,7 +101,7 @@ class _SwapMainState extends State<SwapMain>
                       style: TextStyle(
                           fontSize: 15,
                           fontFamily: 'Karla',
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           decoration: TextDecoration.none,
                           color: Colors.black)),
                   Container(
@@ -109,7 +123,7 @@ class _SwapMainState extends State<SwapMain>
                                 ),
                                 isScrollControlled: true,
                                 builder: (BuildContext context) {
-                                  return Container(
+                                  return SizedBox(
                                     height: MediaQuery.of(context).size.height *
                                         0.79,
                                     child: Column(children: [
@@ -219,24 +233,60 @@ class _SwapMainState extends State<SwapMain>
                   ),
                 ],
               ),
-              Center(
-                child: IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      "assets/icon/icon_swap_vert.svg",
-                      height: 25,
-                      width: 25,
-                      color: Colors.black,
-                    )),
+              ExchangeBox(
+                needMax: false,
+                isSend: true,
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 5, bottom: 20),
-                child: ExchangeBox(
-                  needMax: false,
-                  isSend: false,
-                ),
-              ),
-              SwapToken(),
+              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                TextButton(
+                  onPressed: () {},
+                  child: Text("Add Contact"),
+                )
+              ]),
+              SizedBox(height: 15),
+              SendButton(),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Estimated fee",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Karla',
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey.shade500)),
+                      Text("≈ 0.005328 BNB",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Karla',
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey.shade500)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Max gas fee",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Karla',
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey.shade500)),
+                      Text("≈ 0.009328 BNB",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontFamily: 'Karla',
+                              fontWeight: FontWeight.w300,
+                              decoration: TextDecoration.none,
+                              color: Colors.grey.shade500)),
+                    ],
+                  ),
+                ],
+              )
             ],
           ),
         ),

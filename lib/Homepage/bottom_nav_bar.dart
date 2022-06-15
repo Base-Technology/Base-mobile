@@ -1,4 +1,5 @@
 import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import '/Settings/settings_main.dart';
 import '/Homepage/main_page.dart';
+import 'Send/send_main.dart';
 
 class bottomNavBar extends StatefulWidget {
   const bottomNavBar({Key? key}) : super(key: key);
@@ -51,6 +53,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           routes: {
             '/earn': (context) => investMain(),
             '/swap': (context) => SwapMain(),
+            '/send': (context) => SendMain(),
+            '/receive': (context) => ReceiveMain(),
           },
         ),
       ),
@@ -69,6 +73,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           routes: {
             '/earn': (context) => investMain(),
             '/swap': (context) => SwapMain(),
+            '/send': (context) => SendMain(),
+            '/receive': (context) => ReceiveMain(),
           },
         ),
       ),
@@ -86,6 +92,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           routes: {
             '/earn': (context) => investMain(),
             '/swap': (context) => SwapMain(),
+            '/send': (context) => SendMain(),
+            '/receive': (context) => ReceiveMain(),
           },
         ),
       ),
