@@ -16,10 +16,10 @@ class ShowDeposit extends StatelessWidget {
       "USDA": "assets/icon/icon_usda.svg",
       "USDH": "assets/icon/icon_usdh.svg",
       "BNB": "assets/icon/icon_bnb.svg",
-      "XRP":"assets/icon/icon_xrp.svg",
+      "XRP": "assets/icon/icon_xrp.svg",
       "SHIBA": "assets/icon/icon_shiba.svg",
-      "Crypto.com":"assets/icon/icon_cro.svg",
-      "AXS":"assets/icon/icon_axs.svg",
+      "Crypto.com": "assets/icon/icon_cro.svg",
+      "AXS": "assets/icon/icon_axs.svg",
     };
 
     return Column(
@@ -35,19 +35,26 @@ class ShowDeposit extends StatelessWidget {
                 Text(
                   'Top Returns',
                   style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      color: Colors.grey.shade700),
+                      fontFamily: 'Karla',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.black,
+                      decoration: TextDecoration.none),
                 ),
                 Text(
                   'APY',
                   style: TextStyle(
+                      fontFamily: 'Karla',
                       fontWeight: FontWeight.w500,
-                      color: Colors.grey.shade400),
+                      fontSize: 16,
+                      color: Colors.black,
+                      decoration: TextDecoration.none),
                 ),
               ]),
         ),
         Expanded(
           child: ListView.separated(
+              primary: false,
               padding: EdgeInsets.only(bottom: 1),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -83,19 +90,20 @@ class ShowDeposit extends StatelessWidget {
                     supportedToken.keys.elementAt(index),
                     style: TextStyle(
                         fontFamily: 'Karla',
+                        fontWeight: FontWeight.w500,
                         fontSize: 16,
-                        color: Color(0xFFBDBDBD)),
+                        color: Colors.black),
                   ),
                   trailing: SizedBox(
                     height: 40,
                     child: Text(
-                          "100%",
-                          style: TextStyle(
-                              fontFamily: 'Karla',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w300,
-                              color: Color(0xFFBDBDBD)),
-                        ),
+                      "100%",
+                      style: TextStyle(
+                          fontFamily: 'Karla',
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
+                    ),
                   ),
                 );
               }),

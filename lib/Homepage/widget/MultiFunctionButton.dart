@@ -1,12 +1,25 @@
+import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/Invest/invest_main.dart';
+import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:enum_to_string/enum_to_string.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+enum pageNum { _, Buy, Swap, Deposit, Scan, Send, Transfer, Referral, More }
 
 class MultiFunctionButton extends StatelessWidget {
   final String text;
   final String iconPath;
-  const MultiFunctionButton(
-      {Key? key, required this.text, required this.iconPath})
+  MultiFunctionButton({Key? key, required this.text, required this.iconPath})
       : super(key: key);
+
+  //@override
+  //State<MultiFunctionButton> createState() => _MultiFunctionButtonState();
+//}
+
+//class _MultiFunctionButtonState extends State<MultiFunctionButton> {
+  int buttonGrid = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +35,29 @@ class MultiFunctionButton extends StatelessWidget {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(100)),
               child: TextButton(
-                onPressed: () => {},
+                onPressed: () {
+                  /*var res = EnumToString.fromString(pageNum.values, text);
+                  int? p = res?.index;
+                  onButtonTap(p!);*/
+                  if (text == 'Swap') {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/swap'),
+                      screen: SwapMain(),
+                    );
+                  } else {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/earn'),
+                      screen: investMain(),
+                    );
+                  }
+                  //pushNewScreen(context, screen: ChatMain());
+                },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.all(10.0),
-                  primary: Colors.white,
-                  backgroundColor: Color(0xE6292D2C),
+                  primary: Colors.black,
+                  backgroundColor: Colors.white,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 child: Column(
@@ -37,7 +68,7 @@ class MultiFunctionButton extends StatelessWidget {
                       iconPath,
                       width: 25,
                       height: 25,
-                      color: Color(0xFFBDBDBD),
+                      color: Colors.black,
                     ),
                     SizedBox(
                       height: 5,
@@ -47,7 +78,7 @@ class MultiFunctionButton extends StatelessWidget {
                       style: TextStyle(
                           fontFamily: 'Karla',
                           fontSize: 12,
-                          fontWeight: FontWeight.w300),
+                          fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),

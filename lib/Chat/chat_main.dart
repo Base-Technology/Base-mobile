@@ -10,6 +10,13 @@ class ChatMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChatPage(),
+    return Container(
+      child: Center(
+        child: Text(
+          "Chat page",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
     );
   }
 }

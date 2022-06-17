@@ -102,6 +102,16 @@ class _TokensDataState extends State<TokensData>
       );
     }
 
+    Widget customDivider = Padding(
+      padding: EdgeInsets.symmetric(vertical: 2.5),
+      child: Divider(
+          indent: 2,
+          endIndent: 2,
+          thickness: 1.5,
+          height: 0.1,
+          color: Color(0x1ABDBDBD)),
+    );
+
     return Expanded(
       child: widget.changeIndex == 1
           ? ShowActivity()
@@ -113,8 +123,9 @@ class _TokensDataState extends State<TokensData>
                   height: 38,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
+                    border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xE61B1D1C),
+                    color: Colors.transparent,
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -132,19 +143,8 @@ class _TokensDataState extends State<TokensData>
                             style: TextStyle(
                                 fontFamily: 'Karla',
                                 fontSize: 16,
-                                color: Color(0xFFBDBDBD),
+                                color: Colors.black,
                                 fontWeight: FontWeight.w400),
-                          ),
-                          SizedBox(
-                            width: 25,
-                          ),
-                          Text(
-                            "\$0",
-                            style: TextStyle(
-                                fontFamily: 'Karla',
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -153,28 +153,12 @@ class _TokensDataState extends State<TokensData>
                           widgetList: [
                             _buildListTile("assets/icon/icon_assets.svg",
                                 "Show Assets", 0),
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 2.5),
-                              child: Divider(
-                                  indent: 2,
-                                  endIndent: 2,
-                                  thickness: 1,
-                                  height: 0.1,
-                                  color: Color(0x1ABDBDBD)),
-                            ),
+                            customDivider,
                             _buildListTile(
                                 "assets/icon/icon_nft.svg", "Show NFT", 1),
-                            Padding(
-                              padding: EdgeInsets.symmetric(vertical: 2.5),
-                              child: Divider(
-                                  indent: 2,
-                                  endIndent: 2,
-                                  thickness: 1.5,
-                                  height: 0.1,
-                                  color: Color(0x1ABDBDBD)),
-                            ),
-                            _buildListTile("assets/icon/icon_market.svg",
-                                "Show Market", 2)
+                            customDivider,
+                            _buildListTile(
+                                "assets/icon/icon_market.svg", "Show Market", 2)
                           ])
                     ],
                   ),

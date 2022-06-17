@@ -8,14 +8,16 @@ class SwitchChain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.only(left: 10, top: 10),
-        width: MediaQuery.of(context).size.width * 0.175,
+        height: 30,
+        width: MediaQuery.of(context).size.width * 0.135,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
+          border: Border.all(color: Colors.grey.shade700, width: 1),
           borderRadius: BorderRadius.circular(50),
-          color: Color(0xE64B4F4E),
+          color: Colors.transparent,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(2.5),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -28,12 +30,11 @@ class SwitchChain extends StatelessWidget {
                   height: 30,
                 ),
               ),
-              SizedBox(width: 15,),
               SvgPicture.asset(
                 'assets/icon/icon_switch.svg',
-                width: 20,
-                height: 20,
-                color: Colors.white,
+                width: 28,
+                height: 28,
+                color: Colors.grey.shade700,
               ),
             ],
           ),
