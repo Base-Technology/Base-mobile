@@ -2,11 +2,14 @@ import 'package:acy_ipay/Chat/chat_main.dart';
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
+import 'package:acy_ipay/Homepage/Buy/buy_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+
+
 
 enum pageNum { _, Buy, Swap, Deposit, Scan, Send, Transfer, Referral, More }
 
@@ -58,6 +61,12 @@ class MultiFunctionButton extends StatelessWidget {
                       context,
                       settings: RouteSettings(name: '/receive'),
                       screen: ReceiveMain(),
+                    );
+                  } else if (text == 'Buy') {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/buy'),
+                      screen: BuyMain(),
                     );
                   } else {
                     pushNewScreenWithRouteSettings(

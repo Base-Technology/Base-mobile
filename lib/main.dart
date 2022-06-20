@@ -1,4 +1,5 @@
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
+import 'package:acy_ipay/Homepage/Buy/buy_main.dart';
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => ChatMain(),
         '/send': (context) => SendMain(),
         '/receive': (context) => ReceiveMain(),
+        '/buy': (context) => BuyMain(),
       },
     );
   }
