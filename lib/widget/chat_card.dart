@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Chat/chat_detail.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,11 @@ class _ChatCardState extends State<ChatCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return ChatDetailPage();
+        }));
+      },
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
         child: Row(children: <Widget>[

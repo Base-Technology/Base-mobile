@@ -18,11 +18,11 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[200],
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.grey[300],
         flexibleSpace: SafeArea(
             child: Container(
           padding: EdgeInsets.only(right: 16),
@@ -120,7 +120,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Colors.lightBlue,
+                      color: Colors.green,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Icon(
@@ -152,7 +152,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     color: Colors.white,
                     size: 18,
                   ),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.green,
                   elevation: 0,
                 )
               ],
