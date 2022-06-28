@@ -1,7 +1,7 @@
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 
 class SendReceiveButton extends StatelessWidget {
   final String title;

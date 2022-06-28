@@ -1,12 +1,11 @@
 import 'package:acy_ipay/Swap/button_swap_token.dart';
 import 'package:acy_ipay/Swap/show_advanced_transaction.dart';
 import 'package:acy_ipay/Swap/show_bacis_transaction.dart';
+import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widget/button_history.dart';
-import '../widget/button_switch_chain.dart';
-import '../widget/button_switch_wallet.dart';
+import '../widget/CustomText.dart';
 import 'ExchangeBox.dart';
 
 class SwapMain extends StatefulWidget {
@@ -31,48 +30,10 @@ class _SwapMainState extends State<SwapMain>
     double resWidth = MediaQuery.of(context).size.width;
     double resHeight = MediaQuery.of(context).size.height;
 
-    Widget topBar = Container(
-        padding: const EdgeInsets.only(top: 25, bottom: 15),
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 15, top: 10),
-              child: Text(
-                'Swap',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w800,
-                    color: Colors.black),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SwitchChain(),
-                SizedBox(
-                  width: 12,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 9),
-                  child: SwitchWallet(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 9),
-                  child: GoToHistory(),
-                ),
-              ],
-            ),
-          ],
-        ));
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        topBar,
+        TopBar(title: "Swap"),
         Container(
           width: resWidth * 0.9,
           height: resHeight * 0.425,
@@ -83,13 +44,11 @@ class _SwapMainState extends State<SwapMain>
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Enter the amount",
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.none,
-                          color: Colors.black)),
+                  const CustomText(
+                      "Enter the amount",
+                      fontSize: 15,
+                      fontWeight: FontWeight.w300
+                  ),
                   Container(
                       height: 30,
                       width: 30,
@@ -102,7 +61,7 @@ class _SwapMainState extends State<SwapMain>
                             showModalBottomSheet(
                                 enableDrag: false,
                                 context: context,
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20)),
@@ -113,58 +72,40 @@ class _SwapMainState extends State<SwapMain>
                                     height: MediaQuery.of(context).size.height *
                                         0.79,
                                     child: Column(children: [
-                                      Padding(
+                                      const Padding(
                                           padding: EdgeInsets.all(10),
-                                          child: Text("Transaction Setting",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: 'Karla',
-                                                  fontWeight: FontWeight.w600,
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  color: Colors.black))),
+                                          child: CustomText(
+                                              "Transaction Settings",
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600
+                                          ),
+                                      ),
                                       Expanded(
                                         child: Container(
                                           color: Colors.white,
                                           child: DefaultTabController(
                                             length: 2,
                                             child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 30),
+                                              padding: const EdgeInsets.symmetric(horizontal: 30),
                                               child: Column(
                                                 children: [
                                                   Align(
                                                     alignment:
                                                         Alignment.centerLeft,
-                                                    child: Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              2,
+                                                    child: SizedBox(
+                                                      width: MediaQuery.of(context).size.width / 2,
                                                       child: TabBar(
-                                                          unselectedLabelColor:
-                                                              Colors.black,
-                                                          labelColor:
-                                                              Colors.black,
-                                                          controller:
-                                                              _tabController,
-                                                          indicator: UnderlineTabIndicator(
+                                                          unselectedLabelColor: Colors.black,
+                                                          labelColor: Colors.black,
+                                                          controller: _tabController,
+                                                          indicator: const UnderlineTabIndicator(
                                                               borderSide: BorderSide(
                                                                   width: 1.5,
-                                                                  color: Color(
-                                                                      0xFFFFC000)),
-                                                              insets: EdgeInsets
-                                                                  .symmetric(
-                                                                      horizontal:
-                                                                          10)),
+                                                                  color: Color(0xFFFFC000)),
+                                                                  insets: EdgeInsets.symmetric(horizontal: 10)),
                                                           tabs: [
-                                                            Tab(
-                                                              text: "Basic",
-                                                            ),
-                                                            Tab(
-                                                              text: "Advanced",
-                                                            )
+                                                            Tab(text: "Basic"),
+                                                            Tab(text: "Advanced")
                                                           ]),
                                                     ),
                                                   ),
@@ -173,7 +114,7 @@ class _SwapMainState extends State<SwapMain>
                                                     //width: double.infinity,
                                                     child: TabBarView(
                                                       physics:
-                                                          NeverScrollableScrollPhysics(),
+                                                          const NeverScrollableScrollPhysics(),
                                                       controller:
                                                           _tabController,
                                                       children: [
@@ -209,13 +150,11 @@ class _SwapMainState extends State<SwapMain>
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                    child: Text("0 BTC",
-                        style: TextStyle(
+                    child: CustomText("0 BTC",
                             fontSize: 14,
-                            fontFamily: 'Karla',
                             fontWeight: FontWeight.w400,
-                            decoration: TextDecoration.none,
-                            color: Colors.grey.shade500)),
+                            textColor: Colors.grey.shade500
+                    ),
                   ),
                 ],
               ),
@@ -229,7 +168,7 @@ class _SwapMainState extends State<SwapMain>
                       color: Colors.black,
                     )),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 5, bottom: 20),
                 child: ExchangeBox(
                   needMax: false,

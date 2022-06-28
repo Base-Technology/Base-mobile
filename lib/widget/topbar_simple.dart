@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class TopBarSimple extends StatelessWidget {
   final String title;
-  const TopBarSimple({Key? key, required this.title}) : super(key: key);
+  final bool isContact;
+  const TopBarSimple({Key? key, required this.title, required this.isContact}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 25),
-      margin: const EdgeInsets.only(bottom: 15),
       color: Colors.white,
       child: Stack(
         alignment: AlignmentDirectional.center,
@@ -33,6 +33,20 @@ class TopBarSimple extends StatelessWidget {
                 fontWeight: FontWeight.w800,
                 decoration: TextDecoration.none,
                 color: Colors.black),
+          ),
+          isContact ? Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Icon(
+                Icons.add_circle_outline_rounded,
+                size: 25,
+                color: Colors.black,
+              ),
+            ),
+          ) : SizedBox(
+            height: 30,
+            width: 20,
           ),
         ],
       ),

@@ -21,7 +21,7 @@ class SeeMoreIconButton extends StatelessWidget {
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0)),
                   child: Container(
-                    color: Color(0xFF292D2C),
+                    color: Colors.white,
                     child: Wrap(
                       children: <Widget>[
                         Container(
@@ -34,13 +34,14 @@ class SeeMoreIconButton extends StatelessWidget {
                                 fontFamily: 'Karla',
                                 fontWeight: FontWeight.w600,
                                 fontSize: 20,
-                                color: Color(0xE6F2F1F2),
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ),
                         Container(
                           padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.only(bottom: 5),
                           child: Column(
                             children: [
                               ...widgetList,

@@ -26,8 +26,8 @@ class _ScanAddressState extends State<ScanAddress> {
           this.qrCode = qrCode.isEmpty
               ? ''
               : qrCode == '-1'
-              ? ''
-              : qrCode;
+                  ? ''
+                  : qrCode;
         });
       } on PlatformException {
         qrCode = 'Failed to get platform version';

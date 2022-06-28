@@ -62,15 +62,19 @@ class WalletGuardian extends StatelessWidget {
                   side: BorderSide(color: Colors.transparent)),
             ),
             backgroundColor:
-            MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
+                MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
           ),
-          onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddGuardianManually()));
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => AddGuardianManually()));
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.add, color: Colors.black,),
+              Icon(
+                Icons.add,
+                color: Colors.black,
+              ),
               SizedBox(width: 20),
               Text("Add Guardian",
                   style: TextStyle(
@@ -93,7 +97,7 @@ class WalletGuardian extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                    'assets/icon/icon_empty.png',
+                  'assets/icon/icon_empty.png',
                   width: 180,
                   height: 180,
                 ),

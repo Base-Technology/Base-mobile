@@ -1,6 +1,8 @@
+import 'package:acy_ipay/Settings/Contact/contact_main.dart';
 import 'package:acy_ipay/Settings/wallet_guardian.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../widget/CustomText.dart';
 import 'security_box.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,10 +18,6 @@ class SettingsMain extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isSwitched = false;
 
-    void _navigateToWalletGuardian(BuildContext context) {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletGuardian()));
-    }
-
     Widget accountBox = Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -31,23 +29,15 @@ class SettingsMain extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 16,
-              ),
-              Text(
+              SizedBox(width: 16,),
+              CustomText(
                 "Account",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Karla',
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
-                ),
               ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5,),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
@@ -56,14 +46,10 @@ class SettingsMain extends StatelessWidget {
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Manage Wallets",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
-              ),
             ),
             onTap: () {},
           ),
@@ -75,17 +61,13 @@ class SettingsMain extends StatelessWidget {
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Guardians",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
             ),
             onTap: () {
-              _navigateToWalletGuardian(context);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletGuardian()));
             },
           ),
           ListTile(
@@ -96,16 +78,14 @@ class SettingsMain extends StatelessWidget {
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Contacts",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
-              ),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContactMain()));
+            },
           ),
         ],
       ),
@@ -122,23 +102,15 @@ class SettingsMain extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(
-                width: 16,
-              ),
-              Text(
+              SizedBox(width: 16,),
+              CustomText(
                 "Custom Tokens",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
               ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
@@ -147,14 +119,10 @@ class SettingsMain extends StatelessWidget {
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Add Custom Tokens",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
             ),
             onTap: () {},
           ),

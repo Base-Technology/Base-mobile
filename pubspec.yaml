@@ -44,13 +44,12 @@ dependencies:
   page_transition: ^2.0.5
   animations: ^2.0.2
   url_launcher: ^6.1.2
-  enum_to_string: ^2.0.1
-  persistent_bottom_nav_bar: ^4.0.2
   http: ^0.13.4
   syncfusion_flutter_datagrid: ^20.1.59
   provider: ^6.0.3
   flutter_launcher_icons: ^0.9.3
-  ramp_flutter: ^1.0.0
+  persistent_bottom_nav_bar_v2: ^4.2.3
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:

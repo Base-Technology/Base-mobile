@@ -65,7 +65,7 @@ class _TokensDataState extends State<TokensData>
             assetPath,
             width: 30,
             height: 30,
-            color: Color(0xFFF2F1F2),
+            color: Colors.black,
           ),
           title: Text(
             dataString,
@@ -73,7 +73,7 @@ class _TokensDataState extends State<TokensData>
               fontFamily: 'Karla',
               fontWeight: FontWeight.w500,
               fontSize: 16,
-              color: Color(0xE6F2F1F2),
+              color: Colors.black,
             ),
           ),
           onTap: () => setState(() {
@@ -112,8 +112,7 @@ class _TokensDataState extends State<TokensData>
           color: Color(0x1ABDBDBD)),
     );
 
-    return Expanded(
-        child: Column(
+    return Column(
       children: [
         Expanded(
           child: widget.changeIndex == 1
@@ -182,6 +181,6 @@ class _TokensDataState extends State<TokensData>
                 ]),
         ),
       ],
-    ));
+    );
   }
 }

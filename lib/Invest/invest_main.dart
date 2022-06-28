@@ -1,11 +1,10 @@
 import 'package:acy_ipay/Invest/earn_tab_view.dart';
-import 'package:acy_ipay/widget/button_history.dart';
-import 'package:acy_ipay/widget/button_switch_chain.dart';
-import 'package:acy_ipay/widget/button_switch_wallet.dart';
+import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
+
+import '../widget/CustomText.dart';
 
 class investMain extends StatelessWidget {
   const investMain({Key? key}) : super(key: key);
@@ -14,13 +13,13 @@ class investMain extends StatelessWidget {
   Widget build(BuildContext context) {
     Container buyContainer(String topText, String botText, String iconString) {
       return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
         child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   width: MediaQuery.of(context).size.width * 0.42,
                   height: MediaQuery.of(context).size.height * 0.2,
                   decoration: BoxDecoration(
@@ -29,25 +28,21 @@ class investMain extends StatelessWidget {
                       border: Border.all(color: Colors.grey.withOpacity(0.6))),
                   child: Stack(clipBehavior: Clip.none, children: [
                     Padding(
-                        padding: EdgeInsets.all(3.5),
+                        padding: const EdgeInsets.all(3.5),
                         child: Container(
-                            margin: EdgeInsets.only(left: 10, top: 10),
+                            margin: const EdgeInsets.only(left: 10, top: 10),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  CustomText(
                                     topText,
-                                    style: TextStyle(
-                                        fontFamily: 'Lato',
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w500,
                                   ),
-                                  Text(
+                                  CustomText(
                                     botText,
-                                    style: TextStyle(
-                                        fontFamily: 'Lato',
                                         fontSize: 20,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w500,
                                   ),
                                 ]))),
                     Positioned(
@@ -69,51 +64,11 @@ class investMain extends StatelessWidget {
       );
     }
 
-    Widget topBar = Container(
-        padding: EdgeInsets.only(top: 25, bottom: 15),
-        color: Colors.white,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 15, top: 10),
-              child: Text(
-                'Earn',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w600,
-                    decoration: TextDecoration.none,
-                    color: Colors.black),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SwitchChain(),
-                SizedBox(
-                  width: 12,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 9),
-                  child: SwitchWallet(),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 9),
-                  child: GoToHistory(),
-                ),
-              ],
-            ),
-          ],
-        ));
-
     return Flexible(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          topBar,
+          TopBar(title: "Invest"),
           EarnTabView(),
         ],
       ),

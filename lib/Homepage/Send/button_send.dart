@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../widget/CustomText.dart';
+
 class SendButton extends StatelessWidget {
   const SendButton({Key? key}) : super(key: key);
 
@@ -18,13 +20,11 @@ class SendButton extends StatelessWidget {
                 MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
           ),
           onPressed: () {},
-          child: Text("Send",
-              style: TextStyle(
+          child: CustomText("Send",
                   fontSize: 16,
-                  fontFamily: 'Karla',
                   fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.none,
-                  color: Colors.black))),
+          ),
+      )
     );
   }
 }

@@ -17,8 +17,6 @@ class Coin {
     required this.changePercentage,
   });
 
-
-
   factory Coin.fromJson(Map<String, dynamic> json) {
     return Coin(
       name: json['name'],

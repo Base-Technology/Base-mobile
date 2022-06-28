@@ -7,7 +7,8 @@ class TokenTile extends StatelessWidget {
   final double price;
   final double changePercentage;
 
-  const TokenTile({Key? key,
+  const TokenTile({
+    Key? key,
     required this.name,
     required this.symbol,
     required this.imageUrl,
@@ -32,7 +33,9 @@ class TokenTile extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 8,),
+          SizedBox(
+            width: 8,
+          ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

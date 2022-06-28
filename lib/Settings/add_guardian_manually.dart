@@ -68,9 +68,10 @@ class _AddGuardianManuallyState extends State<AddGuardianManually> {
                   borderRadius: BorderRadius.circular(18.0),
                   side: BorderSide(color: Colors.transparent)),
             ),
-            backgroundColor: MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
           ),
-          onPressed: (){},
+          onPressed: () {},
           child: Center(
             child: Text("Add Guardian",
                 style: TextStyle(
@@ -84,67 +85,69 @@ class _AddGuardianManuallyState extends State<AddGuardianManually> {
 
     return Scaffold(
       body: Column(
-          children: [
-            topBar,
-            Container(
-              width: resWidth * 0.9,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text("Name: "),
-                      Expanded(
-                        child: TextField(
-                          controller: nameController,
-                          style: TextStyle(color: Colors.black, fontSize: 14),
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(left: 8),
-                            hintText: "Please name this address",
-                            border: InputBorder.none,
-                          ),
-                          maxLines: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: Divider(thickness: 0.5, color: Colors.grey.shade500),
-                  ),
-                  SizedBox(height: 15,),
-                  Text("Address: "),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          controller: addressController,
-                          style: TextStyle(color: Colors.black, fontSize: 14),
-                          decoration: InputDecoration(
-                            hintText: "0x, ENS or Base username",
-                            border: InputBorder.none,
-                          ),
-                          maxLines: 1,
-                        ),
-                      ),
-                      ScanAddress(),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          topBar,
+          Container(
+            width: resWidth * 0.9,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                addGuardian,
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("Name: "),
+                    Expanded(
+                      child: TextField(
+                        controller: nameController,
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(left: 8),
+                          hintText: "Please name this address",
+                          border: InputBorder.none,
+                        ),
+                        maxLines: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  child: Divider(thickness: 0.5, color: Colors.grey.shade500),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Text("Address: "),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: addressController,
+                        style: TextStyle(color: Colors.black, fontSize: 14),
+                        decoration: InputDecoration(
+                          hintText: "0x, ENS or Base username",
+                          border: InputBorder.none,
+                        ),
+                        maxLines: 1,
+                      ),
+                    ),
+                    ScanAddress(),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 30),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              addGuardian,
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

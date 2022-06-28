@@ -4,7 +4,7 @@ import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import '/Settings/settings_main.dart';
 import '/Homepage/main_page.dart';
 import 'Send/send_main.dart';
@@ -18,13 +18,14 @@ class bottomNavBar extends StatefulWidget {
 
 class _bottomNavBarState extends State<bottomNavBar> {
   late PersistentTabController _controller;
+
   int currentIndex = 1;
 
   @override
   void initState() {
     super.initState();
     // Controller setting
-    _controller = PersistentTabController(initialIndex: 0);
+    _controller = PersistentTabController(initialIndex: 2);
   }
 
   @override
@@ -135,6 +136,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
+      controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,

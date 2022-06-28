@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../widget/CustomText.dart';
+
 class ReceiveMain extends StatelessWidget {
   const ReceiveMain({Key? key}) : super(key: key);
 
@@ -58,14 +60,10 @@ class ReceiveMain extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    CustomText(
                       "${blockchain.keys.elementAt(0)}",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.none,
-                          color: Colors.black),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
                     )
                   ],
                 ),
@@ -102,14 +100,10 @@ class ReceiveMain extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
+                        CustomText(
                           "View on $explorer",
-                          style: TextStyle(
                               fontSize: 12,
-                              fontFamily: 'Karla',
                               fontWeight: FontWeight.w300,
-                              decoration: TextDecoration.none,
-                              color: Colors.black),
                         ),
                         SvgPicture.asset(
                           "assets/icon/icon_arrow_up_right.svg",
@@ -123,33 +117,23 @@ class ReceiveMain extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(
+                    CustomText(
                       "Send only ${blockchain.keys.elementAt(0)} or ${blockchain.values.elementAt(0)} to this address.",
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.none,
-                          color: Colors.black),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300,
                     )
                   ],
                 ),
                 Row(
                   children: [
-                    Text(
+                    CustomText(
                       "Sending any other token may result in loss of your deposit",
-                      style: TextStyle(
                           fontSize: 12,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.none,
-                          color: Colors.black),
+                          fontWeight: FontWeight.w300
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+                SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
