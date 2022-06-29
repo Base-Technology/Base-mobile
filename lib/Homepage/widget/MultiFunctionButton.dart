@@ -1,4 +1,5 @@
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
+import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Homepage/Buy/buy_main.dart';
@@ -64,7 +65,13 @@ class MultiFunctionButton extends StatelessWidget {
                       settings: RouteSettings(name: '/buy'),
                       screen: BuyMain(),
                     );
-                  } else {
+                  } else if (text == 'Referral') {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/referral'),
+                      screen: ReferralMain(),
+                    );
+                  }else {
                     pushNewScreenWithRouteSettings(
                       context,
                       settings: RouteSettings(name: '/earn'),

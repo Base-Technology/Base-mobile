@@ -11,52 +11,49 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 25),
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    size: 20,
-                  )),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: CustomText(
-                  title,
-                  fontWeight: FontWeight.w800,
-                  fontSize: 18,
+        padding: const EdgeInsets.only(top: 25),
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      size: 20,
+                    )),
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  child: CustomText(
+                    title,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 18,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: SwitchChain()
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              SwitchWallet(),
-              SizedBox(
-                width: 10,
-              ),
-              GoToHistory(),
-            ],
-          ),
-        ],
-      )
-    );
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(bottom: 8), child: SwitchChain()),
+                SizedBox(
+                  width: 10,
+                ),
+                SwitchWallet(),
+                SizedBox(
+                  width: 10,
+                ),
+                GoToHistory(),
+              ],
+            ),
+          ],
+        ));
   }
 }

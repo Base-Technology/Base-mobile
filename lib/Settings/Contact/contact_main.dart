@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Settings/Contact/add_contact.dart';
 import 'package:acy_ipay/widget/topbar_simple.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,8 @@ class ContactMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget buttonAddContact = SizedBox(
-      width: MediaQuery.of(context).size.width * 0.5,
-      child: TextButton(
+        width: MediaQuery.of(context).size.width * 0.5,
+        child: TextButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
@@ -19,15 +20,19 @@ class ContactMain extends StatelessWidget {
                   side: BorderSide(color: Colors.black)),
             ),
           ),
-          onPressed: () {},
-          child: Center(
-            child: CustomText("Add Contact",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400
-            )
-          ),
-      )
-    );
+          onPressed: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => AddContact()));
+          },
+          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Icon(
+              Icons.add_rounded,
+              size: 16,
+              color: Colors.black,
+            ),
+            CustomText("Add Contact", fontSize: 16, fontWeight: FontWeight.w400)
+          ]),
+        ));
 
     return Scaffold(
       backgroundColor: Colors.white,

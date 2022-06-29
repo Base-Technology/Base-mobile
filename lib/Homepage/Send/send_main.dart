@@ -1,4 +1,6 @@
 import 'package:acy_ipay/Homepage/Send/button_send.dart';
+import 'package:acy_ipay/Homepage/Send/send_contact_list.dart';
+import 'package:acy_ipay/Settings/Contact/add_contact.dart';
 import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,7 +36,6 @@ class _SendMainState extends State<SendMain>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const TopBar(title: "Transfer"),
           Container(
@@ -42,16 +43,12 @@ class _SendMainState extends State<SendMain>
             width: resWidth * 0.9,
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomText(
-                        "Enter the amount",
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400
-                    ),
+                    const CustomText("Enter the amount",
+                        fontSize: 15, fontWeight: FontWeight.w400),
                     Container(
                         height: 30,
                         width: 30,
@@ -67,23 +64,21 @@ class _SendMainState extends State<SendMain>
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20)
-                                    ),
+                                        topRight: Radius.circular(20)),
                                   ),
                                   isScrollControlled: true,
                                   builder: (BuildContext context) {
                                     return SizedBox(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.79,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.79,
                                       child: Column(children: [
                                         const Padding(
                                             padding: EdgeInsets.all(10),
                                             child: CustomText(
                                                 "Transaction Setting",
                                                 fontSize: 18,
-                                                fontWeight: FontWeight.w600
-                                            )
-                                        ),
+                                                fontWeight: FontWeight.w600)),
                                         Expanded(
                                           child: Container(
                                             color: Colors.white,
@@ -98,11 +93,11 @@ class _SendMainState extends State<SendMain>
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: Container(
-                                                        width:
-                                                            MediaQuery.of(context)
-                                                                    .size
-                                                                    .width /
-                                                                2,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            2,
                                                         child: TabBar(
                                                             unselectedLabelColor:
                                                                 Colors.black,
@@ -124,7 +119,8 @@ class _SendMainState extends State<SendMain>
                                                                 text: "Basic",
                                                               ),
                                                               Tab(
-                                                                text: "Advanced",
+                                                                text:
+                                                                    "Advanced",
                                                               )
                                                             ]),
                                                       ),
@@ -167,58 +163,54 @@ class _SendMainState extends State<SendMain>
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                      child: CustomText(
-                          "0 BTC",
+                      child: CustomText("0 BTC",
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          textColor: Colors.grey.shade500
-                      ),
+                          textColor: Colors.grey.shade500),
                     ),
                   ],
                 ),
-                ExchangeBox(needMax: false, isSend: true,),
+                ExchangeBox(
+                  needMax: false,
+                  isSend: true,
+                ),
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContact()));
+                    },
                     child: Text("Add Contact"),
                   )
                 ]),
                 const SizedBox(height: 15),
                 SendButton(),
+                const SizedBox(height: 15),
                 Column(
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText(
-                            "Estimated fee",
+                        CustomText("Estimated fee",
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            textColor: Colors.grey.shade500
-                        ),
-                        CustomText(
-                            "≈ 0.005328 BNB",
+                            textColor: Colors.grey.shade500),
+                        CustomText("≈ 0.005328 BNB",
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            textColor: Colors.grey.shade500
-                        ),
+                            textColor: Colors.grey.shade500),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText(
-                            "Max gas fee",
+                        CustomText("Max gas fee",
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            textColor: Colors.grey.shade500
-                        ),
-                        CustomText(
-                            "≈ 0.009328 BNB",
+                            textColor: Colors.grey.shade500),
+                        CustomText("≈ 0.009328 BNB",
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            textColor: Colors.grey.shade500
-                        ),
+                            textColor: Colors.grey.shade500),
                       ],
                     ),
                   ],
@@ -226,6 +218,14 @@ class _SendMainState extends State<SendMain>
               ],
             ),
           ),
+          SingleChildScrollView(
+            child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                margin: EdgeInsets.only(top: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: SendContactList()
+            ),
+          )
         ],
       ),
     );

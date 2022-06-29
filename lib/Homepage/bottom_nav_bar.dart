@@ -25,7 +25,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
   void initState() {
     super.initState();
     // Controller setting
-    _controller = PersistentTabController(initialIndex: 2);
+    _controller = PersistentTabController(initialIndex: 1);
   }
 
   @override

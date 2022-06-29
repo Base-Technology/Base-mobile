@@ -8,8 +8,8 @@ class SendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      child: TextButton(
+        width: double.infinity,
+        child: TextButton(
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
@@ -20,11 +20,11 @@ class SendButton extends StatelessWidget {
                 MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
           ),
           onPressed: () {},
-          child: CustomText("Send",
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
+          child: CustomText(
+            "Send",
+            fontSize: 16,
+            fontWeight: FontWeight.w400,
           ),
-      )
-    );
+        ));
   }
 }

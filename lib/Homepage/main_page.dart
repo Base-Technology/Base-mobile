@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     Widget topBar = Container(
-        padding: EdgeInsets.only(top: 20,bottom: 10),
+        padding: EdgeInsets.only(top: 20, bottom: 10),
         color: Colors.white,
         child: Row(
           mainAxisSize: MainAxisSize.max,
@@ -213,18 +213,18 @@ class _HomePageState extends State<HomePage> {
 
     return MaterialApp(
         home: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            topBar,
-            mainButton,
-            Expanded(
-                child: TokensData(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          topBar,
+          mainButton,
+          Expanded(
+            child: TokensData(
               changeIndex: curIndex,
-            ),)
-          ],
-        ),
-      )
-    );
+            ),
+          )
+        ],
+      ),
+    ));
   }
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../Settings/Contact/add_contact.dart';
+
 class TopBarSimple extends StatelessWidget {
   final String title;
   final bool isContact;
-  const TopBarSimple({Key? key, required this.title, required this.isContact}) : super(key: key);
+  const TopBarSimple({Key? key, required this.title, required this.isContact})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +37,27 @@ class TopBarSimple extends StatelessWidget {
                 decoration: TextDecoration.none,
                 color: Colors.black),
           ),
-          isContact ? Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Icon(
-                Icons.add_circle_outline_rounded,
-                size: 25,
-                color: Colors.black,
-              ),
-            ),
-          ) : SizedBox(
-            height: 30,
-            width: 20,
-          ),
+          isContact
+              ? Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => AddContact()));
+                        },
+                        icon: Icon(
+                          Icons.add_circle_outline_rounded,
+                          size: 25,
+                          color: Colors.black,
+                        )),
+                  ),
+                )
+              : SizedBox(
+                  height: 30,
+                  width: 20,
+                ),
         ],
       ),
     );

@@ -36,13 +36,13 @@ class investMain extends StatelessWidget {
                                 children: [
                                   CustomText(
                                     topText,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                   CustomText(
                                     botText,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
                                   ),
                                 ]))),
                     Positioned(

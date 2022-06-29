@@ -1,5 +1,6 @@
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Buy/buy_main.dart';
+import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
 import 'package:acy_ipay/Register/register_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
@@ -24,10 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Base',
-      theme: ThemeData(
-          fontFamily: 'Karla',
-          backgroundColor: Colors.white
-      ),
+      theme: ThemeData(fontFamily: 'Karla', backgroundColor: Colors.white),
       home: signUp ? bottomNavBar() : RegisterMain(),
       initialRoute: '/',
       routes: {
@@ -39,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/send': (context) => SendMain(),
         '/receive': (context) => ReceiveMain(),
         '/buy': (context) => BuyMain(),
+        '/referral': (context) => ReferralMain(),
       },
     );
   }

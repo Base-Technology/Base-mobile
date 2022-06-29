@@ -4,10 +4,9 @@ class UserCard {
   String nickname;
   String address;
 
-  UserCard({
-    required this.profile_pic_URL,
-    required this.username,
-    required this.nickname,
-    required this.address
-  });
+  UserCard(
+      {required this.profile_pic_URL,
+      required this.username,
+      required this.nickname,
+      required this.address});
 }

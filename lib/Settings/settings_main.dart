@@ -29,15 +29,19 @@ class SettingsMain extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(width: 16,),
+              SizedBox(
+                width: 16,
+              ),
               CustomText(
                 "Account",
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
               ),
             ],
           ),
-          SizedBox(height: 5,),
+          SizedBox(
+            height: 5,
+          ),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
@@ -48,8 +52,8 @@ class SettingsMain extends StatelessWidget {
             ),
             title: CustomText(
               "Manage Wallets",
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -67,7 +71,8 @@ class SettingsMain extends StatelessWidget {
               fontSize: 16,
             ),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => WalletGuardian()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => WalletGuardian()));
             },
           ),
           ListTile(
@@ -80,11 +85,12 @@ class SettingsMain extends StatelessWidget {
             ),
             title: CustomText(
               "Contacts",
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
+              fontWeight: FontWeight.w400,
+              fontSize: 16,
             ),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ContactMain()));
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ContactMain()));
             },
           ),
         ],
@@ -102,7 +108,9 @@ class SettingsMain extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(width: 16,),
+              SizedBox(
+                width: 16,
+              ),
               CustomText(
                 "Custom Tokens",
                 fontWeight: FontWeight.w400,

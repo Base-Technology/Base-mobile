@@ -102,8 +102,8 @@ class ReceiveMain extends StatelessWidget {
                       children: [
                         CustomText(
                           "View on $explorer",
-                              fontSize: 12,
-                              fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w300,
                         ),
                         SvgPicture.asset(
                           "assets/icon/icon_arrow_up_right.svg",
@@ -127,10 +127,9 @@ class ReceiveMain extends StatelessWidget {
                 Row(
                   children: [
                     CustomText(
-                      "Sending any other token may result in loss of your deposit",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300
-                    )
+                        "Sending any other token may result in loss of your deposit",
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300)
                   ],
                 ),
                 SizedBox(height: 40),

@@ -50,6 +50,7 @@ dependencies:
   flutter_launcher_icons: ^0.9.3
   persistent_bottom_nav_bar_v2: ^4.2.3
   shared_preferences: ^2.0.15
+  clipboard: ^0.1.3
 
 dev_dependencies:
   flutter_test:
@@ -85,6 +86,7 @@ flutter:
     - assets/icon/icon_buy.svg
     - assets/icon/icon_up.svg
     - assets/icon/icon_scan.svg
+    - assets/icon/icon_delete.svg
     - assets/icon/icon_down.svg
     - assets/icon/icon_card1.svg
     - assets/icon/icon_card2.svg
