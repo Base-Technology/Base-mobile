@@ -41,7 +41,7 @@ class SendContactList extends StatelessWidget {
               padding: EdgeInsets.zero,
               reverse: true,
               itemCount: 3,
-              itemBuilder: (BuildContext context, int index){
+              itemBuilder: (BuildContext context, int index) {
                 return SizedBox(
                   width: double.infinity,
                   height: 45,
@@ -54,8 +54,8 @@ class SendContactList extends StatelessWidget {
                       children: [
                         CircleAvatar(
                             radius: 15,
-                            backgroundImage: NetworkImage(userList[index].profile_pic_URL)
-                        ),
+                            backgroundImage:
+                                NetworkImage(userList[index].profile_pic_URL)),
                       ],
                     ),
                     title: Column(
@@ -68,18 +68,16 @@ class SendContactList extends StatelessWidget {
                           fontSize: 12,
                         ),
                         CustomText(
-                            userList[index].address,
-                            fontWeight: FontWeight.w400,
-                            textColor: Colors.grey.shade500,
-                            fontSize: 12,
-                          ),
+                          userList[index].address,
+                          fontWeight: FontWeight.w400,
+                          textColor: Colors.grey.shade500,
+                          fontSize: 12,
+                        ),
                       ],
                     ),
-
                   ),
                 );
-              }
-          ),
+              }),
         ],
       ),
     );

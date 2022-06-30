@@ -203,7 +203,8 @@ class _AddContactState extends State<AddContact> {
                 title: widget.name != null || widget.address != null
                     ? "Edit Contact"
                     : "Add Contact",
-                isContact: false),
+                isContact: false,
+                isReferral: false),
             nameInput,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),

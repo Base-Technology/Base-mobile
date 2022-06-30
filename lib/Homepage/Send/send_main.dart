@@ -177,7 +177,8 @@ class _SendMainState extends State<SendMain>
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddContact()));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => AddContact()));
                     },
                     child: Text("Add Contact"),
                   )
@@ -223,8 +224,7 @@ class _SendMainState extends State<SendMain>
                 width: MediaQuery.of(context).size.width * 0.9,
                 margin: EdgeInsets.only(top: 15),
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: SendContactList()
-            ),
+                child: SendContactList()),
           )
         ],
       ),

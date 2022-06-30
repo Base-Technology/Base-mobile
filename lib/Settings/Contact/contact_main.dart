@@ -38,7 +38,7 @@ class ContactMain extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          TopBarSimple(title: "Contacts", isContact: true),
+          TopBarSimple(title: "Contacts", isContact: true, isReferral: false),
           ContactList(),
           SizedBox(height: 10),
           buttonAddContact,

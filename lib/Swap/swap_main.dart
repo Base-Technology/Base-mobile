@@ -68,8 +68,9 @@ class _SwapMainState extends State<SwapMain>
                                   isScrollControlled: true,
                                   builder: (BuildContext context) {
                                     return Container(
-                                      height: MediaQuery.of(context).size.height *
-                                          0.79,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.79,
                                       child: Column(children: [
                                         const Padding(
                                           padding: EdgeInsets.all(10),
@@ -93,23 +94,21 @@ class _SwapMainState extends State<SwapMain>
                                                       alignment:
                                                           Alignment.centerLeft,
                                                       child: SizedBox(
-                                                        width:
-                                                            MediaQuery.of(context)
-                                                                    .size
-                                                                    .width /
-                                                                2,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            2,
                                                         child: TabBar(
                                                             unselectedLabelColor:
                                                                 Colors.black,
-                                                            labelColor:
-                                                                Colors.black,
-                                                            controller:
-                                                                _tabController,
-                                                            indicator: const UnderlineTabIndicator(
-                                                                borderSide: BorderSide(width: 1.5, color: Color(0xFFFFC000)),
-                                                                insets: EdgeInsets.symmetric(horizontal: 10)),
+                                                            labelColor: Colors.black,
+                                                            controller: _tabController,
+                                                            indicator: const UnderlineTabIndicator(borderSide: BorderSide(width: 1.5, color: Color(0xFFFFC000)), insets: EdgeInsets.symmetric(horizontal: 10)),
                                                             tabs: [
-                                                              Tab(text: "Basic"),
+                                                              Tab(
+                                                                  text:
+                                                                      "Basic"),
                                                               Tab(
                                                                   text:
                                                                       "Advanced")

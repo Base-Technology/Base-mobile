@@ -9,7 +9,8 @@ class BuyMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TopBarSimple(title: "Choose a provider", isContact: false),
+        TopBarSimple(
+            title: "Choose a provider", isContact: false, isReferral: false),
         Expanded(
           child: Container(
             padding: EdgeInsets.only(top: 15),

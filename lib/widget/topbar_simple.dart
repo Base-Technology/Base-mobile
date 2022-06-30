@@ -1,18 +1,25 @@
+import 'package:acy_ipay/widget/button_switch_wallet.dart';
 import 'package:flutter/material.dart';
 
 import '../Settings/Contact/add_contact.dart';
+import 'CustomText.dart';
 
 class TopBarSimple extends StatelessWidget {
   final String title;
   final bool isContact;
-  const TopBarSimple({Key? key, required this.title, required this.isContact})
+  final bool isReferral;
+  const TopBarSimple(
+      {Key? key,
+      required this.title,
+      required this.isContact,
+      required this.isReferral})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 25),
-      color: Colors.white,
+      color: Colors.black,
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -25,17 +32,14 @@ class TopBarSimple extends StatelessWidget {
                 icon: const Icon(
                   Icons.arrow_back,
                   size: 20,
-                  color: Colors.black,
+                  color: Colors.white,
                 )),
           ),
-          Text(
+          CustomText(
             title,
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.none,
-                color: Colors.black),
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+            textColor: Colors.white,
           ),
           isContact
               ? Align(
@@ -50,14 +54,17 @@ class TopBarSimple extends StatelessWidget {
                         icon: Icon(
                           Icons.add_circle_outline_rounded,
                           size: 25,
-                          color: Colors.black,
+                          color: Colors.white,
                         )),
                   ),
                 )
-              : SizedBox(
-                  height: 30,
-                  width: 20,
-                ),
+              : isReferral
+                  ? Align(
+                      alignment: Alignment.centerRight, child: SwitchWallet())
+                  : SizedBox(
+                      height: 30,
+                      width: 20,
+                    ),
         ],
       ),
     );

@@ -71,7 +71,7 @@ class MultiFunctionButton extends StatelessWidget {
                       settings: RouteSettings(name: '/referral'),
                       screen: ReferralMain(),
                     );
-                  }else {
+                  } else {
                     pushNewScreenWithRouteSettings(
                       context,
                       settings: RouteSettings(name: '/earn'),

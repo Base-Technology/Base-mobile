@@ -15,19 +15,19 @@ final userList = <UserCard>[
       address: "UK"),
   UserCard(
       profile_pic_URL:
-      "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
+          "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
       username: "Edward",
       nickname: "E",
       address: "Canada"),
   UserCard(
       profile_pic_URL:
-      "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
+          "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
       username: "Bryan",
       nickname: "B",
       address: "USA"),
   UserCard(
       profile_pic_URL:
-      "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
+          "https://storageapi.fleek.co/5bec74db-774b-4b8a-b735-f08a5ec1c1e6-bucket/icon_acy.svg",
       username: "Ricky",
       nickname: "R",
       address: "USA"),
