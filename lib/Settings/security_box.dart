@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 
 class SecurityBox extends StatefulWidget {
   const SecurityBox({Key? key}) : super(key: key);
@@ -10,12 +14,14 @@ class SecurityBox extends StatefulWidget {
 
 class _SecurityBoxState extends State<SecurityBox> {
   bool isSwitched = false;
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Color(0xF20F0F0F) : Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -26,36 +32,24 @@ class _SecurityBoxState extends State<SecurityBox> {
               SizedBox(
                 width: 16,
               ),
-              Text(
+              CustomText(
                 "Security",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
                   fontSize: 18,
-                ),
               ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5,),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_password.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Change PIN",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -63,26 +57,21 @@ class _SecurityBoxState extends State<SecurityBox> {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_fingerprint.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Fingerprint",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
             trailing: Switch(
               value: isSwitched,
-              inactiveTrackColor: Color(0x26FFC000),
-              activeTrackColor: Color(0x26FFC000),
-              activeColor: Color(0xFFFFC000),
-              inactiveThumbColor: Color(0xFFFFC000),
+              inactiveTrackColor: themeProvider.isDarkMode ? Color(0x26FFC000) : Color(0xF2DADFE2),
+              activeTrackColor: themeProvider.isDarkMode ? Color(0x26FFC000) : Color(0xF2DADFE2),
+              activeColor: themeProvider.isDarkMode ? Color(0xFFFFC000) : Color(0xE682939D),
+              inactiveThumbColor: themeProvider.isDarkMode ? Color(0xFFFFC000) : Color(0xE682939D),
               onChanged: (value) {
                 setState(() {
                   isSwitched = value;

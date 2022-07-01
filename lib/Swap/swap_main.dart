@@ -4,7 +4,9 @@ import 'package:acy_ipay/Swap/show_bacis_transaction.dart';
 import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
+import '../theme_provider.dart';
 import '../widget/CustomText.dart';
 import 'ExchangeBox.dart';
 
@@ -27,15 +29,17 @@ class _SwapMainState extends State<SwapMain>
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     double resWidth = MediaQuery.of(context).size.width;
     double resHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          TopBar(title: "Swap"),
+          const TopBar(title: "Swap"),
           Container(
             width: resWidth * 0.9,
             height: resHeight * 0.425,
@@ -46,14 +50,18 @@ class _SwapMainState extends State<SwapMain>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const CustomText("Enter the amount",
-                        fontSize: 15, fontWeight: FontWeight.w300),
+                    const CustomText(
+                        "Enter the amount",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w300
+                    ),
                     Container(
                         height: 30,
                         width: 30,
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border: Border.all(color: Colors.black)),
+                            border: Border.all(color: themeProvider.isDarkMode ? Colors.white : Colors.black)
+                        ),
                         child: IconButton(
                             padding: EdgeInsets.all(0),
                             onPressed: () async {
@@ -68,12 +76,11 @@ class _SwapMainState extends State<SwapMain>
                                   isScrollControlled: true,
                                   builder: (BuildContext context) {
                                     return Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.79,
+                                      color: themeProvider.isDarkMode ? const Color(0xE6292D2C)  : Colors.white,
+                                      height: MediaQuery.of(context).size.height * 0.79,
                                       child: Column(children: [
                                         const Padding(
-                                          padding: EdgeInsets.all(10),
+                                          padding: EdgeInsets.symmetric(vertical: 15),
                                           child: CustomText(
                                               "Transaction Settings",
                                               fontSize: 18,
@@ -81,7 +88,7 @@ class _SwapMainState extends State<SwapMain>
                                         ),
                                         Expanded(
                                           child: Container(
-                                            color: Colors.white,
+                                            //color: themeProvider.isDarkMode ? const Color(0xE6292D2C)  : Colors.white,
                                             child: DefaultTabController(
                                               length: 2,
                                               child: Padding(
@@ -101,8 +108,8 @@ class _SwapMainState extends State<SwapMain>
                                                             2,
                                                         child: TabBar(
                                                             unselectedLabelColor:
-                                                                Colors.black,
-                                                            labelColor: Colors.black,
+                                                            themeProvider.isDarkMode ? Colors.white : Colors.black,
+                                                            labelColor: themeProvider.isDarkMode ? Colors.white : Colors.black,
                                                             controller: _tabController,
                                                             indicator: const UnderlineTabIndicator(borderSide: BorderSide(width: 1.5, color: Color(0xFFFFC000)), insets: EdgeInsets.symmetric(horizontal: 10)),
                                                             tabs: [
@@ -143,7 +150,7 @@ class _SwapMainState extends State<SwapMain>
                               "assets/icon/icon_swap_settings.svg",
                               height: 20,
                               width: 20,
-                              color: Colors.black,
+                              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                             )))
                   ],
                 ),
@@ -170,7 +177,7 @@ class _SwapMainState extends State<SwapMain>
                         "assets/icon/icon_swap_vert.svg",
                         height: 25,
                         width: 25,
-                        color: Colors.black,
+                        color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                       )),
                 ),
                 const Padding(

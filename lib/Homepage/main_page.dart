@@ -3,6 +3,9 @@ import 'package:acy_ipay/Homepage/widget/button_send_receive.dart';
 import 'package:acy_ipay/widget/button_switch_chain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 import 'tokens_data.dart';
 import 'package:acy_ipay/Homepage/show_balance.dart';
 import 'package:acy_ipay/Homepage/widget/MultiFunctionButton.dart';
@@ -26,9 +29,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Widget topBar = Container(
-        padding: EdgeInsets.only(top: 20, bottom: 10),
-        color: Colors.white,
+        padding: const EdgeInsets.only(top: 20, bottom: 10),
+        color: themeProvider.isDarkMode ? Colors.black : Colors.white,
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,9 +41,9 @@ class _HomePageState extends State<HomePage> {
             SwitchChain(),
             Padding(
               padding: const EdgeInsets.only(top: 10.0),
-              child: Text(
+              child: CustomText(
                 "\$0.00",
-                style: TextStyle(color: Colors.black, fontSize: 26),
+                fontSize: 26,
               ),
             ),
             Padding(
@@ -48,14 +52,14 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   SvgPicture.asset(
                     "assets/icon/icon_notification.svg",
-                    color: Colors.black,
+                    color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     width: 23,
                     height: 23,
                   ),
                   SizedBox(width: 20),
                   SvgPicture.asset(
                     "assets/icon/icon_search.svg",
-                    color: Colors.black,
+                    color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     width: 23,
                     height: 23,
                   ),
@@ -165,7 +169,7 @@ class _HomePageState extends State<HomePage> {
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(15),
-          color: Colors.white, //(0xE6292D2C),
+          color: themeProvider.isDarkMode ? Colors.black : Colors.white,//(0xE6292D2C),
         ),
         child: Wrap(
           spacing: 10,
@@ -213,16 +217,17 @@ class _HomePageState extends State<HomePage> {
 
     return MaterialApp(
         home: Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          topBar,
-          mainButton,
-          Expanded(
-            child: TokensData(
-              changeIndex: curIndex,
-            ),
-          )
+          backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+          body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            topBar,
+            mainButton,
+            Expanded(
+              child: TokensData(
+                changeIndex: curIndex,
+              ),
+            )
         ],
       ),
     ));

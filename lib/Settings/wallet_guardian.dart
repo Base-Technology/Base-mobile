@@ -1,55 +1,24 @@
-import 'dart:typed_data';
-
 import 'package:acy_ipay/Settings/add_guardian_manually.dart';
+import 'package:acy_ipay/widget/topbar.dart';
+import 'package:acy_ipay/widget/topbar_simple.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 
 class WalletGuardian extends StatelessWidget {
   const WalletGuardian({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Widget topBar = Container(
-      padding: const EdgeInsets.only(top: 25),
-      margin: const EdgeInsets.only(bottom: 15),
-      color: Colors.white,
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                  size: 20,
-                  color: Colors.black,
-                )),
-          ),
-          const Text(
-            'Guardians',
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.none,
-                color: Colors.black),
-          ),
-        ],
-      ),
-    );
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
-    Widget instructions = Text(
+    Widget instructions = CustomText(
       "You need at least 1 guardian approval for a wallet recovery or transfer over your daily limit.",
-      textAlign: TextAlign.center,
-      style: TextStyle(
-          fontSize: 12,
-          fontFamily: 'Karla',
-          fontWeight: FontWeight.w600,
-          decoration: TextDecoration.none,
-          color: Colors.grey.shade600),
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      textColor: Colors.grey.shade600
     );
 
     Widget addGuardian = SizedBox(
@@ -76,21 +45,20 @@ class WalletGuardian extends StatelessWidget {
                 color: Colors.black,
               ),
               SizedBox(width: 20),
-              Text("Add Guardian",
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Karla',
-                      fontWeight: FontWeight.w400,
-                      decoration: TextDecoration.none,
-                      color: Colors.black)),
+              CustomText(
+                "Add Guardian",
+                fontSize: 16,
+                textColor: Colors.black,
+              )
             ],
           )),
     );
 
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: Column(
         children: [
-          topBar,
+          TopBarSimple(title: "Guardian", isContact: false, isReferral: false),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(

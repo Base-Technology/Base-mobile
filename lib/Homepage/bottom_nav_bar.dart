@@ -5,6 +5,8 @@ import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import '/Settings/settings_main.dart';
 import '/Homepage/main_page.dart';
 import 'Send/send_main.dart';
@@ -39,6 +41,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return [
       PersistentBottomNavBarItem(
         contentPadding: 0,
@@ -47,8 +50,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           size: 20,
         ),
         title: ("Chat"),
-        activeColorPrimary: Colors.grey.shade700,
-        inactiveColorPrimary: Colors.grey.shade700,
+        activeColorPrimary: Color(0xFFFFC000),
+        inactiveColorPrimary: themeProvider.isDarkMode ? Color(0xFF979797) : Colors.black,
         routeAndNavigatorSettings: RouteAndNavigatorSettings(
           initialRoute: '/',
           routes: {
@@ -67,8 +70,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           size: 20,
         ),
         title: ("Assets"),
-        activeColorPrimary: Colors.grey.shade700,
-        inactiveColorPrimary: Colors.grey.shade700,
+        activeColorPrimary: Color(0xFFFFC000),
+        inactiveColorPrimary: themeProvider.isDarkMode ? Color(0xFF979797) : Colors.black,
         routeAndNavigatorSettings: RouteAndNavigatorSettings(
           initialRoute: '/',
           routes: {
@@ -86,8 +89,8 @@ class _bottomNavBarState extends State<bottomNavBar> {
           size: 20,
         ),
         title: ("Me"),
-        activeColorPrimary: Colors.grey.shade700,
-        inactiveColorPrimary: Colors.grey.shade700,
+        activeColorPrimary: Color(0xFFFFC000),
+        inactiveColorPrimary: themeProvider.isDarkMode ? Color(0xFF979797) : Colors.black,
         routeAndNavigatorSettings: RouteAndNavigatorSettings(
           initialRoute: '/',
           routes: {
@@ -134,12 +137,14 @@ class _bottomNavBarState extends State<bottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return PersistentTabView(
       context,
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
+      backgroundColor: themeProvider.isDarkMode ? Color(0xE61B1D1C) : Colors.white,
       onItemSelected: onTap,
       handleAndroidBackButtonPress: false, // Default is true.
       resizeToAvoidBottomInset:
@@ -149,7 +154,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+        colorBehindNavBar: Color(0xE61B1D1C),
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,

@@ -28,8 +28,7 @@ class SendContactList extends StatelessWidget {
                   child: CustomText(
                     "More",
                     fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                    textColor: Colors.blue,
+                    textColor: Color(0xFFFFCC00),
                   ),
                 )
               ],
@@ -47,7 +46,6 @@ class SendContactList extends StatelessWidget {
                   height: 45,
                   child: ListTile(
                     onTap: () {},
-                    tileColor: Colors.white,
                     contentPadding: EdgeInsets.zero,
                     leading: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,12 +62,10 @@ class SendContactList extends StatelessWidget {
                       children: [
                         CustomText(
                           userList[index].username,
-                          fontWeight: FontWeight.w400,
                           fontSize: 12,
                         ),
                         CustomText(
                           userList[index].address,
-                          fontWeight: FontWeight.w400,
                           textColor: Colors.grey.shade500,
                           fontSize: 12,
                         ),

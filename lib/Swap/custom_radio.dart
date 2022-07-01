@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:acy_ipay/widget/CustomText.dart';
 class MyRadioListTile<T> extends StatelessWidget {
   final T value;
   final T groupValue;
@@ -20,23 +20,21 @@ class MyRadioListTile<T> extends StatelessWidget {
     final isSelected = value == groupValue;
 
     Widget _customRadioButton = Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? Colors.white38 : null,
+        color: isSelected ? Color(0xE61B1D1C) : null,
         borderRadius: BorderRadius.circular(4),
         border: Border.all(
-          color: isSelected ? Color(0xFFFFC000) : Colors.grey[300]!,
+          color: isSelected ? Color(0xFFFFC000) : Color(0xF26A6E6D),
           width: 1.5,
         ),
       ),
       child: Center(
-        child: Text(
+        child: CustomText(
           leading,
-          style: TextStyle(
-            color: isSelected ? Colors.black : Colors.grey[800]!,
+            textColor: Color(0xFFF4F4F4),
             fontWeight: FontWeight.w600,
             fontSize: 18,
-          ),
         ),
       ),
     );
@@ -61,13 +59,13 @@ class MyRadioListTile<T> extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "Input",
                     hintStyle: TextStyle(
-                        color: isSelected ? Colors.black : Colors.grey[800]!,
+                        color: Color(0xFFF4F4F4),
                         fontWeight: FontWeight.w600),
                     fillColor: Colors.white,
                     contentPadding: EdgeInsets.only(top: 8),
                     border: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.grey.shade300, width: 1.5),
+                            BorderSide(color: Color(0xF26A6E6D), width: 1.5),
                         borderRadius: BorderRadius.all(Radius.circular(5))),
                     focusedBorder: isSelected
                         ? OutlineInputBorder(

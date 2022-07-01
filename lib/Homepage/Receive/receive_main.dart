@@ -1,8 +1,11 @@
 import 'package:acy_ipay/Homepage/Receive/button_share_copy.dart';
+import 'package:acy_ipay/widget/topbar_simple.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../theme_provider.dart';
 import '../../widget/CustomText.dart';
 
 class ReceiveMain extends StatelessWidget {
@@ -10,48 +13,19 @@ class ReceiveMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     Map blockchain = {"BEP-20": "BNB", "ERC-20": "ETH"};
-    String address = "0x555ceEC936a060eeb74A6Ad3E4d9310D799eB189";
+    String address = "0x565cfgC936a060rtb454A6Ac2E4d9310D769eB289";
     String explorer = "Bscscan";
     double resWidth = MediaQuery.of(context).size.width;
 
-    Widget topBar = Container(
-      padding: const EdgeInsets.only(top: 25),
-      margin: const EdgeInsets.only(bottom: 15),
-      color: Colors.white,
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                  size: 20,
-                  color: Colors.black,
-                )),
-          ),
-          const Text(
-            'Receive',
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w800,
-                decoration: TextDecoration.none,
-                color: Colors.black),
-          ),
-        ],
-      ),
-    );
-
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          topBar,
+          TopBarSimple(title: "Receive", isContact: false, isReferral: false),
           Container(
             width: resWidth * 0.9,
             padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -70,6 +44,7 @@ class ReceiveMain extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 15),
                   child: QrImage(
+                    backgroundColor: themeProvider.isDarkMode ? Colors.white : Colors.transparent,
                     padding: EdgeInsets.all(15),
                     data: address,
                     version: QrVersions.auto,
@@ -88,7 +63,7 @@ class ReceiveMain extends StatelessWidget {
                             fontFamily: 'Karla',
                             fontWeight: FontWeight.w300,
                             decoration: TextDecoration.none,
-                            color: Colors.black),
+                            color: themeProvider.isDarkMode ? Colors.white : Colors.black),
                       ),
                     )
                   ],
@@ -107,7 +82,7 @@ class ReceiveMain extends StatelessWidget {
                         ),
                         SvgPicture.asset(
                           "assets/icon/icon_arrow_up_right.svg",
-                          color: Colors.black,
+                          color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                           height: 12,
                           width: 12,
                         )

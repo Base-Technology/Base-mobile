@@ -24,6 +24,7 @@ class SendButton extends StatelessWidget {
             "Send",
             fontSize: 16,
             fontWeight: FontWeight.w400,
+            textColor: Colors.black,
           ),
         ));
   }

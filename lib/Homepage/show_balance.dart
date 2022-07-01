@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../widget/CustomText.dart';
+
 class ShowBalance extends StatefulWidget {
   const ShowBalance({Key? key}) : super(key: key);
 
@@ -20,7 +22,7 @@ class _ShowBalanceState extends State<ShowBalance> {
           showBalance = !showBalance;
         });
       },
-      child: Container(
+      child: SizedBox(
         width: resWidth * 0.4,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -29,12 +31,9 @@ class _ShowBalanceState extends State<ShowBalance> {
             showBalance
                 ? Padding(
                     padding: const EdgeInsets.only(bottom: 5.0),
-                    child: Text(
+                    child: CustomText(
                       "\$0.00",
-                      style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
-                          fontFamily: 'Karla'),
+                      fontSize: 30,
                     ),
                   )
                 : Row(

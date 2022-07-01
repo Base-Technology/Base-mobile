@@ -1,7 +1,9 @@
 import 'package:acy_ipay/widget/button_switch_wallet.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../Settings/Contact/add_contact.dart';
+import '../theme_provider.dart';
 import 'CustomText.dart';
 
 class TopBarSimple extends StatelessWidget {
@@ -17,9 +19,11 @@ class TopBarSimple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Container(
       padding: const EdgeInsets.only(top: 25),
-      color: Colors.black,
+      color: themeProvider.isDarkMode ? Colors.black : Colors.white,
       child: Stack(
         alignment: AlignmentDirectional.center,
         children: [
@@ -29,17 +33,16 @@ class TopBarSimple extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back,
                   size: 20,
-                  color: Colors.white,
+                  color: themeProvider.isDarkMode ? Colors.white : Colors.black ,
                 )),
           ),
           CustomText(
             title,
             fontSize: 18,
             fontWeight: FontWeight.w700,
-            textColor: Colors.white,
           ),
           isContact
               ? Align(
@@ -54,7 +57,7 @@ class TopBarSimple extends StatelessWidget {
                         icon: Icon(
                           Icons.add_circle_outline_rounded,
                           size: 25,
-                          color: Colors.white,
+                          color: themeProvider.isDarkMode ? Colors.white : Colors.black ,
                         )),
                   ),
                 )

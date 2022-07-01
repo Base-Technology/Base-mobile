@@ -9,7 +9,7 @@ class ShowActivity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      ZeroRecord(),
+        ZeroRecord(),
     ]));
   }
 }

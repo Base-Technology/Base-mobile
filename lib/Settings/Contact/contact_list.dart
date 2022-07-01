@@ -23,7 +23,6 @@ class ContactList extends StatelessWidget {
                         address: userList[index].address,
                       )));
             },
-            tileColor: Colors.white,
             leading: CircleAvatar(
                 radius: 30,
                 backgroundImage: NetworkImage(userList[index].profile_pic_URL)),
@@ -32,13 +31,13 @@ class ContactList extends StatelessWidget {
                 CustomText(
                   userList[index].username,
                   fontWeight: FontWeight.w400,
-                  fontSize: 12,
+                  fontSize: 14,
                 ),
                 SizedBox(width: 12),
                 CustomText(
                   userList[index].nickname,
                   fontWeight: FontWeight.w400,
-                  fontSize: 12,
+                  fontSize: 14,
                 ),
               ],
             ),

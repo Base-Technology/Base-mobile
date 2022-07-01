@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:acy_ipay/Constant/token_data.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 
 class ShowAssets extends StatefulWidget {
   const ShowAssets({Key? key}) : super(key: key);
@@ -12,9 +16,10 @@ class ShowAssets extends StatefulWidget {
 class _ShowAssetsState extends State<ShowAssets> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return ListView.separated(
         primary: false,
-        padding: EdgeInsets.only(bottom: 1),
+        padding: const EdgeInsets.only(bottom: 1),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemCount: tokenList.length,
@@ -23,7 +28,7 @@ class _ShowAssetsState extends State<ShowAssets> {
               endIndent: 0,
               thickness: 0.25,
               height: 0.1,
-              color: Colors.grey.shade300,
+              color: themeProvider.isDarkMode ? Color(0xFF979797): Colors.grey.shade300,
             ),
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
@@ -44,13 +49,9 @@ class _ShowAssetsState extends State<ShowAssets> {
                     ]),
               ),
             ),
-            title: Text(
+            title: CustomText(
               tokenList[index].symbol,
-              style: TextStyle(
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black),
+              fontSize: 16,
             ),
             trailing: SizedBox(
               height: 40,
@@ -58,21 +59,14 @@ class _ShowAssetsState extends State<ShowAssets> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
+                  CustomText(
                     "0.25",
-                    style: TextStyle(
-                        fontFamily: 'Karla',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Colors.black), //
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
                   ),
-                  Text(
+                  CustomText(
                     "\$732.5",
-                    style: TextStyle(
-                        fontFamily: 'Karla',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: Colors.black),
+                    fontSize: 12,
                   )
                 ],
               ),

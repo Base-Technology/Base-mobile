@@ -1,7 +1,10 @@
 import 'package:acy_ipay/Settings/Contact/contact_main.dart';
+import 'package:acy_ipay/Settings/display_box.dart';
 import 'package:acy_ipay/Settings/wallet_guardian.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import '../widget/CustomText.dart';
 import 'security_box.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,19 +12,15 @@ import 'package:url_launcher/url_launcher.dart';
 class SettingsMain extends StatelessWidget {
   const SettingsMain({Key? key}) : super(key: key);
 
-  //@override
-  //State<settingsMain> createState() => _settingsMainState();
-//}
-
-//class _settingsMainState extends State<settingsMain> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     bool isSwitched = false;
 
     Widget accountBox = Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Color(0xF20F0F0F) : Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -34,25 +33,21 @@ class SettingsMain extends StatelessWidget {
               ),
               CustomText(
                 "Account",
-                fontWeight: FontWeight.w400,
                 fontSize: 18,
               ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
+          SizedBox(height: 5,),
           ListTile(
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_wallet.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
             title: CustomText(
               "Manage Wallets",
-              fontWeight: FontWeight.w400,
               fontSize: 16,
             ),
             onTap: () {},
@@ -61,13 +56,12 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_recover.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
             title: CustomText(
               "Guardians",
-              fontWeight: FontWeight.w400,
               fontSize: 16,
             ),
             onTap: () {
@@ -79,13 +73,12 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_contact.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
             title: CustomText(
               "Contacts",
-              fontWeight: FontWeight.w400,
               fontSize: 16,
             ),
             onTap: () {
@@ -100,7 +93,7 @@ class SettingsMain extends StatelessWidget {
     Widget customTokensBox = Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Color(0xF20F0F0F) : Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -113,7 +106,6 @@ class SettingsMain extends StatelessWidget {
               ),
               CustomText(
                 "Custom Tokens",
-                fontWeight: FontWeight.w400,
                 fontSize: 18,
               ),
             ],
@@ -123,13 +115,12 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_custom_token.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
             title: CustomText(
               "Add Custom Tokens",
-              fontWeight: FontWeight.w400,
               fontSize: 16,
             ),
             onTap: () {},
@@ -138,18 +129,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_token_stack.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Manage Custom Tokens",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
                 fontSize: 16,
-              ),
             ),
             onTap: () {},
           ),
@@ -166,9 +152,9 @@ class SettingsMain extends StatelessWidget {
     }
 
     Widget supportBox = Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Color(0xF20F0F0F) : Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -179,14 +165,9 @@ class SettingsMain extends StatelessWidget {
               SizedBox(
                 width: 16,
               ),
-              Text(
+              CustomText(
                 "Support",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
                   fontSize: 18,
-                ),
               ),
             ],
           ),
@@ -197,18 +178,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_help.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Help Center",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -216,18 +192,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_email.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Email",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: _sendEmail,
           ),
@@ -236,9 +207,9 @@ class SettingsMain extends StatelessWidget {
     );
 
     Widget othersBox = Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Color(0xF20F0F0F) : Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
@@ -249,14 +220,9 @@ class SettingsMain extends StatelessWidget {
               SizedBox(
                 width: 16,
               ),
-              Text(
+              CustomText(
                 "Others",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
+                fontSize: 18,
               ),
             ],
           ),
@@ -267,18 +233,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_contract.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Terms of Use",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -286,18 +247,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_contract1.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Privacy Policy",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -305,18 +261,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_contract2.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Referral Policy",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -324,18 +275,13 @@ class SettingsMain extends StatelessWidget {
             visualDensity: VisualDensity(vertical: -3),
             leading: SvgPicture.asset(
               "assets/icon/icon_notification.svg",
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               height: 20,
               width: 20,
             ),
-            title: Text(
+            title: CustomText(
               "Notifications",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              fontSize: 16,
             ),
             onTap: () {},
           ),
@@ -343,48 +289,42 @@ class SettingsMain extends StatelessWidget {
       ),
     );
 
-    return SingleChildScrollView(
-      child: Container(
-          padding: EdgeInsets.fromLTRB(8, 25, 8, 0),
-          color: Colors.white,
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Padding(
-                    padding: const EdgeInsets.all(45.0),
-                    child: Text(
-                      'Settings',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Karla',
-                          fontWeight: FontWeight.w800,
-                          color: Colors.black),
+    return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      body: SingleChildScrollView(
+        child: Container(
+            padding: EdgeInsets.fromLTRB(8, 25, 8, 0),
+            child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    Padding(
+                      padding: const EdgeInsets.all(45.0),
+                      child: CustomText(
+                        'Settings',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
+                  ]),
+                  accountBox,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: customTokensBox,
                   ),
-                ]),
-                accountBox,
-                SizedBox(
-                  height: 20,
-                ),
-                customTokensBox,
-                SizedBox(
-                  height: 20,
-                ),
-                SecurityBox(),
-                SizedBox(
-                  height: 20,
-                ),
-                supportBox,
-                SizedBox(
-                  height: 20,
-                ),
-                othersBox,
-                SizedBox(
-                  height: 20,
-                ),
-              ])),
+                  SecurityBox(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: DisplayBox(),
+                  ),
+                  supportBox,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: othersBox,
+                  ),
+                ])),
+      ),
     );
   }
 }

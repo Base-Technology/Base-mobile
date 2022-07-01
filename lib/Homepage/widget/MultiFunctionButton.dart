@@ -2,11 +2,14 @@ import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
-import 'package:acy_ipay/Homepage/Buy/buy_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
+
+import '../../theme_provider.dart';
+import '../../widget/CustomText.dart';
 
 enum pageNum { _, Buy, Swap, Deposit, Scan, Send, Transfer, Referral, More }
 
@@ -25,6 +28,7 @@ class MultiFunctionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return SizedBox(
       height: 65,
       width: 80,
@@ -59,12 +63,6 @@ class MultiFunctionButton extends StatelessWidget {
                       settings: RouteSettings(name: '/receive'),
                       screen: ReceiveMain(),
                     );
-                  } else if (text == 'Buy') {
-                    pushNewScreenWithRouteSettings(
-                      context,
-                      settings: RouteSettings(name: '/buy'),
-                      screen: BuyMain(),
-                    );
                   } else if (text == 'Referral') {
                     pushNewScreenWithRouteSettings(
                       context,
@@ -82,8 +80,8 @@ class MultiFunctionButton extends StatelessWidget {
                 },
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.all(10.0),
-                  primary: Colors.black,
-                  backgroundColor: Colors.white,
+                  primary: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                  backgroundColor: themeProvider.isDarkMode ? Color(0xE6292D2C) : Colors.white,
                   textStyle: const TextStyle(fontSize: 20),
                 ),
                 child: Column(
@@ -94,17 +92,12 @@ class MultiFunctionButton extends StatelessWidget {
                       iconPath,
                       width: 25,
                       height: 25,
-                      color: Colors.black,
+                      color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
+                    SizedBox(height: 5),
+                    CustomText(
                       text,
-                      style: TextStyle(
-                          fontFamily: 'Karla',
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400),
+                      fontSize: 12,
                     ),
                   ],
                 ),

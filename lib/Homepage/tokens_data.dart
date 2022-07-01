@@ -6,6 +6,10 @@ import 'package:acy_ipay/Homepage/widget/SeeMoreIconButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 
 class TokensData extends StatefulWidget {
   final int changeIndex;
@@ -50,8 +54,10 @@ class _TokensDataState extends State<TokensData>
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
 
     Widget _buildListTile(String assetPath, String dataString, int index) {
+
       bool isSelected = dataIndex == index;
 
       return Container(
@@ -65,16 +71,12 @@ class _TokensDataState extends State<TokensData>
             assetPath,
             width: 30,
             height: 30,
-            color: Colors.black,
+            color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           ),
-          title: Text(
+          title: CustomText(
             dataString,
-            style: TextStyle(
-              fontFamily: 'Karla',
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              color: Colors.black,
-            ),
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
           onTap: () => setState(() {
             dataIndex = index;
@@ -115,9 +117,7 @@ class _TokensDataState extends State<TokensData>
     return Column(
       children: [
         Expanded(
-          child: widget.changeIndex == 1
-              ? ShowActivity()
-              : Column(children: <Widget>[
+          child: Column(children: <Widget>[
                   Container(
                     height: 38,
                     margin: const EdgeInsets.symmetric(
@@ -125,7 +125,7 @@ class _TokensDataState extends State<TokensData>
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      color: themeProvider.isDarkMode ? Color(0xE6292D2C) : Colors.white,
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -138,17 +138,9 @@ class _TokensDataState extends State<TokensData>
                             SizedBox(
                               width: 22,
                             ),
-                            Text(
-                              dataIndex == 0
-                                  ? "Assets"
-                                  : dataIndex == 1
-                                      ? "NFT"
-                                      : "Market",
-                              style: TextStyle(
-                                  fontFamily: 'Karla',
+                            CustomText(
+                              dataIndex == 0 ? "Assets" : dataIndex == 1 ? "NFT" : "Market",
                                   fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400),
                             ),
                           ],
                         ),
@@ -162,7 +154,10 @@ class _TokensDataState extends State<TokensData>
                                   "assets/icon/icon_nft.svg", "Show NFT", 1),
                               customDivider,
                               _buildListTile("assets/icon/icon_market.svg",
-                                  "Show Market", 2)
+                                  "Show Market", 2),
+                              customDivider,
+                              _buildListTile("assets/icon/icon_market.svg",
+                                  "Show Activity", 3)
                             ])
                       ],
                     ),
@@ -176,6 +171,7 @@ class _TokensDataState extends State<TokensData>
                           ShowAssets(),
                           ShowNFT(),
                           ShowMarket(),
+                          ShowActivity(),
                         ]),
                   )
                 ]),

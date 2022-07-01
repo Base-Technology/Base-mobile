@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
 
 class ScanAddress extends StatefulWidget {
   const ScanAddress({Key? key}) : super(key: key);
@@ -11,8 +14,10 @@ class ScanAddress extends StatefulWidget {
 
 class _ScanAddressState extends State<ScanAddress> {
   String qrCode = '';
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Future<void> scanQrCode() async {
       try {
         final qrCode = await FlutterBarcodeScanner.scanBarcode(
@@ -39,7 +44,7 @@ class _ScanAddressState extends State<ScanAddress> {
       icon: Icon(
         Icons.qr_code_scanner_outlined,
         size: 25,
-        color: Colors.black,
+        color: themeProvider.isDarkMode ? Colors.white : Colors.black,
       ),
     );
   }

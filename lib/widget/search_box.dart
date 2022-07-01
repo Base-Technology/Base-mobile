@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
 
 class SearchWidget extends StatefulWidget {
   final String text;
@@ -21,8 +24,9 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final styleActive = TextStyle(color: Colors.black);
-    final styleHint = TextStyle(color: Colors.black54);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final styleActive = TextStyle(color: themeProvider.isDarkMode ? Colors.white : Colors.black);
+    final styleHint = TextStyle(color: themeProvider.isDarkMode ? Colors.white70 : Colors.black54);
     final style = widget.text.isEmpty ? styleHint : styleActive;
 
     return Container(
@@ -30,7 +34,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Colors.white : Colors.black,
         border: Border.all(color: Colors.black26),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),

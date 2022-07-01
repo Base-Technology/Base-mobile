@@ -1,7 +1,9 @@
 import 'package:acy_ipay/Swap/counter_box.dart';
 import 'package:acy_ipay/Swap/slippage_selection.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
+import 'package:acy_ipay/widget/CustomText.dart';
 import 'button_transaction.dart';
 
 class AdvancedTransactionPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class AdvancedTransactionPage extends StatefulWidget {
 class _AdvancedTransactionPageState extends State<AdvancedTransactionPage> {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     num _defaultValue = 50000;
     return SingleChildScrollView(
       child: Padding(
@@ -26,13 +29,10 @@ class _AdvancedTransactionPageState extends State<AdvancedTransactionPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Gas Limit",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Karla',
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.none,
-                            color: Colors.black)),
+                    CustomText("Gas Limit",
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
                     Counter(
                         buttonSize: 25,
                         initialValue: _defaultValue,
@@ -52,13 +52,10 @@ class _AdvancedTransactionPageState extends State<AdvancedTransactionPage> {
                             fontSize: 20,
                             color: Colors.white,
                             fontWeight: FontWeight.w400)),
-                    Text("Gas Price",
-                        style: TextStyle(
+                    CustomText("Gas Price",
                             fontSize: 16,
-                            fontFamily: 'Karla',
                             fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.none,
-                            color: Colors.black)),
+                    ),
                     Counter(
                         buttonSize: 25,
                         initialValue: 50000,
@@ -79,14 +76,11 @@ class _AdvancedTransactionPageState extends State<AdvancedTransactionPage> {
                             color: Colors.white,
                             fontWeight: FontWeight.w400)),
                     SizedBox(height: 30),
-                    Divider(thickness: 0.8, color: Colors.grey.shade800),
-                    Text("Custom Nonce:",
-                        style: TextStyle(
+                    Divider(thickness: 0.8, color: Color(0xF24B4F4E)),
+                    CustomText("Custom Nonce:",
                             fontSize: 16,
-                            fontFamily: 'Karla',
-                            fontWeight: FontWeight.w500,
-                            decoration: TextDecoration.none,
-                            color: Colors.black)),
+                            fontWeight: FontWeight.w500
+                            ),
                     Counter(
                         buttonSize: 25,
                         initialValue: 50000,

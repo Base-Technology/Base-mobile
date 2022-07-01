@@ -1,5 +1,7 @@
 import 'package:acy_ipay/widget/CustomText.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import 'button_history.dart';
 import 'button_switch_chain.dart';
 import 'button_switch_wallet.dart';
@@ -10,9 +12,11 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Container(
         padding: const EdgeInsets.only(top: 25),
-        color: Colors.white,
+        color: themeProvider.isDarkMode ? Colors.black : Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,6 +31,7 @@ class TopBar extends StatelessWidget {
                     icon: Icon(
                       Icons.arrow_back,
                       size: 20,
+                      color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     )),
                 Container(
                   margin: EdgeInsets.only(left: 10),

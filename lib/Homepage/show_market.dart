@@ -78,7 +78,7 @@ class _ShowMarketState extends State<ShowMarket> {
         columnFunction,
         Expanded(
           child: ListView.builder(
-            padding: EdgeInsets.all(0),
+            padding: const EdgeInsets.all(0),
             scrollDirection: Axis.vertical,
             itemCount: coinList.length,
             itemBuilder: (context, index) {

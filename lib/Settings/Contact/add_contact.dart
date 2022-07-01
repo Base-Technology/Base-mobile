@@ -2,7 +2,8 @@ import 'package:acy_ipay/widget/topbar_simple.dart';
 import 'package:flutter/material.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:provider/provider.dart';
+import 'package:acy_ipay/theme_provider.dart';
 import '../../widget/CustomText.dart';
 
 class AddContact extends StatefulWidget {
@@ -22,6 +23,7 @@ class _AddContactState extends State<AddContact> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Widget nameInput = Container(
       height: MediaQuery.of(context).size.height * 0.2,
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
@@ -32,23 +34,26 @@ class _AddContactState extends State<AddContact> {
           CustomText(
             "Name",
             fontSize: 14,
-            fontWeight: FontWeight.w400,
           ),
           SizedBox(height: 15),
-          ConstrainedBox(
-            constraints: const BoxConstraints.tightFor(
-                width: double.infinity, height: 45),
+          Container(
+            width: double.infinity,
+            height: 45,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(color: Colors.black),
+              color: themeProvider.isDarkMode ? Colors.grey.shade900 : Colors.transparent,
+            ),
             child: TextField(
               controller: userInput,
               decoration: InputDecoration(
                   filled: true,
                   contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
                   hintText: "Name",
-                  hintStyle: TextStyle(
-                      color: Colors.grey.shade300, fontWeight: FontWeight.w300),
-                  fillColor: Colors.grey.shade900,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15))),
+                  hintStyle: TextStyle(color: themeProvider.isDarkMode ? Colors.grey.shade300 : Colors.grey.shade700, fontWeight: FontWeight.w400),
+                  fillColor: themeProvider.isDarkMode ? Colors.grey.shade900 : Colors.transparent,
+                  border: InputBorder.none
+                  ),
               style: TextStyle(
                   fontFamily: 'Karla',
                   fontWeight: FontWeight.w300,
@@ -66,7 +71,6 @@ class _AddContactState extends State<AddContact> {
         CustomText(
           "Address",
           fontSize: 14,
-          fontWeight: FontWeight.w400,
         ),
         SizedBox(height: 15),
         Container(
@@ -74,7 +78,8 @@ class _AddContactState extends State<AddContact> {
           height: 45,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.grey.shade900,
+            border: Border.all(color: Colors.black),
+            color: themeProvider.isDarkMode ? Colors.grey.shade900 : Colors.transparent,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -86,12 +91,12 @@ class _AddContactState extends State<AddContact> {
                   controller: tokenAddressInput,
                   decoration: InputDecoration(
                       filled: true,
+                      fillColor: themeProvider.isDarkMode ? Colors.grey.shade900 : Colors.transparent,
                       contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
                       hintText: "Address",
-                      hintStyle: TextStyle(
-                          color: Colors.grey.shade300,
-                          fontWeight: FontWeight.w300),
-                      border: InputBorder.none),
+                      hintStyle: TextStyle(color: themeProvider.isDarkMode ? Colors.grey.shade300 : Colors.grey.shade700, fontWeight: FontWeight.w300),
+                      border: InputBorder.none,
+                    ),
                   style: TextStyle(
                       fontFamily: 'Karla',
                       fontWeight: FontWeight.w300,
@@ -129,7 +134,7 @@ class _AddContactState extends State<AddContact> {
                     icon: Icon(
                       Icons.qr_code_scanner_outlined,
                       size: 25,
-                      color: Colors.white,
+                      color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     ),
                   )
                 ],
@@ -190,7 +195,7 @@ class _AddContactState extends State<AddContact> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () {

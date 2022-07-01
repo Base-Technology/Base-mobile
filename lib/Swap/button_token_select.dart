@@ -2,7 +2,10 @@ import 'package:acy_ipay/Constant/token_data.dart';
 import 'package:acy_ipay/widget/search_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import '../Model/token.dart';
+import '../widget/CustomText.dart';
 
 class TokenSelect extends StatefulWidget {
   const TokenSelect({Key? key}) : super(key: key);
@@ -40,6 +43,7 @@ class _TokenSelectState extends State<TokenSelect> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Widget buildToken(Token token) => ListTile(
           leading: Padding(
             padding: const EdgeInsets.symmetric(vertical: 1),
@@ -62,31 +66,22 @@ class _TokenSelectState extends State<TokenSelect> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              CustomText(
                 token.symbol,
-                style: TextStyle(
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                    color: Colors.black),
+                fontSize: 18,
               ),
-              Text(
+              CustomText(
                 token.name,
-                style: TextStyle(
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    color: Colors.grey.shade500),
+                fontSize: 16,
+                textColor: Colors.grey.shade500
               ),
             ],
           ),
-          trailing: Text(
+          trailing: CustomText(
             "0.25",
-            style: TextStyle(
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: Colors.black), //
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            textColor: Colors.black //
           ),
         );
 
@@ -95,7 +90,7 @@ class _TokenSelectState extends State<TokenSelect> {
           showModalBottomSheet(
               enableDrag: false,
               context: context,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20)),
@@ -136,19 +131,16 @@ class _TokenSelectState extends State<TokenSelect> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text(
+            CustomText(
               "BTC",
-              style: TextStyle(
-                  color: Colors.black,
                   fontSize: 16,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w500
             ),
             SvgPicture.asset(
               "assets/icon/icon_expand.svg",
               height: 20,
               width: 15,
-              color: Colors.black,
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
             )
           ],
         ));

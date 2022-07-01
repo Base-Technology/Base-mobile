@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../../theme_provider.dart';
+import '../../widget/CustomText.dart';
 
 class SeeMoreIconButton extends StatelessWidget {
   final String titleText;
@@ -10,38 +14,35 @@ class SeeMoreIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return IconButton(
         onPressed: () async {
           showModalBottomSheet(
-              backgroundColor: Colors.transparent,
               context: context,
               builder: (BuildContext context) {
                 return ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0)),
                   child: Container(
-                    color: Colors.white,
+                    color: themeProvider.isDarkMode ? const Color(0xE6292D2C) : Colors.white,
                     child: Wrap(
                       children: <Widget>[
                         Container(
                           width: double.infinity,
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           child: Center(
-                            child: Text(
+                            child: CustomText(
                               titleText,
-                              style: TextStyle(
-                                fontFamily: 'Karla',
-                                fontWeight: FontWeight.w600,
-                                fontSize: 20,
-                                color: Colors.black,
-                              ),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20,
                             ),
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(bottom: 5),
                           child: Column(
                             children: [
                               ...widgetList,
@@ -56,7 +57,7 @@ class SeeMoreIconButton extends StatelessWidget {
         },
         icon: SvgPicture.asset(
           "assets/icon/icon_more_vert.svg",
-          color: Colors.black,
+          color: themeProvider.isDarkMode ? Colors.white : Colors.black,
           height: 25,
           width: 25,
         ));

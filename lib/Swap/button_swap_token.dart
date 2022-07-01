@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/CustomText.dart';
+
 class SwapToken extends StatelessWidget {
   const SwapToken({Key? key}) : super(key: key);
 
@@ -18,13 +20,11 @@ class SwapToken extends StatelessWidget {
                 MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
           ),
           onPressed: () {},
-          child: Text("Swap Now",
-              style: TextStyle(
+          child: CustomText("Swap Now",
                   fontSize: 16,
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.w400,
-                  decoration: TextDecoration.none,
-                  color: Colors.black))),
+                  textColor: Colors.black
+          ),
+      )
     );
   }
 }

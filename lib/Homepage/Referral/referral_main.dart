@@ -2,12 +2,15 @@ import 'package:acy_ipay/Homepage/Referral/referral_volume.dart';
 import 'package:acy_ipay/widget/CustomText.dart';
 import 'package:acy_ipay/widget/topbar_simple.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:acy_ipay/theme_provider.dart';
 
 class ReferralMain extends StatelessWidget {
   const ReferralMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Widget totalRewards = Container(
       width: MediaQuery.of(context).size.width * 0.95,
       margin: EdgeInsets.symmetric(horizontal: 10),
@@ -38,25 +41,25 @@ class ReferralMain extends StatelessWidget {
     );
 
     Widget constantText = Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      child: CustomText(
-      "Copy the Referral Codes below and share with your friends & start earning",
-      fontSize: 14,
-      textColor: Color(0xF2979797),
-      fontWeight: FontWeight.w400,
-    ));
-
-    Widget constantBottomText =  Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: CustomText(
-      "\$2000 more to unlock the next tier reward",
-      fontSize: 14,
-      textColor: Color(0xF2979797),
-      fontWeight: FontWeight.w400,
-    ));
+          "Copy the Referral Codes below and share with your friends & start earning",
+          fontSize: 14,
+          textColor: themeProvider.isDarkMode ? Color(0xF2979797) : Colors.black,
+          fontWeight: FontWeight.w400,
+        ));
+
+    Widget constantBottomText = Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: CustomText(
+          "\$2000 more to unlock the next tier reward",
+          fontSize: 14,
+          textColor: themeProvider.isDarkMode ? Color(0xF2979797) : Colors.black,
+          fontWeight: FontWeight.w400,
+        ));
 
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

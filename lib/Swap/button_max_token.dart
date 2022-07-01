@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/CustomText.dart';
+
 class MaxToken extends StatelessWidget {
   const MaxToken({Key? key}) : super(key: key);
 
@@ -12,13 +14,11 @@ class MaxToken extends StatelessWidget {
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Color(0xFFFFC000))),
           onPressed: () {},
-          child: Text(
+          child: CustomText(
             "MAX",
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 10,
-                fontFamily: 'Karla',
-                fontWeight: FontWeight.w600),
+            textColor: Colors.black,
+            fontSize: 10,
+            fontWeight: FontWeight.w600
           )),
     );
   }

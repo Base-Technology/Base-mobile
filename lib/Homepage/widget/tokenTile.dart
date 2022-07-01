@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:acy_ipay/theme_provider.dart';
+import '../../widget/CustomText.dart';
 
 class TokenTile extends StatelessWidget {
   final String name;
@@ -18,6 +21,7 @@ class TokenTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return SizedBox(
       height: 55,
       child: Row(
@@ -43,22 +47,15 @@ class TokenTile extends StatelessWidget {
               children: [
                 FittedBox(
                   fit: BoxFit.scaleDown,
-                  child: Text(
+                  child: CustomText(
                     symbol,
-                    style: const TextStyle(
-                        fontFamily: 'Karla',
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                        color: Colors.black),
+                    fontSize: 16,
                   ),
                 ),
-                Text(
+                CustomText(
                   name,
-                  style: TextStyle(
-                      fontFamily: 'Karla',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                      color: Colors.grey.shade600),
+                  fontSize: 12,
+                  textColor: themeProvider.isDarkMode ? Colors.white : Colors.black,
                 ),
               ],
             ),
@@ -69,25 +66,20 @@ class TokenTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                CustomText(
                   price.toDouble().toString(),
-                  style: TextStyle(
-                    color: Colors.grey[900],
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
+                CustomText(
                   changePercentage.toDouble() < 0
                       ? changePercentage.toDouble().toString() + '%'
                       : '+' + changePercentage.toDouble().toString() + '%',
-                  style: TextStyle(
-                    color: changePercentage.toDouble() < 0
+                    textColor: changePercentage.toDouble() < 0
                         ? Colors.red
                         : Colors.green,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                  ),
                 ),
               ],
             ),

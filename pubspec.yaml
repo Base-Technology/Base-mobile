@@ -130,6 +130,8 @@ flutter:
     - assets/icon/icon_swap_vert.svg
     - assets/icon/icon_earn.svg
     - assets/icon/icon_more.svg
+    - assets/icon/icon_dark.svg
+    - assets/icon/icon_light.svg
     - assets/icon/icon_expand.svg
     - assets/icon/icon_settings.svg
     - assets/icon/icon_send.svg

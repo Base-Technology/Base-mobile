@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widget/CustomText.dart';
+
 class SaveResetTransaction extends StatelessWidget {
   final String title;
   const SaveResetTransaction({Key? key, required this.title}) : super(key: key);
@@ -26,12 +28,10 @@ class SaveResetTransaction extends StatelessWidget {
               ? MaterialStateProperty.all<Color>(Colors.grey.shade800)
               : MaterialStateProperty.all<Color>(Color(0xFFFFC000)),
         ),
-        child: Text(title,
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.w400,
+        child: CustomText(
+              title,
               fontSize: 18,
-            )),
+            )
       ),
     );
   }

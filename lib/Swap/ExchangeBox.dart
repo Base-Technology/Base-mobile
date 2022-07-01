@@ -4,6 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:acy_ipay/Swap/button_max_token.dart';
 import 'dart:math' as math;
 
+import 'package:provider/provider.dart';
+
+import '../theme_provider.dart';
+
 class ExchangeBox extends StatefulWidget {
   final bool needMax;
   final bool isSend;
@@ -59,13 +63,14 @@ class _ExchangeBoxState extends State<ExchangeBox> {
   TextEditingController tokenAmount = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Container(
-      margin: EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10),
       width: double.infinity,
       height: 45,
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          border: Border.all(color: Colors.black),
+          border: Border.all(color: themeProvider.isDarkMode ? Colors.white : Colors.black),
           borderRadius: BorderRadius.circular(10)),
       child: Row(
         mainAxisSize: MainAxisSize.max,
@@ -85,14 +90,14 @@ class _ExchangeBoxState extends State<ExchangeBox> {
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
                   hintText: widget.isSend ? "Recipient Address/ENS" : "0",
-                  hintStyle: TextStyle(fontWeight: FontWeight.w400),
+                  hintStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: themeProvider.isDarkMode ? Colors.white : Colors.black),
                   border: InputBorder.none
                   //border: OutlineInputBorder(),
                   ),
               style: TextStyle(
                 fontFamily: 'Karla',
                 fontWeight: FontWeight.w300,
-                fontSize: 18,
+                fontSize: 16,
               ),
             ),
           ),
@@ -108,7 +113,7 @@ class _ExchangeBoxState extends State<ExchangeBox> {
                   icon: Icon(
                     Icons.qr_code_scanner_outlined,
                     size: 25,
-                    color: Colors.black,
+                    color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                   ),
                 )
               : TokenSelect(),
