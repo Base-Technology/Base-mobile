@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
-class EarnStrategyBox extends StatelessWidget {
-  const EarnStrategyBox({Key? key}) : super(key: key);
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
+class ShowStrategy extends StatelessWidget {
+  const ShowStrategy({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Map strategies = {
       "Staking":
           "Stake your ETH on Eth2 and earn daily rewards. You'll receive a new token representing your stake that you can convert back to ETH.",
@@ -16,59 +20,41 @@ class EarnStrategyBox extends StatelessWidget {
     };
     List strategiesKey = strategies.keys.toList();
 
-    Widget strategyBox(
-        String assetPath, String strategyType, String strategyInfo) {
+    Widget strategyBox(String assetPath, String strategyType, String strategyInfo) {
       return Container(
-        padding: EdgeInsets.all(10),
-        margin: EdgeInsets.only(top: 12),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(top: 12),
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade800),
             borderRadius: BorderRadius.circular(30)),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
+            CustomText(
               strategyType, //"Staking",
-              style: TextStyle(
-                  fontFamily: 'Karla',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  decoration: TextDecoration.none,
-                  color: Colors.black),
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
             ),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Text(
+              child: CustomText(
                 strategyInfo,
-                style: TextStyle(
-                    fontFamily: 'Karla',
-                    fontWeight: FontWeight.w400,
-                    decoration: TextDecoration.none,
-                    fontSize: 14,
-                    color: Colors.black),
+                fontSize: 14,
               ),
             ),
-            SizedBox(
-              height: 5,
-            ),
+            SizedBox(height: 5),
             Padding(
               padding: const EdgeInsets.all(5.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  CustomText(
                     "Provided by",
-                    style: TextStyle(
-                        fontFamily: 'Karla',
-                        fontWeight: FontWeight.w400,
-                        decoration: TextDecoration.none,
-                        fontSize: 14,
-                        color: Colors.black),
+                    fontSize: 14,
                   ),
                   FaIcon(
                     FontAwesomeIcons.circleInfo,
-                    color: Colors.white,
+                    color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                   ),
                 ],
               ),
@@ -78,7 +64,7 @@ class EarnStrategyBox extends StatelessWidget {
       );
     }
 
-    return Column(
+  return Column(
       children: [
         strategyBox("assets/icon/icon_stake.svg", strategiesKey[0],
             strategies[strategiesKey[0]]),

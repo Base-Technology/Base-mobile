@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../widget/CustomText.dart';
+
 class ShowDeposit extends StatelessWidget {
   const ShowDeposit({Key? key}) : super(key: key);
 
@@ -23,91 +25,73 @@ class ShowDeposit extends StatelessWidget {
     };
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: 8,horizontal: 15),
           child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                CustomText(
                   'Top Returns',
-                  style: TextStyle(
-                      fontFamily: 'Karla',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Colors.black,
-                      decoration: TextDecoration.none),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
                 ),
-                Text(
+                CustomText(
                   'APY',
-                  style: TextStyle(
-                      fontFamily: 'Karla',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16,
-                      color: Colors.black,
-                      decoration: TextDecoration.none),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
                 ),
               ]),
         ),
-        Expanded(
-          child: ListView.separated(
-              primary: false,
-              padding: EdgeInsets.only(bottom: 1),
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: supportedToken.length,
-              separatorBuilder: (context, index) => Divider(
-                  indent: 0,
-                  endIndent: 0,
-                  thickness: 0.5,
-                  height: 0.1,
-                  color: Color(0x1ABDBDBD)),
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  contentPadding: EdgeInsets.all(0),
-                  minLeadingWidth: 10,
-                  leading: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 1),
-                    child: SizedBox(
-                      height: 32,
-                      width: 32,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            SvgPicture.asset(
-                              supportedToken.values.elementAt(index),
-                              height: 30,
-                              width: 30,
-                            ),
-                          ]),
-                    ),
+        ListView.separated(
+            primary: false,
+            padding: const EdgeInsets.only(bottom: 1),
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: supportedToken.length,
+            separatorBuilder: (context, index) => Divider(
+                indent: 0,
+                endIndent: 0,
+                thickness: 0.5,
+                height: 0.1,
+                color: Color(0x1ABDBDBD)),
+            itemBuilder: (BuildContext context, int index) {
+              return ListTile(
+                contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                minLeadingWidth: 10,
+                leading: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 1),
+                  child: SizedBox(
+                    height: 32,
+                    width: 32,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            supportedToken.values.elementAt(index),
+                            height: 30,
+                            width: 30,
+                          ),
+                        ]),
                   ),
-                  title: Text(
-                    supportedToken.keys.elementAt(index),
-                    style: TextStyle(
-                        fontFamily: 'Karla',
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
-                        color: Colors.black),
+                ),
+                title: CustomText(
+                  supportedToken.keys.elementAt(index),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                ),
+                trailing: SizedBox(
+                  height: 40,
+                  child: CustomText(
+                    "100%",
+                    fontSize: 20,
                   ),
-                  trailing: SizedBox(
-                    height: 40,
-                    child: Text(
-                      "100%",
-                      style: TextStyle(
-                          fontFamily: 'Karla',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
-                    ),
-                  ),
-                );
-              }),
-        ),
+                ),
+              );
+            }),
       ],
     );
   }

@@ -125,7 +125,7 @@ class _TokensDataState extends State<TokensData>
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(10),
-                      color: themeProvider.isDarkMode ? Color(0xE6292D2C) : Colors.white,
+                      border: themeProvider.isDarkMode ? Border.all(color: Colors.white) : Border.all(color:Color(0xE6292D2C)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,

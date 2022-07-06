@@ -81,50 +81,56 @@ class _TokenSelectState extends State<TokenSelect> {
             "0.25",
             fontWeight: FontWeight.w500,
             fontSize: 16,
-            textColor: Colors.black //
           ),
         );
 
     return TextButton(
         onPressed: () async {
           showModalBottomSheet(
+              elevation: 0,
+              backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+              barrierColor: Colors.white.withOpacity(0),
               enableDrag: false,
               context: context,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-              ),
               isScrollControlled: true,
               //isDismissible: true,
               //backgroundColor: Colors.white,
               builder: (BuildContext context) {
-                return DraggableScrollableSheet(
-                  expand: false,
-                  initialChildSize: 0.8,
-                  minChildSize: 0.71,
-                  maxChildSize: 0.8,
-                  builder: (context, scrollController) {
-                    return Column(
-                      children: <Widget>[
-                        SearchWidget(
-                            text: query,
-                            onChanged: searchToken,
-                            hintText: "Enter name or paste address"),
-                        Expanded(
-                          child: ListView.builder(
-                            controller: scrollController,
-                            itemCount: resTokens.length,
-                            shrinkWrap: true,
-                            itemBuilder: (context, int index) {
-                              final token = resTokens[index];
-                              return buildToken(token);
-                            },
-                          ),
-                        )
-                      ],
-                    );
-                  },
+                return ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0)
+                  ),
+                  child: Container(
+                    color: themeProvider.isDarkMode ? const Color(0xE6292D2C) : Colors.white,
+                    child: DraggableScrollableSheet(
+                      expand: false,
+                      initialChildSize: 0.8,
+                      minChildSize: 0.71,
+                      maxChildSize: 0.8,
+                      builder: (context, scrollController) {
+                        return Column(
+                          children: <Widget>[
+                            SearchWidget(
+                                text: query,
+                                onChanged: searchToken,
+                                hintText: "Enter name or paste address"),
+                            Expanded(
+                              child: ListView.builder(
+                                controller: scrollController,
+                                itemCount: resTokens.length,
+                                shrinkWrap: true,
+                                itemBuilder: (context, int index) {
+                                  final token = resTokens[index];
+                                  return buildToken(token);
+                                },
+                              ),
+                            )
+                          ],
+                        );
+                      },
+                    ),
+                  ),
                 );
               });
         },

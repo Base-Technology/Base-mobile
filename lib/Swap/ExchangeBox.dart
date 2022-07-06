@@ -88,7 +88,7 @@ class _ExchangeBoxState extends State<ExchangeBox> {
                 //WhitelistingTextInputFormatter(new RegExp('^\d+[\.\,]\d+\$')),
               ],
               decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 6),
+                  contentPadding: const EdgeInsets.fromLTRB(12, 0, 0, 6),
                   hintText: widget.isSend ? "Recipient Address/ENS" : "0",
                   hintStyle: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: themeProvider.isDarkMode ? Colors.white : Colors.black),
                   border: InputBorder.none

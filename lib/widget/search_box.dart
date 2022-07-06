@@ -34,13 +34,13 @@ class _SearchWidgetState extends State<SearchWidget> {
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: themeProvider.isDarkMode ? Colors.white : Colors.black,
-        border: Border.all(color: Colors.black26),
+        border: themeProvider.isDarkMode ? Border.all(color: Colors.white) : Border.all(color: Colors.black26),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.only(bottom: 10),
           icon: Icon(Icons.search, color: style.color),
           suffixIcon: widget.text.isNotEmpty
               ? GestureDetector(

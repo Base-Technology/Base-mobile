@@ -19,12 +19,16 @@ class SeeMoreIconButton extends StatelessWidget {
     return IconButton(
         onPressed: () async {
           showModalBottomSheet(
+              elevation: 0,
+              barrierColor: Colors.white.withOpacity(0),
+              backgroundColor:themeProvider.isDarkMode ? Colors.black : Colors.white,
               context: context,
               builder: (BuildContext context) {
                 return ClipRRect(
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0)),
+                      topRight: Radius.circular(20.0)
+                  ),
                   child: Container(
                     color: themeProvider.isDarkMode ? const Color(0xE6292D2C) : Colors.white,
                     child: Wrap(

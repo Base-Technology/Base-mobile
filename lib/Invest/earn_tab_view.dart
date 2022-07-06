@@ -1,7 +1,11 @@
+import 'package:acy_ipay/Homepage/show_assets.dart';
+import 'package:acy_ipay/Homepage/show_nft.dart';
 import 'package:acy_ipay/Invest/show_deposit.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'earn_strategy_box.dart';
+import '../theme_provider.dart';
+import 'show_strategy.dart';
 
 class EarnTabView extends StatefulWidget {
   const EarnTabView({Key? key}) : super(key: key);
@@ -28,46 +32,41 @@ class _EarnTabViewState extends State<EarnTabView>
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Colors.white,
-        child: DefaultTabController(
-          length: 2,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: TabBar(
-                      unselectedLabelColor: Colors.black,
-                      labelColor: Colors.black,
-                      controller: _tabController,
-                      indicator: UnderlineTabIndicator(
-                          borderSide:
-                              BorderSide(width: 1.5, color: Color(0xFFFFC000)),
-                          insets: EdgeInsets.symmetric(horizontal: 45)),
-                      tabs: [
-                        Tab(
-                          text: "Deposit",
-                        ),
-                        Tab(
-                          text: "Strategy",
-                        )
-                      ]),
-                ),
-                Expanded(
-                    child: TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
-                  controller: _tabController,
-                  children: [
-                    ShowDeposit(),
-                    EarnStrategyBox(),
-                  ],
-                ))
-              ],
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+            TabBar(
+                unselectedLabelColor:
+                    themeProvider.isDarkMode ? Colors.white : Colors.black,
+                labelColor:
+                    themeProvider.isDarkMode ? Colors.white : Colors.black,
+                controller: _tabController,
+                indicator: UnderlineTabIndicator(
+                    borderSide:
+                        BorderSide(width: 1.5, color: Color(0xFFFFC000)),
+                    insets: EdgeInsets.symmetric(horizontal: 45)),
+                tabs: [
+                  Tab(text: "Deposit",),
+                  Tab(
+                    text: "Strategy",
+                  )
+                ]
             ),
-          ),
+            Flexible(
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _tabController,
+                children: [
+                  SingleChildScrollView(child: ShowDeposit()),
+                  ShowStrategy(),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

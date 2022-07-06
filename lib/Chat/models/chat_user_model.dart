@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class ChatUser {
   String name;
   String message;

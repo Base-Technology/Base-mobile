@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Notification/notification_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,10 @@ class GoToHistory extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const NotificationMain()));
+      },
       icon: SvgPicture.asset(
         'assets/icon/icon_history.svg',
         width: 30,

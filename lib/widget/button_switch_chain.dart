@@ -13,7 +13,7 @@ class SwitchChain extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(left: 10, top: 10),
         height: 30,
-        width: MediaQuery.of(context).size.width * 0.135,
+        width: 60,
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           border: themeProvider.isDarkMode ? null : Border.all(color: Colors.black, width: 1),

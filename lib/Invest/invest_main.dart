@@ -3,9 +3,7 @@ import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
-
 import '../widget/CustomText.dart';
-
 class investMain extends StatelessWidget {
   const investMain({Key? key}) : super(key: key);
 
@@ -64,14 +62,11 @@ class investMain extends StatelessWidget {
       );
     }
 
-    return Flexible(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
         children: [
           TopBar(title: "Invest"),
-          EarnTabView(),
+          Expanded(child: EarnTabView()),
         ],
-      ),
     );
   }
 }

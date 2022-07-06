@@ -34,7 +34,7 @@ class TopBar extends StatelessWidget {
                       color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                     )),
                 Container(
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   child: CustomText(
                     title,
                     fontWeight: FontWeight.w800,
@@ -47,7 +47,9 @@ class TopBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                    margin: EdgeInsets.only(bottom: 8), child: SwitchChain()),
+                  margin: EdgeInsets.only(bottom: 8), 
+                  child: SwitchChain()
+                ),
                 SizedBox(
                   width: 10,
                 ),

@@ -25,14 +25,14 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         backgroundColor: Colors.grey[300],
         flexibleSpace: SafeArea(
             child: Container(
-          padding: EdgeInsets.only(right: 16),
+          padding: const EdgeInsets.only(right: 16),
           child: Row(
             children: <Widget>[
               IconButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back,
                   color: Colors.black,
                 ),
