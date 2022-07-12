@@ -51,6 +51,9 @@ dependencies:
   persistent_bottom_nav_bar_v2: ^4.2.3
   shared_preferences: ^2.0.15
   clipboard: ^0.1.3
+  dart_date: ^1.1.1
+  intl: ^0.17.0
+  sticky_grouped_list: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +73,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/icon_base.svg"
+  image_path: "assets/icon/icon_base_main.svg"
 
 flutter:
 
@@ -170,6 +173,7 @@ flutter:
     - assets/icon/icon_recover.svg
     - assets/icon/icon_guardian.svg
     - assets/icon/icon_ramp.svg
+    - assets/icon/icon_wallet_activity.svg
     - assets/icon/icon_empty.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

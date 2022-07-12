@@ -139,7 +139,7 @@ class _TokensDataState extends State<TokensData>
                               width: 22,
                             ),
                             CustomText(
-                              dataIndex == 0 ? "Assets" : dataIndex == 1 ? "NFT" : "Market",
+                              dataIndex == 0 ? "Assets" : dataIndex == 1 ? "NFT" : dataIndex == 2 ? "Market" : "Wallet Activity",
                                   fontSize: 16,
                             ),
                           ],
@@ -156,7 +156,7 @@ class _TokensDataState extends State<TokensData>
                               _buildListTile("assets/icon/icon_market.svg",
                                   "Show Market", 2),
                               customDivider,
-                              _buildListTile("assets/icon/icon_market.svg",
+                              _buildListTile("assets/icon/icon_wallet_activity.svg",
                                   "Show Activity", 3)
                             ])
                       ],

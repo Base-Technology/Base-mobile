@@ -211,12 +211,10 @@ class _SendMainState extends State<SendMain>
               ],
             ),
           ),
-          SingleChildScrollView(
-            child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                margin: EdgeInsets.only(top: 15),
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: SendContactList()),
+          Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              padding: const EdgeInsets.fromLTRB(15,15,15,0),
+              child: SendContactList()
           )
         ],
       ),
