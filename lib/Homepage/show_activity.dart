@@ -61,6 +61,7 @@ class ShowActivity extends StatelessWidget {
                           child: ListTile(
                               contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 15),
                               leading: Icon(Icons.heat_pump),
+                              tileColor: themeProvider.isDarkMode ? Color(0xFF2C303A) : Color(0xFFF8FDFB),
                               title: Column(
                                 crossAxisAlignment:CrossAxisAlignment.start ,
                                 children: [

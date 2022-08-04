@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Homepage/search_token.dart';
 import 'package:acy_ipay/Homepage/widget/SeeMoreIconButton.dart';
 import 'package:acy_ipay/Homepage/widget/button_send_receive.dart';
 import 'package:acy_ipay/widget/button_switch_chain.dart';
@@ -57,11 +58,17 @@ class _HomePageState extends State<HomePage> {
                     height: 23,
                   ),
                   SizedBox(width: 20),
-                  SvgPicture.asset(
-                    "assets/icon/icon_search.svg",
-                    color: themeProvider.isDarkMode ? Colors.white : Colors.black,
-                    width: 23,
-                    height: 23,
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SearchToken()));
+                    },
+                    icon: SvgPicture.asset(
+                      "assets/icon/icon_search.svg",
+                      color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+                      width: 23,
+                      height: 23,
+                    ),
                   ),
                   SizedBox(width: 15),
                 ],
