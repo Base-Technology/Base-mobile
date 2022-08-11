@@ -11,7 +11,7 @@ import '../theme_provider.dart';
 class ExchangeBox extends StatefulWidget {
   final bool needMax;
   final bool isSend;
-  const ExchangeBox({Key? key, required this.needMax, required this.isSend})
+  const ExchangeBox({Key? key, required this.needMax, required this.isSend,})
       : super(key: key);
 
   @override
@@ -23,6 +23,7 @@ class NumberRemoveExtraDotFormatter extends TextInputFormatter {
       : assert(decimalRange == null || decimalRange > 0);
 
   final int decimalRange;
+
 
   @override
   TextEditingValue formatEditUpdate(
@@ -61,6 +62,7 @@ class NumberRemoveExtraDotFormatter extends TextInputFormatter {
 
 class _ExchangeBoxState extends State<ExchangeBox> {
   TextEditingController tokenAmount = TextEditingController();
+  double? availableAmount;
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -116,7 +118,12 @@ class _ExchangeBoxState extends State<ExchangeBox> {
                     color: themeProvider.isDarkMode ? Colors.white : Colors.black,
                   ),
                 )
-              : TokenSelect(),
+              : TokenSelect(callback: (v){
+                setState(() {
+                  availableAmount = v;
+                  tokenAmount.text = availableAmount.toString();
+                });
+          }),
         ],
       ),
     );

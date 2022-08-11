@@ -1,6 +1,7 @@
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
 import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
+import 'package:acy_ipay/Homepage/main_page.dart';
 import 'package:acy_ipay/Register/register_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.system,
           theme: CustomTheme.lightTheme,
           darkTheme: CustomTheme.darkTheme,
-          home: signUp ? bottomNavBar() : RegisterMain(),
+          home: signUp ? HomePage() : RegisterMain(),
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.

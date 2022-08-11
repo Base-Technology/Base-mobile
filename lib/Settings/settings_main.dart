@@ -1,3 +1,4 @@
+import 'package:acy_ipay/Homepage/NavigationDrawer.dart';
 import 'package:acy_ipay/Settings/Contact/contact_main.dart';
 import 'package:acy_ipay/Settings/display_box.dart';
 import 'package:acy_ipay/Settings/wallet_guardian.dart';
@@ -291,6 +292,12 @@ class SettingsMain extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Color(0xFF1EA838)),
+        title: Text('Settings',  style: TextStyle(color: Colors.black)),
+        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+      ),
+      drawer: const NavigationDrawer(),
       body: SingleChildScrollView(
         child: Container(
             padding: EdgeInsets.fromLTRB(8, 25, 8, 0),
@@ -298,16 +305,6 @@ class SettingsMain extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Padding(
-                      padding: const EdgeInsets.all(45.0),
-                      child: CustomText(
-                        'Settings',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ]),
                   accountBox,
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),

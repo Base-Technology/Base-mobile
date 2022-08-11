@@ -7,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import '../widget/CustomText.dart';
+import 'NavigationDrawer.dart';
 import 'tokens_data.dart';
 import 'package:acy_ipay/Homepage/show_balance.dart';
 import 'package:acy_ipay/Homepage/widget/MultiFunctionButton.dart';
@@ -224,11 +225,17 @@ class _HomePageState extends State<HomePage> {
 
     return MaterialApp(
         home: Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Color(0xFF1EA838)),
+            title: Text('Wallet', style: TextStyle(color: Colors.black)),
+            backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+          ),
+          drawer: const NavigationDrawer(),
           backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
           body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            topBar,
+            // topBar,
             mainButton,
             Expanded(
               child: TokensData(

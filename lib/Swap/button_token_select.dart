@@ -8,7 +8,8 @@ import '../Model/token.dart';
 import '../widget/CustomText.dart';
 
 class TokenSelect extends StatefulWidget {
-  const TokenSelect({Key? key}) : super(key: key);
+  final Function(double) callback;
+  const TokenSelect({Key? key, required this.callback,}) : super(key: key);
 
   @override
   State<TokenSelect> createState() => _TokenSelectState();
@@ -45,6 +46,10 @@ class _TokenSelectState extends State<TokenSelect> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     Widget buildToken(Token token) => ListTile(
+          onTap: () {
+            Navigator.pop(context);
+            widget.callback(0.25);
+          },
           leading: Padding(
             padding: const EdgeInsets.symmetric(vertical: 1),
             child: SizedBox(

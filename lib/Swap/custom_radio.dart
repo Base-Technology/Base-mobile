@@ -32,7 +32,7 @@ class MyRadioListTile<T> extends StatelessWidget {
       child: Center(
         child: CustomText(
           leading,
-            textColor: Color(0xFFF4F4F4),
+            textColor: isSelected ? Color(0xFFF4F4F4) : Colors.black54,
             fontWeight: FontWeight.w600,
             fontSize: 18,
         ),
@@ -59,7 +59,7 @@ class MyRadioListTile<T> extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: "Input",
                     hintStyle: TextStyle(
-                        color: Color(0xFFF4F4F4),
+                        color: Colors.black54,
                         fontWeight: FontWeight.w600),
                     fillColor: Colors.white,
                     contentPadding: EdgeInsets.only(top: 8),
