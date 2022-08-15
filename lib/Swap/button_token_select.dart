@@ -45,10 +45,14 @@ class _TokenSelectState extends State<TokenSelect> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    String initToken = "BTC";
     Widget buildToken(Token token) => ListTile(
           onTap: () {
             Navigator.pop(context);
             widget.callback(0.25);
+            setState(() {
+              initToken = "";
+            });
           },
           leading: Padding(
             padding: const EdgeInsets.symmetric(vertical: 1),
@@ -143,7 +147,7 @@ class _TokenSelectState extends State<TokenSelect> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CustomText(
-              "BTC",
+              initToken,
                   fontSize: 16,
                   fontWeight: FontWeight.w500
             ),

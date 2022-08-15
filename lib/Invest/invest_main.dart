@@ -1,14 +1,22 @@
 import 'package:acy_ipay/Invest/earn_tab_view.dart';
+import 'package:acy_ipay/widget/button_switch_chain.dart';
+import 'package:acy_ipay/widget/button_switch_wallet.dart';
 import 'package:acy_ipay/widget/topbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
+import '../Homepage/NavigationDrawer.dart';
 import '../widget/CustomText.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
+import '../widget/button_history.dart';
+
 class investMain extends StatelessWidget {
   const investMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     Container buyContainer(String topText, String botText, String iconString) {
       return Container(
         margin: const EdgeInsets.only(top: 10),
@@ -62,11 +70,13 @@ class investMain extends StatelessWidget {
       );
     }
 
-    return Column(
-        children: [
-          TopBar(title: "Invest"),
-          Expanded(child: EarnTabView()),
-        ],
+    return Scaffold(
+      body: Column(
+          children: [
+            TopBar(title: "Invest"),
+            Flexible(child: EarnTabView()),
+          ],
+      ),
     );
   }
 }

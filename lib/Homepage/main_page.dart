@@ -229,6 +229,7 @@ class _HomePageState extends State<HomePage> {
             iconTheme: IconThemeData(color: Color(0xFF1EA838)),
             title: Text('Wallet', style: TextStyle(color: Colors.black)),
             backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+            elevation: 1,
           ),
           drawer: const NavigationDrawer(),
           backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
