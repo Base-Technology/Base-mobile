@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:acy_ipay/widget/tap_widget.dart';
+import 'package:acy_ipay/core.dart';
+import '../color/colors.dart';
+
+class LableWidget extends StatelessWidget {
+
+  String lable;
+  Widget? rightWidget;
+  Widget? leftWidget;
+  GestureTapCallback? onTap;
+  bool showArrow;
+
+  LableWidget({required this.lable,this.leftWidget,this.rightWidget,this.onTap,this.showArrow = true,Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TapWidget(
+      onTap: onTap??(){},
+      child: Container(
+        color: Colours.white,
+        constraints: BoxConstraints(minHeight: 100.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 10.w),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if(leftWidget != null)
+              Container(
+                margin: EdgeInsets.only(right: 20.w),
+                child: leftWidget,
+              ),
+            Text(lable,style: TextStyle(color: Colours.black,fontSize: 28.sp),),
+            const Spacer(),
+            if(rightWidget != null)
+              rightWidget!,
+            if(showArrow)
+              Container(
+                  margin: EdgeInsets.only(left: 10.w),
+                  child: const Icon(Icons.keyboard_arrow_right,color: Colours.c_999999,))
+          ],
+        ),
+      ),
+    );
+  }
+
+}

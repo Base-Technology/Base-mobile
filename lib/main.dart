@@ -9,6 +9,7 @@ import 'package:acy_ipay/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/ChatNew/chat_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.system,
           theme: CustomTheme.lightTheme,
           darkTheme: CustomTheme.darkTheme,
-          home: signUp ? HomePage() : RegisterMain(),
+          home: signUp ? ChatPage() : RegisterMain(),
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.
