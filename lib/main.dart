@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.system,
           theme: CustomTheme.lightTheme,
           darkTheme: CustomTheme.darkTheme,
-          home: signUp ? HomePage() : RegisterMain(),
+          home: signUp ? ChatMain() : RegisterMain(),
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.

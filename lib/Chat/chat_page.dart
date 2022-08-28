@@ -25,59 +25,38 @@ class _ChatPageState extends State<ChatPage> {
         profile_pic_URL: "",
         time: "5/27"),
   ];
+  Container _leading() {
+    return Container(
+      width: 50,
+      color: Colors.yellow,
+      child: Icon(Icons.logo),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Color(0xFF1EA838)),
+          title: Text('Wallet', style: TextStyle(color: Colors.white)),
+          elevation: 1,
+          actions: <Widget>[
+            new IconButton(
+                icon: new Icon(Icons.arrow_back),
+                tooltip: 'Add Alarm',
+                onPressed: () {}),
+            new IconButton(
+                icon: new Icon(Icons.arrow_back),
+                tooltip: 'Add Alarm',
+                onPressed: () {}),
+          ],
+          leading: _leading(),
+        ),
         body: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SafeArea(
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 16, right: 16, top: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(
-                              "Chats",
-                              style: TextStyle(
-                                  fontSize: 32, fontWeight: FontWeight.bold),
-                            ),
-                            Container(
-                                padding: EdgeInsets.only(
-                                    left: 8, right: 8, top: 2, bottom: 2),
-                                height: 30,
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.more_vert,
-                                      size: 30,
-                                    ),
-                                  ],
-                                ))
-                          ],
-                        ))),
-                Padding(
-                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search...",
-                      hintStyle: TextStyle(color: Colors.grey.shade600),
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey.shade600,
-                        size: 20,
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey.shade100,
-                      contentPadding: EdgeInsets.all(8),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          borderSide: BorderSide(color: Colors.grey.shade100)),
-                    ),
-                  ),
-                ),
                 ListView.builder(
                   itemCount: chat_users.length,
                   shrinkWrap: true,
