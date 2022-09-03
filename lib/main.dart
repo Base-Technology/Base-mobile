@@ -17,9 +17,32 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  static const MaterialColor customColor = MaterialColor(
+    _customColor,
+    <int, Color>{
+      50: Color(0xFF202121),
+      100: Color(0xFF202121),
+      200: Color(0xFF202121),
+      300: Color(0xFF202121),
+      400: Color(0xFF202121),
+      500: Color(_customColor),
+      600: Color(0xFF202121),
+      700: Color(0xFF202121),
+      800: Color(0xFF202121),
+      900: Color(0xFF202121),
+    },
+  );
+  static const int _customColor = 0xFF202121;
+
   final boolTrue = false;
   final signUp = true;
-
+  // final themec= ThemeData(
+  //   scaffoldBackgroundColor: Color.fromRGBO(32,33,33,1),
+  //   primaryColor: Colors.white,
+  //   colorScheme: ColorScheme.light(),
+  //   primaryIconTheme: IconThemeData(color: Color(0xFFFFC000)),
+  //   brightness: Brightness.light,
+  // );
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
@@ -29,8 +52,20 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'Base',
           themeMode: ThemeMode.system,
-          theme: CustomTheme.lightTheme,
+          // theme: themec,
           darkTheme: CustomTheme.darkTheme,
+            theme: ThemeData(
+
+              // 应用整体主题亮度
+              brightness: Brightness.dark,
+              // 背景色
+              primarySwatch: customColor,
+              // primaryColor: Colors.red,
+              // // 前景色
+              // accentColor: Colors.orange[600],
+              //
+              // visualDensity: VisualDensity.adaptivePlatformDensity,
+            ),
           home: signUp ? ChatMain() : RegisterMain(),
           initialRoute: '/',
           routes: {

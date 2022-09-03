@@ -1,6 +1,9 @@
 import 'package:acy_ipay/Chat/models/chat_user_model.dart';
 import 'package:acy_ipay/widget/chat_card.dart';
+import 'package:acy_ipay/widget/move.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:acy_ipay/Homepage/NavigationDrawer.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -29,50 +32,88 @@ class _ChatPageState extends State<ChatPage> {
     return Container(
       width: 50,
       color: Colors.yellow,
-      child: Icon(Icons.logo),
+      child: SvgPicture.asset(
+        "assets/icon/icon_logo.svg",
+        color: Colors.grey,
+      ),
     );
   }
 
+  double _x = 120;
+  double _y = 130;
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      Overlay.of(context)?.insert(_entry());
+    });
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Color(0xFF1EA838)),
-          title: Text('Wallet', style: TextStyle(color: Colors.white)),
-          elevation: 1,
-          actions: <Widget>[
-            new IconButton(
-                icon: new Icon(Icons.arrow_back),
-                tooltip: 'Add Alarm',
-                onPressed: () {}),
-            new IconButton(
-                icon: new Icon(Icons.arrow_back),
-                tooltip: 'Add Alarm',
-                onPressed: () {}),
-          ],
-          leading: _leading(),
+      appBar: AppBar(
+        // iconTheme: IconThemeData(color: Color(0xFF1EA838)),
+        // title: Text('Wallet', style: TextStyle(color: Colors.white),textAlign:TextAlign.center),
+        elevation: 1,
+
+        actions: <Widget>[
+          new IconButton(
+              icon: new Icon(Icons.search),
+              tooltip: 'Add Alarm',
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              }),
+          // new IconButton(
+          //     icon: new Icon(Icons.settings),
+          //     tooltip: 'Add Alarm',
+          //     onPressed: () {}),
+        ],
+        // leading: _leading(),
+      ),
+      drawer: const NavigationDrawer(),
+      body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ListView.builder(
+                itemCount: chat_users.length,
+                shrinkWrap: true,
+                padding: EdgeInsets.only(top: 16),
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ChatCard(
+                    name: chat_users[index].name,
+                    message: chat_users[index].message,
+                    profile_pic_URL: chat_users[index].profile_pic_URL,
+                    time: chat_users[index].time,
+                    is_read: (index == 0 || index == 3) ? true : false,
+                  );
+                },
+              ),
+              //
+            ],
+          )),
+    );
+  }
+
+  OverlayEntry _entry() {
+    return OverlayEntry(builder: (ctx) {
+      return Positioned(
+        width: 48,
+        height: 48,
+        left: _x,
+        top: _y,
+        child: GestureDetector(
+          onPanUpdate: (d) {
+            setState(() {
+              _x += d.delta.dx;
+              _y += d.delta.dy;
+            });
+          },
+          child: SvgPicture.asset(
+            "assets/icon/icon_logo.svg",
+            color: Colors.green,
+          ),
         ),
-        body: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ListView.builder(
-                  itemCount: chat_users.length,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.only(top: 16),
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return ChatCard(
-                      name: chat_users[index].name,
-                      message: chat_users[index].message,
-                      profile_pic_URL: chat_users[index].profile_pic_URL,
-                      time: chat_users[index].time,
-                      is_read: (index == 0 || index == 3) ? true : false,
-                    );
-                  },
-                ),
-              ],
-            )));
+      );
+    });
   }
 }

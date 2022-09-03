@@ -6,7 +6,7 @@ class Drag extends StatefulWidget {
   _DragState createState() => new _DragState();
 }
 
-class _DragState extends State<Drag> with SingleTickerProviderStateMixin {
+class _DragState extends State<Drag> with TickerProviderStateMixin {
   double _top = 100.0; //距顶部的偏移
   double _left = 0.0;//距左边的偏移
 
@@ -18,13 +18,13 @@ class _DragState extends State<Drag> with SingleTickerProviderStateMixin {
           top: _top,
           left: _left,
           child: GestureDetector(
-            child:
-            ClipOval(
-
-                child:  SvgPicture.asset(
-                  "assets/icon/icon_logo.svg",
-                  color: Color.fromRGBO(30,170,57,1),
-                )),// CircleAvatar(child: Text("此时")),
+            child:CircleAvatar(child: Text("此时")),
+            // SvgPicture.asset(
+            //   "assets/icon/icon_logo.svg",
+            //   color: Color.fromRGBO(30,170,57,1),
+            //   width: 20,
+            // ),
+            // CircleAvatar(child: Text("此时")),
             //手指按下时会触发此回调
             onPanDown: (DragDownDetails e) {
               //打印手指按下的位置(相对于屏幕)
@@ -33,6 +33,9 @@ class _DragState extends State<Drag> with SingleTickerProviderStateMixin {
 //                      MaterialPageRoute(builder: (context) {
 //                        return MainRecommendCity() ;
 //                      }));
+            },
+            onTap: (){
+
             },
             //手指滑动时会触发此回调
             onPanUpdate: (DragUpdateDetails e) {
