@@ -4,13 +4,15 @@ class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.system;
   bool get isDarkMode {
     if (themeMode == ThemeMode.system) {
-      return WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+      return WidgetsBinding.instance.window.platformBrightness ==
+          Brightness.dark;
     }
 
     return themeMode == ThemeMode.dark;
   }
+
   void toggleTheme(bool isOn) {
-    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.dark;
     notifyListeners();
   }
 }

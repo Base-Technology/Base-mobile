@@ -22,7 +22,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.grey[300],
         flexibleSpace: SafeArea(
             child: Container(
           padding: const EdgeInsets.only(right: 16),
@@ -41,7 +40,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                 width: 2,
               ),
               CircleAvatar(
-                backgroundImage: NetworkImage(""),
+                backgroundImage: NetworkImage("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202101%2F23%2F20210123215342_3bbf3.thumb.1000_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1664798010&t=148a45e866dc6295ba32f7b6c99c9634"),
                 maxRadius: 20,
               ),
               SizedBox(
@@ -53,7 +52,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Fredericking",
+                      "Doctor",
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                     ),
@@ -62,10 +61,6 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     ),
                   ],
                 ),
-              ),
-              Icon(
-                Icons.settings,
-                color: Colors.black54,
               ),
             ],
           ),
@@ -93,8 +88,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: (messages[index].messageType == "receiver"
-                          ? Colors.white
-                          : Colors.green[100]),
+                          ? Colors.black12
+                          : Colors.black38),
                     ),
                     padding: EdgeInsets.all(16),
                     child: Text(
@@ -120,7 +115,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: Colors.black54,
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Icon(
@@ -152,7 +147,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     color: Colors.white,
                     size: 18,
                   ),
-                  backgroundColor: Colors.green,
+                  // backgroundColor: Colors.green,
                   elevation: 0,
                 )
               ],

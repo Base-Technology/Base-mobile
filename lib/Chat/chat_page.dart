@@ -15,17 +15,17 @@ class _ChatPageState extends State<ChatPage> {
     ChatUser(
         name: "Base(3)",
         message: "John sent a photo.",
-        profile_pic_URL: "",
+        profile_pic_URL: "https://img0.baidu.com/it/u=745053376,1504613451&fm=253&fmt=auto&app=138&f=PNG?w=582&h=500",
         time: "Now"),
     ChatUser(
         name: "Fredericking",
         message: "You've been invited.",
-        profile_pic_URL: "",
+        profile_pic_URL: "https://img0.baidu.com/it/u=745053376,1504613451&fm=253&fmt=auto&app=138&f=PNG?w=582&h=500",
         time: "Yesterday"),
     ChatUser(
         name: "LINE USA",
         message: "Welcome to LINE!",
-        profile_pic_URL: "",
+        profile_pic_URL: "https://img0.baidu.com/it/u=745053376,1504613451&fm=253&fmt=auto&app=138&f=PNG?w=582&h=500",
         time: "5/27"),
   ];
   Container _leading() {
@@ -40,7 +40,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   double _x = 120;
-  double _y = 130;
+  double _y = 630;
 
   @override
   Widget build(BuildContext context) {

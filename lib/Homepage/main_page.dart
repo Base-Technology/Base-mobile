@@ -231,7 +231,7 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
             elevation: 1,
           ),
-          drawer: const NavigationDrawer(),
+          // drawer: const NavigationDrawer(),
           backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
           body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

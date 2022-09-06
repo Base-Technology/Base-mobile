@@ -51,21 +51,20 @@ class MyApp extends StatelessWidget {
         final themeProvider = Provider.of<ThemeProvider>(context);
         return MaterialApp(
           title: 'Base',
-          themeMode: ThemeMode.system,
+          // themeMode: ThemeMode.system,
           // theme: themec,
           darkTheme: CustomTheme.darkTheme,
-            theme: ThemeData(
-
-              // 应用整体主题亮度
-              brightness: Brightness.dark,
-              // 背景色
-              primarySwatch: customColor,
-              // primaryColor: Colors.red,
-              // // 前景色
-              // accentColor: Colors.orange[600],
-              //
-              // visualDensity: VisualDensity.adaptivePlatformDensity,
-            ),
+          theme: ThemeData(
+            // 应用整体主题亮度
+            brightness: Brightness.dark,
+            // 背景色
+            primarySwatch: customColor,
+            // primaryColor: Colors.red,
+            // // 前景色
+            // accentColor: Colors.orange[600],
+            //
+            // visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
           home: signUp ? ChatMain() : RegisterMain(),
           initialRoute: '/',
           routes: {
@@ -73,6 +72,7 @@ class MyApp extends StatelessWidget {
             '/earn': (context) => investMain(),
             // When navigating to the "/second" route, build the SecondScreen widget.
             '/swap': (context) => SwapMain(),
+            '/home': (context) => HomePage(),
             '/chat': (context) => ChatMain(),
             '/send': (context) => SendMain(),
             '/receive': (context) => ReceiveMain(),
