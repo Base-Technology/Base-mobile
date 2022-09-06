@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Homepage/bottom_nav_bar.dart';
 import 'chat_page.dart';
 
 class ChatMain extends StatelessWidget {
@@ -9,6 +8,7 @@ class ChatMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: ChatPage(),
     );
   }

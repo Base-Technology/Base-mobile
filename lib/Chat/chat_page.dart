@@ -1,6 +1,8 @@
 import 'package:acy_ipay/Chat/models/chat_user_model.dart';
 import 'package:acy_ipay/widget/chat_card.dart';
 import 'package:acy_ipay/widget/move.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:acy_ipay/Homepage/NavigationDrawer.dart';
@@ -44,22 +46,25 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       Overlay.of(context)?.insert(_entry());
     });
     return Scaffold(
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         // iconTheme: IconThemeData(color: Color(0xFF1EA838)),
         // title: Text('Wallet', style: TextStyle(color: Colors.white),textAlign:TextAlign.center),
         elevation: 1,
-
+        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
         actions: <Widget>[
-          new IconButton(
+          Builder(builder: (context) =>IconButton(
               icon: new Icon(Icons.search),
               tooltip: 'Add Alarm',
               onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }),
+              })),
           // new IconButton(
           //     icon: new Icon(Icons.settings),
           //     tooltip: 'Add Alarm',

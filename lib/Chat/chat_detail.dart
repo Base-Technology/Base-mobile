@@ -1,5 +1,8 @@
 import 'package:acy_ipay/Chat/models/chat_message_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
+import '../widget/CustomText.dart';
 
 class ChatDetailPage extends StatefulWidget {
   @override
@@ -15,14 +18,16 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         messageContent: "Doing OK. How about you?", messageType: "sender"),
     ChatMessage(messageContent: "Not bad.", messageType: "receiver")
   ];
+
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-      // backgroundColor: Colors.grey[200],
+      backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
+        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.grey[300],
         flexibleSpace: SafeArea(
             child: Container(
           padding: const EdgeInsets.only(right: 16),
@@ -52,10 +57,10 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
+                    CustomText(
                       "Fredericking",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
                     ),
                     SizedBox(
                       height: 6,
@@ -93,9 +98,9 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: (messages[index].messageType == "receiver"
-                          ? Colors.white
-                          : Colors.green[100]),
-                    ),
+                          ? Color(0xFF252928)
+                          : Color(0xFF0E0E0E)
+                      )),
                     padding: EdgeInsets.all(16),
                     child: Text(
                       messages[index].messageContent,
@@ -111,7 +116,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
             height: 60,
             width: double.infinity,
-            color: Colors.white,
+            color: themeProvider.isDarkMode ? Color(0xFF5C5B5B) : Colors.white,
             child: Row(
               children: <Widget>[
                 GestureDetector(
