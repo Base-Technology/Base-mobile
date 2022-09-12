@@ -294,7 +294,7 @@ class SettingsMain extends StatelessWidget {
       backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Color(0xFF1EA838)),
-        title: Text('Settings',  style: TextStyle(color: Colors.black)),
+        title: CustomText('Settings'),
         backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       ),
       drawer: const NavigationDrawer(),

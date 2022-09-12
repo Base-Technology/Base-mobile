@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode themeMode = ThemeMode.system;
+  ThemeMode themeMode = ThemeMode.dark;
   bool get isDarkMode {
     if (themeMode == ThemeMode.system) {
       return WidgetsBinding.instance.window.platformBrightness ==
           Brightness.dark;
     }
-
     return themeMode == ThemeMode.dark;
   }
 

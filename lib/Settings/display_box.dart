@@ -58,8 +58,7 @@ class DisplayBox extends StatelessWidget {
               activeColor: Color(0xFFFFC000),
               inactiveThumbColor: Color(0xE682939D),
               onChanged: (value) {
-                final provider =
-                    Provider.of<ThemeProvider>(context, listen: false);
+                final provider = Provider.of<ThemeProvider>(context, listen: false);
                 provider.toggleTheme(value);
               },
             ),

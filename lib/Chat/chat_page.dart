@@ -60,7 +60,7 @@ class _ChatPageState extends State<ChatPage> {
         backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
         actions: <Widget>[
           Builder(builder: (context) =>IconButton(
-              icon: new Icon(Icons.search),
+              icon: Icon(Icons.search),
               tooltip: 'Add Alarm',
               onPressed: () {
                 Scaffold.of(context).openDrawer();

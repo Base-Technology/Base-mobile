@@ -1,4 +1,5 @@
 import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/DAO/daomain.dart';
 import 'package:acy_ipay/Homepage/main_page.dart';
 import 'package:acy_ipay/Settings/settings_main.dart';
 import 'package:flutter/cupertino.dart';
@@ -60,10 +61,10 @@ class NavigationDrawer extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.house_rounded),
-              title: Text('Discover'),
+              title: Text('DAO'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChatMain()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DaoMain()));
               },
             ),
             ListTile(
