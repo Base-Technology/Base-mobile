@@ -58,6 +58,7 @@ dependencies:
   web3dart: ^2.4.1
   web_socket_channel: ^2.2.0
   path: ^1.8.2
+  overlapping_panels: ^0.0.3
 
 dev_dependencies:
   # flutter_test:
