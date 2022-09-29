@@ -113,7 +113,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
             padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
             height: 60,
             width: double.infinity,
-            color: themeProvider.isDarkMode ? Color(0xFF5C5B5B) : Colors.white,
+            // color: themeProvider.isDarkMode ? Color(0xFF5C5B5B) : Colors.white,
+            color: Colors.white,
             child: Row(
               children: <Widget>[
                 GestureDetector(
