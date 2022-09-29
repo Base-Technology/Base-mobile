@@ -1,6 +1,7 @@
+import 'package:acy_ipay/Chat/groupchat_main.dart';
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
-import 'package:acy_ipay/Homepage/bottom_nav_bar.dart';
+import 'package:acy_ipay/Homepage/sticky_bottom_nav_bar.dart';
 import 'package:acy_ipay/Homepage/main_page.dart';
 import 'package:acy_ipay/Register/register_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
             //
             // visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: signUp ? ChatMain() : RegisterMain(),
+          home: signUp ? GroupChatMainPage() : RegisterMain(),
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.

@@ -103,16 +103,34 @@ class NavigationDrawer extends StatelessWidget {
       ),
     );
 
-    return Drawer(
+    Widget buildChannel(BuildContext context) => Container(
+      width: 35,
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: const [
+            CircleAvatar(radius: 15, backgroundColor: Colors.white),
+            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+            CircleAvatar(radius: 15,backgroundColor: Colors.white),
+            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+            CircleAvatar(radius: 15,backgroundColor: Colors.white),
+            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+            CircleAvatar(radius: 15,backgroundColor: Colors.white),
+            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+            CircleAvatar(radius: 15,backgroundColor: Colors.white),
+            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
+            CircleAvatar(radius: 15,backgroundColor: Colors.white),
+          ],
+        ),
+      ),
+    );
+
+    return SingleChildScrollView(
+      child: Column(
           children: <Widget>[
             buildHeader(context),
             buildMenuItems(context),
           ],
-        ),
-      )
+      ),
     );
   }
 }

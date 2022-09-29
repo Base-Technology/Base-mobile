@@ -1,13 +1,21 @@
 import 'package:acy_ipay/Chat/models/chat_user_model.dart';
+import 'package:acy_ipay/Homepage/widget/drawer_menu_widget.dart';
 import 'package:acy_ipay/widget/chat_card.dart';
 import 'package:acy_ipay/widget/move.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:acy_ipay/Homepage/NavigationDrawer.dart';
+import 'package:acy_ipay/Homepage/navigation_drawer.dart';
 
 class ChatPage extends StatefulWidget {
+  final VoidCallback openDrawer;
+
+  const ChatPage({
+    Key? key,
+    required this.openDrawer,
+  }) : super(key: key);
+
   @override
   _ChatPageState createState() => _ChatPageState();
 }
@@ -53,7 +61,6 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         // iconTheme: IconThemeData(color: Color(0xFF1EA838)),
         // title: Text('Wallet', style: TextStyle(color: Colors.white),textAlign:TextAlign.center),
         elevation: 1,
@@ -70,9 +77,8 @@ class _ChatPageState extends State<ChatPage> {
           //     tooltip: 'Add Alarm',
           //     onPressed: () {}),
         ],
-        // leading: _leading(),
+        leading: DrawerMenuWidget(onClicked: widget.openDrawer),
       ),
-      drawer: const NavigationDrawer(),
       body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
