@@ -2,6 +2,7 @@ import 'package:acy_ipay/Chat/chat_main.dart';
 import 'package:acy_ipay/DAO/daomain.dart';
 import 'package:acy_ipay/Homepage/main_page.dart';
 import 'package:acy_ipay/Settings/settings_main.dart';
+import 'package:acy_ipay/Chat/friends/friends_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
@@ -71,8 +72,13 @@ class NavigationDrawer extends StatelessWidget {
               leading: Icon(Icons.people_rounded),
               title: Text('Friends'),
               onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChatMain()));
+                pushNewScreenWithRouteSettings(
+                  context,
+                  settings: RouteSettings(name: '/friends'),
+                  screen: FriendsPage(),
+                );
+                // Navigator.pop(context);
+                // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
               },
             ),
 

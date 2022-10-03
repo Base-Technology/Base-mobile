@@ -184,7 +184,7 @@ flutter:
     - assets/icon/icon_wallet_activity.svg
     - assets/icon/icon_empty.png
     - assets/icon/icon_logo.svg
-
+    - images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

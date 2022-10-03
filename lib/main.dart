@@ -10,6 +10,7 @@ import 'package:acy_ipay/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:acy_ipay/Invest/invest_main.dart';
 import 'package:acy_ipay/Chat/chat_main.dart';
+import 'package:acy_ipay/Chat/friends/friends_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -78,6 +79,8 @@ class MyApp extends StatelessWidget {
             '/send': (context) => SendMain(),
             '/receive': (context) => ReceiveMain(),
             '/referral': (context) => ReferralMain(),
+            '/friends': (context) => FriendsPage(),
+
           },
         );
       });
