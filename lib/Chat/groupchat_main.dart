@@ -1,6 +1,8 @@
 import 'package:acy_ipay/Chat/channel_details.dart';
 import 'package:acy_ipay/Chat/channel_list.dart';
 import 'package:acy_ipay/Chat/groupchat_page.dart';
+import 'package:acy_ipay/Homepage/main_page.dart';
+import 'package:acy_ipay/Settings/settings_main.dart';
 import 'package:flutter/material.dart';
 import 'package:overlapping_panels/overlapping_panels.dart';
 
@@ -58,7 +60,10 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => GroupChatMainPage()));
+                          },
                           icon: const Icon(
                             Icons.house_rounded,
                             color: Colors.white,
@@ -74,7 +79,10 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                          },
                           icon: const Icon(
                             Icons.wallet_rounded,
                             color: Colors.white54,
@@ -82,7 +90,10 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => SettingsMain()));
+                          },
                           icon: CircleAvatar(
                             radius: 15,
                             foregroundImage: NetworkImage(

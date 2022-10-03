@@ -51,7 +51,7 @@ class ChannelList extends StatelessWidget {
                                 children: [
                                   const Expanded(
                                       child: Text(
-                                        "Metaverse DAO",
+                                        "Hello",
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18),
