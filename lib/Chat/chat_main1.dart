@@ -1,23 +1,23 @@
-import 'package:acy_ipay/Chat/channel_details.dart';
-import 'package:acy_ipay/Chat/channel_list.dart';
-import 'package:acy_ipay/Chat/chat_main1.dart';
-import 'package:acy_ipay/Chat/chat_page.dart';
-import 'package:acy_ipay/Chat/groupchat_page.dart';
 import 'package:acy_ipay/Homepage/wallet_page.dart';
 import 'package:acy_ipay/Homepage/wallet_main.dart';
-import 'package:acy_ipay/Settings/settings_main.dart';
+import '../Chat/navigation_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:overlapping_panels/overlapping_panels.dart';
 
-class GroupChatMainPage extends StatefulWidget {
-  const GroupChatMainPage({Key? key}) : super(key: key);
+import '../Settings/settings_main.dart';
+import 'channel_list.dart';
+import 'chat_page.dart';
+import 'groupchat_main.dart';
+
+class ChatMainOne extends StatefulWidget {
+  const ChatMainOne({Key? key}) : super(key: key);
 
   @override
-  State<GroupChatMainPage> createState() => _GroupChatPageState();
+  State<ChatMainOne> createState() => _ChatMainState();
 }
 
-class _GroupChatPageState extends State<GroupChatMainPage> {
+class _ChatMainState extends State<ChatMainOne> {
   Offset footerOffset = const Offset(0, 1);
 
   @override
@@ -26,14 +26,11 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
       children: [
         OverlappingPanels(
           left: Builder(builder: (context) {
-            return const ChannelList();
+            return const NavigationList();
           }),
-          right: Builder(
-            builder: (context) => const ChannelDetails(),
-          ),
           main: Builder(
             builder: (context) {
-              return const GroupChatPage();
+              return const ChatPage();
             },
           ),
           onSideChange: (side) {
@@ -52,7 +49,7 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
             duration: const Duration(milliseconds: 160),
             offset: footerOffset,
             child: SizedBox(
-              //height: 50,
+              height: 50,
               child: Material(
                 color: Color(0xE618191D),
                 child: Padding(
@@ -66,13 +63,14 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                         IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => ChatMainOne()));
+                                builder: (context) => GroupChatMainPage()));
                           },
-                          icon: const Icon(
-                              Icons.chat_rounded,
-                              color: Colors.white,
-                              size: 24
-                          )
+                          icon: SvgPicture.asset(
+                            "assets/icon/icon_logo.svg",
+                            color: Color(0xFF1EAA39),
+                            height: 32,
+                            width: 32,
+                          ),
                         ),
                         IconButton(
                           onPressed: () {},
@@ -85,13 +83,11 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                         IconButton(
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => GroupChatMainPage()));
+                                builder: (context) => ChatMainOne()));
                           },
                           icon: SvgPicture.asset(
-                            "assets/icon/icon_logo.svg",
-                            color: Color(0xFF1EAA39),
-                            height: 24,
-                            width: 24,
+                            "assets/icon/icon_p2p.svg",
+                            color: Colors.white,
                           ),
                         ),
                         IconButton(
@@ -111,7 +107,7 @@ class _GroupChatPageState extends State<GroupChatMainPage> {
                                 builder: (context) => SettingsMain()));
                           },
                           icon: CircleAvatar(
-                            radius: 14,
+                            radius: 15,
                             foregroundImage: NetworkImage(
                                 "https://avatars.githubusercontent.com/u/5024388?v=4"),
                           ),

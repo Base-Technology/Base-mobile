@@ -1,12 +1,12 @@
 import 'package:acy_ipay/Chat/chat_main.dart';
 import 'package:acy_ipay/DAO/daomain.dart';
-import 'package:acy_ipay/Homepage/main_page.dart';
+import 'package:acy_ipay/Homepage/wallet_page.dart';
 import 'package:acy_ipay/Settings/settings_main.dart';
 import 'package:acy_ipay/Chat/friends/friends_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'main_page.dart';
+import 'wallet_page.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class NavigationDrawer extends StatelessWidget {
                 pushNewScreenWithRouteSettings(
                   context,
                   settings: RouteSettings(name: '/home'),
-                  screen: HomePage(),
+                  screen: WalletPage(),
                 );
                 // Navigator.pop(context);
                 // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
@@ -100,27 +100,6 @@ class NavigationDrawer extends StatelessWidget {
               },
             ),
           ],
-      ),
-    );
-
-    Widget buildChannel(BuildContext context) => Container(
-      width: 35,
-      child: SingleChildScrollView(
-        child: Column(
-          children: const [
-            CircleAvatar(radius: 15, backgroundColor: Colors.white),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            CircleAvatar(radius: 15,backgroundColor: Colors.white),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            CircleAvatar(radius: 15,backgroundColor: Colors.white),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            CircleAvatar(radius: 15,backgroundColor: Colors.white),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            CircleAvatar(radius: 15,backgroundColor: Colors.white),
-            Padding(padding: EdgeInsets.symmetric(vertical: 5)),
-            CircleAvatar(radius: 15,backgroundColor: Colors.white),
-          ],
-        ),
       ),
     );
 

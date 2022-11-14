@@ -1,8 +1,20 @@
-final List<String> servers = [
-  "https://avatars.githubusercontent.com/u/79879105?s=400&u=c3b0f648a56033b143feac20af0651927ed1ebaf&v=4",
-  "https://www.abccolumbia.com/content/uploads/2020/10/l5qbxP0p_400x400.jpg",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png",
-  "https://pbs.twimg.com/profile_images/1480584432989974532/KJe35K1s_400x400.jpg"
+final List<Map<String, dynamic>> servers = [
+  {
+    "link": "https://avatars.githubusercontent.com/u/79879105?s=400&u=c3b0f648a56033b143feac20af0651927ed1ebaf&v=4",
+    "channelNum": 1
+  },
+  {
+    "link": "https://www.abccolumbia.com/content/uploads/2020/10/l5qbxP0p_400x400.jpg",
+    "channelNum": 2
+  },
+  {
+    "link": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png",
+    "channelNum": 3
+  },
+  {
+    "link": "https://pbs.twimg.com/profile_images/1480584432989974532/KJe35K1s_400x400.jpg",
+    "channelNum": 4
+  },
 ];
 
 final avatars = [

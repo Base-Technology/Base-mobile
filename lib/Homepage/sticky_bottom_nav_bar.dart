@@ -8,7 +8,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import '/Settings/settings_main.dart';
-import '/Homepage/main_page.dart';
+import '/Homepage/wallet_page.dart';
 import 'Send/send_main.dart';
 
 class bottomNavBar extends StatefulWidget {
@@ -37,7 +37,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
   }
 
   List<Widget> _buildScreens() {
-    return [ChatMain(), HomePage(), SettingsMain()];
+    return [ChatMain(), WalletPage(), SettingsMain()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -125,7 +125,7 @@ class _bottomNavBarState extends State<bottomNavBar> {
 
   List pages = [
     ChatMain(),
-    HomePage(),
+    WalletPage(),
     SettingsMain()
   ]; //SwapMain(),investMain(), ,
 

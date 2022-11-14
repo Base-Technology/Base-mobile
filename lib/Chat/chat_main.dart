@@ -1,4 +1,4 @@
-import 'package:acy_ipay/Homepage/main_page.dart';
+import 'package:acy_ipay/Homepage/wallet_page.dart';
 import 'package:acy_ipay/Homepage/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +36,7 @@ class _ChatMainState extends State<ChatMain> {
       onTap: closeDrawer,
       child: Container(
         transform: Matrix4.translationValues(xOffset, 0, 0),
-        child: currentIndex == 0 ? ChatPage(openDrawer: openDrawer) : HomePage(),
+        child: currentIndex == 0 ? ChatPage() : WalletPage(),
       ),
     );
   }

@@ -1,8 +1,8 @@
+import 'package:acy_ipay/Chat/chat_main1.dart';
 import 'package:acy_ipay/Chat/groupchat_main.dart';
 import 'package:acy_ipay/Homepage/Receive/receive_main.dart';
 import 'package:acy_ipay/Homepage/Referral/referral_main.dart';
-import 'package:acy_ipay/Homepage/sticky_bottom_nav_bar.dart';
-import 'package:acy_ipay/Homepage/main_page.dart';
+import 'package:acy_ipay/Homepage/wallet_page.dart';
 import 'package:acy_ipay/Register/register_main.dart';
 import 'package:acy_ipay/Homepage/Send/send_main.dart';
 import 'package:acy_ipay/Swap/swap_main.dart';
@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
             '/earn': (context) => investMain(),
             // When navigating to the "/second" route, build the SecondScreen widget.
             '/swap': (context) => SwapMain(),
-            '/home': (context) => HomePage(),
+            '/home': (context) => WalletPage(),
             '/chat': (context) => ChatMain(),
             '/send': (context) => SendMain(),
             '/receive': (context) => ReceiveMain(),

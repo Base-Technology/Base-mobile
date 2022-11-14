@@ -4,6 +4,7 @@ import 'package:acy_ipay/Homepage/widget/button_send_receive.dart';
 import 'package:acy_ipay/widget/button_switch_chain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:overlapping_panels/overlapping_panels.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import '../widget/CustomText.dart';
@@ -12,15 +13,15 @@ import 'tokens_data.dart';
 import 'package:acy_ipay/Homepage/show_balance.dart';
 import 'package:acy_ipay/Homepage/widget/MultiFunctionButton.dart';
 
-class HomePage extends StatefulWidget {
+class WalletPage extends StatefulWidget {
   final ValueChanged<int>? onPush;
-  const HomePage({Key? key, this.onPush}) : super(key: key);
+  const WalletPage({Key? key, this.onPush}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<WalletPage> createState() => _WalletPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _WalletPageState extends State<WalletPage> {
   int curIndex = 0;
 
   void onPageChanged(int index) {
@@ -170,10 +171,9 @@ class _HomePageState extends State<HomePage> {
     );
 
     Widget mainButton = Container(
-      margin: const EdgeInsets.only(top: 5),
-      height: 180,
+      margin: const EdgeInsets.only(top: 10),
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(15),
@@ -186,15 +186,23 @@ class _HomePageState extends State<HomePage> {
           alignment: WrapAlignment.center,
           runAlignment: WrapAlignment.center,
           children: [
-            MultiFunctionButton(
+            /*MultiFunctionButton(
               text: "Buy",
               iconPath: "assets/icon/icon_buy.svg",
+            ),*/
+            MultiFunctionButton(
+              text: "Send",
+              iconPath: "assets/icon/icon_up.svg",
+            ),
+            MultiFunctionButton(
+              text: "Receive",
+              iconPath: "assets/icon/icon_down.svg",
             ),
             MultiFunctionButton(
               text: "Swap",
               iconPath: "assets/icon/icon_swap.svg",
             ),
-            MultiFunctionButton(
+            /*MultiFunctionButton(
               text: "Earn",
               iconPath: "assets/icon/icon_deposit.svg",
             ),
@@ -203,17 +211,9 @@ class _HomePageState extends State<HomePage> {
               iconPath: "assets/icon/icon_scan.svg",
             ),
             MultiFunctionButton(
-              text: "Receive",
-              iconPath: "assets/icon/icon_down.svg",
-            ),
-            MultiFunctionButton(
-              text: "Send",
-              iconPath: "assets/icon/icon_up.svg",
-            ),
-            MultiFunctionButton(
               text: "Referral",
               iconPath: "assets/icon/icon_invite_friends.svg",
-            ),
+            ),*/
             MultiFunctionButton(
               text: "More",
               iconPath: "assets/icon/icon_more.svg",
@@ -225,18 +225,26 @@ class _HomePageState extends State<HomePage> {
 
     return MaterialApp(
         home: Scaffold(
-          appBar: AppBar(
-            iconTheme: IconThemeData(color: Color(0xFF1EA838)),
-            title: Text('Wallet', style: TextStyle(color: Colors.black)),
-            backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
-            elevation: 1,
-          ),
-          // drawer: const NavigationDrawer(),
           backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+          appBar: AppBar(
+            // iconTheme: IconThemeData(color: Color(0xFF1EA838)),
+            title: Text('Wallet', style: TextStyle(color: Colors.white),textAlign:TextAlign.center),
+            elevation: 1,
+            backgroundColor: Color(0xE6303136),
+              leading: IconButton(
+                icon: const Icon(Icons.menu, color: Color(0xFFBABBBF)),
+                onPressed: () {
+                OverlappingPanels.of(context)?.reveal(RevealSide.left);
+              },
+          ),),
           body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // topBar,
+            Container(
+              margin: const EdgeInsets.only(top: 25),
+                child: ShowBalance()
+            ),
             mainButton,
             Expanded(
               child: TokensData(

@@ -2,6 +2,7 @@ import 'package:acy_ipay/Chat/models/chat_user_model.dart';
 import 'package:acy_ipay/Homepage/widget/drawer_menu_widget.dart';
 import 'package:acy_ipay/widget/chat_card.dart';
 import 'package:acy_ipay/widget/move.dart';
+import 'package:overlapping_panels/overlapping_panels.dart';
 import 'package:provider/provider.dart';
 import '../theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:acy_ipay/Homepage/navigation_drawer.dart';
 
 class ChatPage extends StatefulWidget {
-  final VoidCallback openDrawer;
 
   const ChatPage({
     Key? key,
-    required this.openDrawer,
   }) : super(key: key);
 
   @override
@@ -64,7 +63,13 @@ class _ChatPageState extends State<ChatPage> {
         // iconTheme: IconThemeData(color: Color(0xFF1EA838)),
         // title: Text('Wallet', style: TextStyle(color: Colors.white),textAlign:TextAlign.center),
         elevation: 1,
-        backgroundColor: themeProvider.isDarkMode ? Colors.black : Colors.white,
+        backgroundColor: Color(0xE6303136),
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: Color(0xFFBABBBF)),
+          onPressed: () {
+            OverlappingPanels.of(context)?.reveal(RevealSide.left);
+          },
+        ),
         actions: <Widget>[
           Builder(builder: (context) =>IconButton(
               icon: Icon(Icons.search),
@@ -77,7 +82,6 @@ class _ChatPageState extends State<ChatPage> {
           //     tooltip: 'Add Alarm',
           //     onPressed: () {}),
         ],
-        leading: DrawerMenuWidget(onClicked: widget.openDrawer),
       ),
       body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),

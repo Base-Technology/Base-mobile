@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -60,6 +60,8 @@ dependencies:
   path: ^1.8.2
   overlapping_panels: ^0.0.3
   flutter_chat_bubble: ^2.0.0
+  dropdown_below: ^1.0.3
+  fl_chart: ^0.55.2
 
 dev_dependencies:
   # flutter_test:
@@ -95,6 +97,7 @@ flutter:
     - assets/icon/tradeCrypto.svg
     - assets/icon/icon_base.svg
     - assets/icon/icon_buy.svg
+    - assets/icon/icon_bank.svg
     - assets/icon/icon_up.svg
     - assets/icon/icon_scan.svg
     - assets/icon/icon_delete.svg
@@ -184,6 +187,7 @@ flutter:
     - assets/icon/icon_wallet_activity.svg
     - assets/icon/icon_empty.png
     - assets/icon/icon_logo.svg
+    - assets/icon/icon_p2p.svg
     - images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

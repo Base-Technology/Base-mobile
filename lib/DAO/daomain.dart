@@ -1,4 +1,4 @@
-import 'package:acy_ipay/DAO/model/dao_card.dart';
+import 'package:acy_ipay/DAO/model/dao_proposal_card.dart';
 import 'package:acy_ipay/DAO/model/dao_drawer.dart';
 import 'package:acy_ipay/Homepage/navigation_drawer.dart';
 
@@ -32,10 +32,7 @@ class DaoMain extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            DaoCard(),
-            DaoCard(),
-            DaoCard(),
-            DaoCard(),
+            Text("Tets")
           ],
         )
       )

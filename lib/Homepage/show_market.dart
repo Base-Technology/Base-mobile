@@ -15,6 +15,7 @@ class ShowMarket extends StatefulWidget {
 }
 
 class _ShowMarketState extends State<ShowMarket> {
+  bool isLoading = true;
   Future<List<Coin>> fetchCoin() async {
     coinList = [];
     final response = await http.get(Uri.parse(
@@ -32,6 +33,7 @@ class _ShowMarketState extends State<ShowMarket> {
         }
         if (this.mounted) {
           setState(() {
+            isLoading = false;
             coinList;
           });
         }
@@ -76,7 +78,7 @@ class _ShowMarketState extends State<ShowMarket> {
     return Column(
       children: [
         columnFunction,
-        Expanded(
+        isLoading ? Center(child: const CircularProgressIndicator()) : Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.all(0),
             scrollDirection: Axis.vertical,

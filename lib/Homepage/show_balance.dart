@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:provider/provider.dart';
+import '../theme_provider.dart';
 import '../widget/CustomText.dart';
 
 class ShowBalance extends StatefulWidget {
@@ -15,6 +17,7 @@ class _ShowBalanceState extends State<ShowBalance> {
   bool showBalance = true;
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     double resWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
@@ -41,11 +44,11 @@ class _ShowBalanceState extends State<ShowBalance> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                         FaIcon(FontAwesomeIcons.ellipsis,
-                            color: Colors.black, size: 55),
+                            color: themeProvider.isDarkMode ? Colors.white : Colors.black, size: 55),
                         Padding(
                             padding: EdgeInsets.only(left: 2),
                             child: FaIcon(FontAwesomeIcons.ellipsis,
-                                color: Colors.black, size: 55))
+                                color: themeProvider.isDarkMode ? Colors.white : Colors.black, size: 55))
                       ]),
             Row(
               mainAxisSize: MainAxisSize.max,

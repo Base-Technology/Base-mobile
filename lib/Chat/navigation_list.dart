@@ -1,15 +1,25 @@
-import 'package:acy_ipay/Chat/chat_main.dart';
-import 'package:acy_ipay/DAO/daomain.dart';
-import 'package:acy_ipay/Homepage/wallet_page.dart';
-import 'package:acy_ipay/Settings/settings_main.dart';
+import 'package:acy_ipay/Chat/groupchat_main.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
+import '../Homepage/wallet_page.dart';
+import '../Settings/settings_main.dart';
+import '../theme_provider.dart';
+import 'chat_main.dart';
 
-class DaoDrawer extends StatelessWidget {
-  const DaoDrawer({Key? key}) : super(key: key);
+class NavigationList extends StatefulWidget {
+  const NavigationList({Key? key}) : super(key: key);
+
+  @override
+  State<NavigationList> createState() => _ChannelListState();
+}
+
+class _ChannelListState extends State<NavigationList> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     Widget buildHeader(BuildContext context) => Material(
       // color: Colors.blue.shade700,
       child: Container(
@@ -46,7 +56,7 @@ class DaoDrawer extends StatelessWidget {
           const Divider(color: Colors.black54),
           ListTile(
             leading: Icon(Icons.wallet_rounded),
-            title: Text('Treasury'),
+            title: Text('Wallet'),
             onTap: () {
               pushNewScreenWithRouteSettings(
                 context,
@@ -59,26 +69,56 @@ class DaoDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.house_rounded),
-            title: Text('Toolbox'),
+            title: Text('DAO'),
             onTap: () {
               Navigator.pop(context);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DaoMain()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const GroupChatMainPage()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.people_rounded),
+            title: Text('Friends'),
+            onTap: () {
+              pushNewScreenWithRouteSettings(
+                context,
+                settings: RouteSettings(name: '/friends'),
+                screen: WalletPage(),
+              );
+              // Navigator.pop(context);
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
+            },
+          ),
+
+          const Divider(color: Colors.black54),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsMain()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.help_rounded),
+            title: Text('Help'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ChatMain()));
             },
           ),
         ],
       ),
     );
 
-    return Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              buildHeader(context),
-              buildMenuItems(context),
-            ],
-          ),
-        )
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            buildHeader(context),
+            buildMenuItems(context),
+          ],
+        ),
+      )
     );
   }
 }
